@@ -11,6 +11,9 @@ namespace agora {
 namespace iris {
 class IrisProxy {
  public:
+  virtual ~IrisProxy() = default;
+
+ public:
   virtual void SetEventHandler(IrisEventHandler *event_handler) = 0;
 
   virtual int CallApi(unsigned int api_type, const char *params,

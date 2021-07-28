@@ -46,8 +46,8 @@ class IRIS_CPP_API IrisRtcDeviceManager {
               char result[kMaxResultLength]);
 
  private:
-  IrisProxy *audio_device_manager_proxy_;
-  IrisProxy *video_device_manager_proxy_;
+  IrisProxy *adm_proxy_;
+  IrisProxy *vdm_proxy_;
   class IrisRtcDeviceManagerImpl;
   IrisRtcDeviceManagerImpl *device_manager_;
 };

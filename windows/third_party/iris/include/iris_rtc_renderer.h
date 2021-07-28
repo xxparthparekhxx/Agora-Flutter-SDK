@@ -48,7 +48,7 @@ class IRIS_CPP_API IrisRtcRenderer {
 
   void DisableVideoFrameCache(const IrisRtcRendererDelegate *delegate);
 
-  void DisableVideoFrameCache(unsigned int uid = -1,
+  void DisableVideoFrameCache(unsigned int *uid = nullptr,
                               const char *channel_id = "");
 
   bool GetVideoFrame(IrisRtcVideoFrame &video_frame, bool &is_new_frame,

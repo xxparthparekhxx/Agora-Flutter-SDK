@@ -39,4 +39,6 @@
 const int kBasicResultLength = 512;
 const int kMaxResultLength = 2048;
 
+IRIS_API void InitIrisLogger(const char *tag, const char *path);
+
 #endif//IRIS_BASE_H_

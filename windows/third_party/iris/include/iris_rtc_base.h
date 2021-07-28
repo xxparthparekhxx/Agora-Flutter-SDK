@@ -7,6 +7,9 @@
 
 #include "iris_base.h"
 #include <cstdint>
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -119,7 +122,7 @@ enum ApiTypeEngine {
   kEngineSetMixedAudioFrameParameters,
   kEngineAdjustRecordingSignalVolume,
   kEngineAdjustPlaybackSignalVolume,
-  kEngineAdjustLoopbackRecordingSignalVolume,
+  kEngineAdjustLoopBackRecordingSignalVolume,
   kEngineEnableWebSdkInteroperability,
   kEngineSetVideoQualityParameters,
   kEngineSetLocalPublishFallbackOption,
@@ -162,9 +165,12 @@ enum ApiTypeEngine {
   kEngineAddVideoWaterMark,
   kEngineClearVideoWaterMarks,
   kEngineSetBeautyEffectOptions,
+  kEngineEnableVirtualBackground,
   kEngineAddInjectStreamUrl,
   kEngineStartChannelMediaRelay,
   kEngineUpdateChannelMediaRelay,
+  kEnginePauseAllChannelMediaRelay,
+  kEngineResumeAllChannelMediaRelay,
   kEngineStopChannelMediaRelay,
   kEngineRemoveInjectStreamUrl,
   kEngineSendCustomReportMessage,
@@ -172,6 +178,7 @@ enum ApiTypeEngine {
   kEngineEnableRemoteSuperResolution,
   kEngineRegisterMediaMetadataObserver,
   kEngineSetParameters,
+  kEngineSetLocalAccessPoint,
 
   kEngineUnRegisterMediaMetadataObserver,
   kEngineSetMaxMetadataSize,
@@ -209,6 +216,8 @@ enum ApiTypeChannel {
   kChannelSetRemoteRenderMode,
   kChannelSetDefaultMuteAllRemoteAudioStreams,
   kChannelSetDefaultMuteAllRemoteVideoStreams,
+  kChannelMuteLocalAudioStream,
+  kChannelMuteLocalVideoStream,
   kChannelMuteAllRemoteAudioStreams,
   kChannelAdjustUserPlaybackSignalVolume,
   kChannelMuteRemoteAudioStream,
@@ -225,6 +234,8 @@ enum ApiTypeChannel {
   kChannelRemoveInjectStreamUrl,
   kChannelStartChannelMediaRelay,
   kChannelUpdateChannelMediaRelay,
+  kChannelPauseAllChannelMediaRelay,
+  kChannelResumeAllChannelMediaRelay,
   kChannelStopChannelMediaRelay,
   kChannelGetConnectionState,
   kChannelEnableRemoteSuperResolution,
@@ -365,7 +376,7 @@ typedef struct IrisDisplayCollection {
 } IrisDisplayCollection;
 
 typedef struct IrisWindow {
-  unsigned int id;
+  unsigned long id;
   char name[kBasicResultLength];
   char owner_name[kBasicResultLength];
   IrisRect bounds;
@@ -377,6 +388,8 @@ typedef struct IrisWindowCollection {
   unsigned int length;
 } IrisWindowCollection;
 
+#if (defined(__APPLE__) && TARGET_OS_MAC && !TARGET_OS_IPHONE)                 \
+    || defined(_WIN32)
 IRIS_API IrisDisplayCollection *EnumerateDisplays();
 
 IRIS_API void FreeIrisDisplayCollection(IrisDisplayCollection *collection);
@@ -384,6 +397,7 @@ IRIS_API void FreeIrisDisplayCollection(IrisDisplayCollection *collection);
 IRIS_API IrisWindowCollection *EnumerateWindows();
 
 IRIS_API void FreeIrisWindowCollection(IrisWindowCollection *collection);
+#endif
 #ifdef __cplusplus
 }
 #endif

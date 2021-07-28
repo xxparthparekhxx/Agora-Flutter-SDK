@@ -188,20 +188,19 @@ IRIS_API int CallIrisRtcRawDataPluginManagerApi(
     char *result);
 
 /// IrisRtcRenderer
-IRIS_API IrisEventHandlerHandle SetIrisRtcRendererEventHandler(
-    IrisRtcRendererPtr renderer_ptr, IrisCEventHandler *event_handler);
-
-IRIS_API void UnsetIrisRtcRendererEventHandler(IrisRtcRendererPtr renderer_ptr,
-                                               IrisEventHandlerHandle handle);
-
 IRIS_API IrisRtcRendererCacheConfigHandle EnableVideoFrameCache(
     IrisRtcRendererPtr renderer_ptr, IrisRtcCRendererCacheConfig *cache_config,
     unsigned int uid, const char *channel_id = "");
 
-IRIS_API void
-DisableVideoFrameCache(IrisRtcRendererPtr renderer_ptr,
-                       IrisRtcRendererCacheConfigHandle *handle = nullptr,
-                       unsigned int uid = -1, const char *channel_id = "");
+IRIS_API void DisableVideoFrameCacheByConfig(
+    IrisRtcRendererPtr renderer_ptr,
+    IrisRtcRendererCacheConfigHandle handle = nullptr);
+
+IRIS_API void DisableVideoFrameCacheByUid(IrisRtcRendererPtr renderer_ptr,
+                                          unsigned int uid,
+                                          const char *channel_id = "");
+
+IRIS_API void DisableAllVideoFrameCache(IrisRtcRendererPtr renderer_ptr);
 
 IRIS_API bool GetVideoFrame(IrisRtcRendererPtr renderer_ptr,
                             IrisRtcVideoFrame *video_frame, bool *is_new_frame,
