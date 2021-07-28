@@ -116,27 +116,23 @@ class _State extends State<ScreenSharing> {
         content: Text(
             'ScreenSharing joinChannelSuccess ${channel} ${uid} ${elapsed}'),
       ));
-      var windowId = 0;
-      if (!kIsWeb && (Platform.isWindows || Platform.isMacOS)) {
-        final windows = _engine.enumerateWindows();
-        if (windows.isNotEmpty) {
-          windowId = windows[0].id;
-        }
-      }
-      helper.startScreenCaptureByWindowId(windowId).then((value) {
-        setState(() {
-          screenSharing = true;
-        });
-      }).catchError((err) {
-        log('startScreenCaptureByWindowId $err');
-      });
     }));
     await helper.initialize(RtcEngineContext(config.appId));
     await helper.disableAudio();
     await helper.enableVideo();
-    await helper.enableLocalVideo(false);
     await helper.setChannelProfile(ChannelProfile.LiveBroadcasting);
     await helper.setClientRole(ClientRole.Broadcaster);
+    var windowId = 0;
+    if (!kIsWeb && (Platform.isWindows || Platform.isMacOS)) {
+      final windows = _engine.enumerateWindows();
+      if (windows.isNotEmpty) {
+        windowId = windows[0].id;
+      }
+    }
+    await helper.startScreenCaptureByWindowId(windowId);
+    setState(() {
+      screenSharing = true;
+    });
     await helper.joinChannel(
         config.token, channelId, null, config.screenSharingUid);
   }
