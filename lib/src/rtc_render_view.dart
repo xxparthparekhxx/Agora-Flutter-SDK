@@ -1,16 +1,19 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 import 'enum_converter.dart';
 import 'enums.dart';
+import 'rtc_engine.dart';
 
 final Map<int, MethodChannel> _channels = {};
 
 /// Use SurfaceView on Android.
 /// Use UIView on iOS.
+/// Use DivElement on Web.
+/// Not support Mac/Windows.
 class RtcSurfaceView extends StatefulWidget {
   /// User ID.
   final int uid;
@@ -59,6 +62,9 @@ class RtcSurfaceView extends StatefulWidget {
   /// were not claimed by any other gesture recognizer.
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
 
+  /// TODO(doc)
+  final bool subProcess;
+
   /// Constructs a [RtcSurfaceView]
   RtcSurfaceView({
     Key? key,
@@ -70,6 +76,7 @@ class RtcSurfaceView extends StatefulWidget {
     this.zOrderMediaOverlay = false,
     this.onPlatformViewCreated,
     this.gestureRecognizers,
+    this.subProcess = false,
   }) : super(key: key);
 
   @override
@@ -119,6 +126,24 @@ class _RtcSurfaceViewState extends State<RtcSurfaceView> {
           gestureRecognizers: widget.gestureRecognizers,
         ),
       );
+    } else if (kIsWeb) {
+      return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        child: PlatformViewLink(
+          viewType: 'AgoraSurfaceView',
+          onCreatePlatformView: onCreatePlatformView,
+          surfaceFactory:
+              (BuildContext context, PlatformViewController controller) {
+            return PlatformViewSurface(
+              controller: controller,
+              hitTestBehavior: PlatformViewHitTestBehavior.transparent,
+              gestureRecognizers: widget.gestureRecognizers != null
+                  ? widget.gestureRecognizers!
+                  : const <Factory<OneSequenceGestureRecognizer>>{},
+            );
+          },
+        ),
+      );
     }
     return Text('$defaultTargetPlatform is not yet supported by the plugin');
   }
@@ -165,6 +190,7 @@ class _RtcSurfaceViewState extends State<RtcSurfaceView> {
         'uid': widget.uid,
         'channelId': widget.channelId,
       },
+      'subProcess': widget.subProcess,
     });
   }
 
@@ -201,10 +227,68 @@ class _RtcSurfaceViewState extends State<RtcSurfaceView> {
     }
     widget.onPlatformViewCreated?.call(id);
   }
+
+  PlatformViewController onCreatePlatformView(
+      PlatformViewCreationParams params) {
+    final controller = _HtmlElementViewController(params.id, params.viewType);
+    controller._initialize().then((_) {
+      params.onPlatformViewCreated(params.id);
+      onPlatformViewCreated(params.id);
+      setData();
+    });
+    return controller;
+  }
 }
 
-/// Use TextureView on Android.
-/// Not support iOS.
+class _HtmlElementViewController extends PlatformViewController
+    with WidgetsBindingObserver {
+  _HtmlElementViewController(
+    this.viewId,
+    this.viewType,
+  );
+
+  @override
+  final int viewId;
+
+  /// The unique identifier for the HTML view type to be embedded by this widget.
+  ///
+  /// A PlatformViewFactory for this type must have been registered.
+  final String viewType;
+
+  bool _initialized = false;
+
+  Future<void> _initialize() async {
+    final args = <String, dynamic>{
+      'id': viewId,
+      'viewType': viewType,
+    };
+    await SystemChannels.platform_views.invokeMethod<void>('create', args);
+    _initialized = true;
+  }
+
+  @override
+  Future<void> clearFocus() async {
+    // Currently this does nothing on Flutter Web.
+    // TODO(het): Implement this. See https://github.com/flutter/flutter/issues/39496
+  }
+
+  @override
+  Future<void> dispatchPointerEvent(PointerEvent event) async {
+    // We do not dispatch pointer events to HTML views because they may contain
+    // cross-origin iframes, which only accept user-generated events.
+  }
+
+  @override
+  Future<void> dispose() async {
+    if (_initialized) {
+      await SystemChannels.platform_views.invokeMethod<void>('dispose', viewId);
+    }
+  }
+}
+
+/// Use TextureView or FlutterTexture on Android.
+/// Use FlutterTexture on iOS/Mac/Windows.
+/// Not support Web.
 class RtcTextureView extends StatefulWidget {
   /// User ID.
   final int uid;
@@ -243,6 +327,12 @@ class RtcTextureView extends StatefulWidget {
   /// were not claimed by any other gesture recognizer.
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
 
+  /// Use Flutter Texture to render.
+  final bool useFlutterTexture;
+
+  /// TODO(doc)
+  final bool subProcess;
+
   /// Constructs a [RtcTextureView]
   RtcTextureView({
     Key? key,
@@ -252,6 +342,8 @@ class RtcTextureView extends StatefulWidget {
     this.mirrorMode = VideoMirrorMode.Auto,
     this.onPlatformViewCreated,
     this.gestureRecognizers,
+    this.useFlutterTexture = true,
+    this.subProcess = false,
   }) : super(key: key);
 
   @override
@@ -267,24 +359,34 @@ class _RtcTextureViewState extends State<RtcTextureView> {
 
   @override
   Widget build(BuildContext context) {
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      return GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        child: AndroidView(
-          viewType: 'AgoraTextureView',
-          onPlatformViewCreated: onPlatformViewCreated,
-          hitTestBehavior: PlatformViewHitTestBehavior.transparent,
-          creationParams: {
-            'data': {'uid': widget.uid, 'channelId': widget.channelId},
-            'renderMode': _renderMode,
-            'mirrorMode': _mirrorMode,
-          },
-          creationParamsCodec: const StandardMessageCodec(),
-          gestureRecognizers: widget.gestureRecognizers,
-        ),
-      );
+    if (kIsWeb) {
+      return Text('Web is not yet supported by the plugin');
     }
-    return Text('$defaultTargetPlatform is not yet supported by the plugin');
+    if (widget.useFlutterTexture) {
+      if (_id != null) {
+        return Texture(textureId: _id!);
+      }
+      return Container();
+    } else {
+      if (defaultTargetPlatform == TargetPlatform.android) {
+        return GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          child: AndroidView(
+            viewType: 'AgoraTextureView',
+            onPlatformViewCreated: onPlatformViewCreated,
+            hitTestBehavior: PlatformViewHitTestBehavior.transparent,
+            creationParams: {
+              'data': {'uid': widget.uid, 'channelId': widget.channelId},
+              'renderMode': _renderMode,
+              'mirrorMode': _mirrorMode,
+            },
+            creationParamsCodec: const StandardMessageCodec(),
+            gestureRecognizers: widget.gestureRecognizers,
+          ),
+        );
+      }
+      return Text('$defaultTargetPlatform is not yet supported by the plugin');
+    }
   }
 
   @override
@@ -292,6 +394,20 @@ class _RtcTextureViewState extends State<RtcTextureView> {
     super.initState();
     _renderMode = VideoRenderModeConverter(widget.renderMode).value();
     _mirrorMode = VideoMirrorModeConverter(widget.mirrorMode).value();
+    if (widget.useFlutterTexture) {
+      RtcEngine.methodChannel.invokeMethod('createTextureRender', {
+        'subProcess': widget.subProcess,
+      }).then((value) {
+        setState(() {
+          _id = value;
+        });
+        if (!_channels.containsKey(value)) {
+          _channels[value] =
+              MethodChannel('agora_rtc_engine/texture_render_$value');
+          setData();
+        }
+      });
+    }
   }
 
   @override
@@ -313,6 +429,12 @@ class _RtcTextureViewState extends State<RtcTextureView> {
   void dispose() {
     super.dispose();
     _channels.remove(_id);
+    if (widget.useFlutterTexture) {
+      RtcEngine.methodChannel.invokeMethod('destroyTextureRender', {
+        'id': _id,
+        'subProcess': widget.subProcess,
+      });
+    }
   }
 
   void setData() {
@@ -321,6 +443,7 @@ class _RtcTextureViewState extends State<RtcTextureView> {
         'uid': widget.uid,
         'channelId': widget.channelId,
       },
+      'subProcess': widget.subProcess,
     });
   }
 

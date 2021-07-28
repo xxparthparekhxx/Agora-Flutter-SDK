@@ -2535,3 +2535,15 @@ enum VoiceConversionPreset {
   @JsonValue(50398208)
   Bass,
 }
+
+/// TODO(doc)
+enum VideoContentHint {
+  @JsonValue(0)
+  None,
+
+  @JsonValue(1)
+  Motion,
+
+  @JsonValue(2)
+  Details,
+}

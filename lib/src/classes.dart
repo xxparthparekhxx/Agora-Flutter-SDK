@@ -1595,3 +1595,63 @@ class AudioRecordingConfiguration {
   /// @nodoc
   Map<String, dynamic> toJson() => _$AudioRecordingConfigurationToJson(this);
 }
+
+/// TODO(doc)
+@JsonSerializable(explicitToJson: true)
+class MediaDeviceInfo {
+  String deviceId;
+
+  String deviceName;
+
+  /// Constructs a [MediaDeviceInfo]
+  MediaDeviceInfo(
+    this.deviceId,
+    this.deviceName,
+  );
+
+  /// @nodoc
+  factory MediaDeviceInfo.fromJson(Map<String, dynamic> json) =>
+      _$MediaDeviceInfoFromJson(json);
+
+  /// @nodoc
+  Map<String, dynamic> toJson() => _$MediaDeviceInfoToJson(this);
+}
+
+/// TODO(doc)
+@JsonSerializable(explicitToJson: true)
+class ScreenCaptureParameters {
+  @JsonKey(includeIfNull: false)
+  VideoDimensions? dimensions;
+
+  @JsonKey(includeIfNull: false)
+  int? frameRate;
+
+  @JsonKey(includeIfNull: false)
+  int? bitrate;
+
+  @JsonKey(includeIfNull: false)
+  bool? captureMouseCursor;
+
+  @JsonKey(includeIfNull: false)
+  bool? windowFocus;
+
+  @JsonKey(includeIfNull: false)
+  List<int>? excludeWindowList;
+
+  /// Constructs a [ScreenCaptureParameters]
+  ScreenCaptureParameters({
+    this.dimensions,
+    this.frameRate,
+    this.bitrate,
+    this.captureMouseCursor,
+    this.windowFocus,
+    this.excludeWindowList,
+  });
+
+  /// @nodoc
+  factory ScreenCaptureParameters.fromJson(Map<String, dynamic> json) =>
+      _$ScreenCaptureParametersFromJson(json);
+
+  /// @nodoc
+  Map<String, dynamic> toJson() => _$ScreenCaptureParametersToJson(this);
+}

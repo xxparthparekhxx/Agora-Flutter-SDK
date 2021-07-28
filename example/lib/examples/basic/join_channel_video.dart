@@ -18,7 +18,10 @@ class JoinChannelVideo extends StatefulWidget {
 class _State extends State<JoinChannelVideo> {
   late final RtcEngine _engine;
   String channelId = config.channelId;
-  bool isJoined = false, switchCamera = true, switchRender = true;
+  bool startPreview = false,
+      isJoined = false,
+      switchCamera = true,
+      switchRender = true;
   List<int> remoteUid = [];
   TextEditingController? _controller;
 
@@ -43,10 +46,19 @@ class _State extends State<JoinChannelVideo> {
     await _engine.startPreview();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
     await _engine.setClientRole(ClientRole.Broadcaster);
+    setState(() {
+      startPreview = true;
+    });
   }
 
   _addListeners() {
     _engine.setEventHandler(RtcEngineEventHandler(
+      warning: (warningCode) {
+        log('warning ${warningCode}');
+      },
+      error: (errorCode) {
+        log('error ${errorCode}');
+      },
       joinChannelSuccess: (channel, uid, elapsed) {
         log('joinChannelSuccess ${channel} ${uid} ${elapsed}');
         setState(() {
@@ -133,18 +145,20 @@ class _State extends State<JoinChannelVideo> {
             _renderVideo(),
           ],
         ),
-        Align(
-          alignment: Alignment.bottomRight,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton(
-                onPressed: this._switchCamera,
-                child: Text('Camera ${switchCamera ? 'front' : 'rear'}'),
-              ),
-            ],
-          ),
-        )
+        if (defaultTargetPlatform == TargetPlatform.android ||
+            defaultTargetPlatform == TargetPlatform.iOS)
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ElevatedButton(
+                  onPressed: this._switchCamera,
+                  child: Text('Camera ${switchCamera ? 'front' : 'rear'}'),
+                ),
+              ],
+            ),
+          )
       ],
     );
   }
@@ -153,7 +167,8 @@ class _State extends State<JoinChannelVideo> {
     return Expanded(
       child: Stack(
         children: [
-          RtcLocalView.SurfaceView(),
+          if (startPreview)
+            kIsWeb ? RtcLocalView.SurfaceView() : RtcLocalView.TextureView(),
           Align(
             alignment: Alignment.topLeft,
             child: SingleChildScrollView(
@@ -165,9 +180,15 @@ class _State extends State<JoinChannelVideo> {
                     child: Container(
                       width: 120,
                       height: 120,
-                      child: RtcRemoteView.SurfaceView(
-                        uid: e,
-                      ),
+                      child: kIsWeb
+                          ? RtcRemoteView.SurfaceView(
+                              uid: e,
+                              channelId: channelId,
+                            )
+                          : RtcRemoteView.TextureView(
+                              uid: e,
+                              channelId: channelId,
+                            ),
                     ),
                   ),
                 )),
