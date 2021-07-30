@@ -34,7 +34,14 @@ public:
       if ([plugin events]) {
         NSString *eventApple = [NSString stringWithUTF8String:event];
         NSString *dataApple = [NSString stringWithUTF8String:data];
-        [plugin events](@{@"methodName" : eventApple, @"data" : dataApple});
+        FlutterStandardTypedData *bufferApple = [FlutterStandardTypedData
+            typedDataWithBytes:[[NSData alloc] initWithBytes:buffer
+                                                      length:length]];
+        [plugin events](@{
+          @"methodName" : eventApple,
+          @"data" : dataApple,
+          @"buffer" : bufferApple
+        });
       }
     }
   }
@@ -78,8 +85,33 @@ private:
     NSNumber *apiType = call.arguments[@"apiType"];
     NSString *params = call.arguments[@"params"];
     char res[kMaxResultLength] = "";
+
     auto ret = self.engine->channel()->CallApi(
         (ApiTypeChannel)[apiType unsignedIntValue], [params UTF8String], res);
+
+    if (ret == 0) {
+      std::string res_str(res);
+      if (res_str.empty()) {
+        result(nil);
+      } else {
+        result([NSString stringWithUTF8String:res]);
+      }
+    } else if (ret > 0) {
+      result(@(ret));
+    } else {
+      result([FlutterError errorWithCode:[NSString stringWithFormat:@"%d", ret]
+                                 message:nil
+                                 details:nil]);
+    }
+  } else if ([@"callApiWithBuffer" isEqualToString:call.method]) {
+    NSNumber *apiType = call.arguments[@"apiType"];
+    NSString *params = call.arguments[@"params"];
+    FlutterStandardTypedData *buffer = call.arguments[@"buffer"];
+    char res[kMaxResultLength] = "";
+
+    auto ret = self.engine->channel()->CallApi(
+        (ApiTypeChannel)[apiType unsignedIntValue], [params UTF8String],
+        (void *)[[buffer data] bytes], res);
 
     if (ret == 0) {
       std::string res_str(res);

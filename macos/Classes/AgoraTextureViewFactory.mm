@@ -116,7 +116,7 @@ public:
     CVPixelBufferRelease(self.buffer_cache);
   }
   if (self.buffer_temp) {
-    //    CVPixelBufferRelease(self.buffer_temp);
+    CVPixelBufferRelease(self.buffer_temp);
   }
 }
 
@@ -128,7 +128,7 @@ public:
 
 - (CVPixelBufferRef)copyPixelBuffer {
   dispatch_semaphore_wait(self.lock, DISPATCH_TIME_FOREVER);
-  //  CVPixelBufferRelease(self.buffer_temp);
+  CVPixelBufferRelease(self.buffer_temp);
   self.buffer_temp = self.buffer_cache;
   CVPixelBufferRetain(self.buffer_temp);
   dispatch_semaphore_signal(self.lock);

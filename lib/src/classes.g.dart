@@ -1196,3 +1196,15 @@ Map<String, dynamic> _$ScreenCaptureParametersToJson(
   writeNotNull('excludeWindowList', instance.excludeWindowList);
   return val;
 }
+
+Metadata _$MetadataFromJson(Map<String, dynamic> json) {
+  return Metadata(
+    json['uid'] as int,
+    json['timeStampMs'] as int,
+  );
+}
+
+Map<String, dynamic> _$MetadataToJson(Metadata instance) => <String, dynamic>{
+      'uid': instance.uid,
+      'timeStampMs': instance.timeStampMs,
+    };

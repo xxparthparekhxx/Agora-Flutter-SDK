@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'dart:ui' show Color;
 
 import 'package:agora_rtc_engine/src/enum_converter.dart';
@@ -1654,4 +1655,24 @@ class ScreenCaptureParameters {
 
   /// @nodoc
   Map<String, dynamic> toJson() => _$ScreenCaptureParametersToJson(this);
+}
+
+/// TODO(doc)
+@JsonSerializable(explicitToJson: true)
+class Metadata {
+  int uid;
+
+  @JsonKey(ignore: true)
+  Uint8List? buffer;
+
+  int timeStampMs;
+
+  Metadata(this.uid, this.timeStampMs);
+
+  /// @nodoc
+  factory Metadata.fromJson(Map<String, dynamic> json) =>
+      _$MetadataFromJson(json);
+
+  /// @nodoc
+  Map<String, dynamic> toJson() => _$MetadataToJson(this);
 }

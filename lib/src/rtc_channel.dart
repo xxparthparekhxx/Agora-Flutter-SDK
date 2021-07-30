@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -161,6 +162,7 @@ class RtcChannel with RtcChannelInterface {
       final eventMap = Map<dynamic, dynamic>.from(event);
       final methodName = eventMap['methodName'] as String;
       var data = eventMap['data'];
+      final buffer = eventMap['buffer'];
       String channelId;
       if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
         final map = Map<String, dynamic>.from(jsonDecode(data));
@@ -169,7 +171,7 @@ class RtcChannel with RtcChannelInterface {
       } else {
         channelId = eventMap['channelId'];
       }
-      _channels[channelId]?._handler?.process(methodName, data);
+      _channels[channelId]?._handler?.process(methodName, data, buffer);
     });
   }
 
@@ -545,7 +547,7 @@ class RtcChannel with RtcChannelInterface {
   }
 
   @override
-  Future<void> sendMetadata(String metadata) {
+  Future<void> sendMetadata(Uint8List metadata) {
     if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
       return _invokeMethod('callApiWithBuffer', {
         'apiType': _ApiTypeChannel.kChannelSendMetadata.index,
@@ -559,12 +561,12 @@ class RtcChannel with RtcChannelInterface {
       });
     }
     return _invokeMethod('sendMetadata', {
-      'metadata': metadata,
+      'metadata': String.fromCharCodes(metadata),
     });
   }
 
   @override
-  Future<void> sendStreamMessage(int streamId, String message) {
+  Future<void> sendStreamMessage(int streamId, Uint8List message) {
     if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
       return _invokeMethod('callApiWithBuffer', {
         'apiType': _ApiTypeChannel.kChannelSendStreamMessage.index,
@@ -578,7 +580,7 @@ class RtcChannel with RtcChannelInterface {
     }
     return _invokeMethod('sendStreamMessage', {
       'streamId': streamId,
-      'message': message,
+      'message': String.fromCharCodes(message),
     });
   }
 
@@ -1272,7 +1274,7 @@ mixin RtcMediaMetadataInterface {
   /// **Note**
   ///
   /// Ensure that the size of the metadata does not exceed the value set in the [setMaxMetadataSize] method.
-  Future<void> sendMetadata(String metadata);
+  Future<void> sendMetadata(Uint8List metadata);
 }
 
 /// @nodoc
@@ -1419,5 +1421,5 @@ mixin RtcStreamMessageInterface {
   /// **Parameter** [streamId] ID of the sent data stream returned by the [RtcChannel.createDataStream] method.
   ///
   /// **Parameter** [message] The message data.
-  Future<void> sendStreamMessage(int streamId, String message);
+  Future<void> sendStreamMessage(int streamId, Uint8List message);
 }

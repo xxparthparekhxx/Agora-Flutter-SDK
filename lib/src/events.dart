@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 
@@ -102,7 +103,7 @@ typedef StreamInjectedStatusCallback = void Function(
     String url, int uid, InjectStreamStatus status);
 // ignore: public_member_api_docs
 typedef StreamMessageCallback = void Function(
-    int uid, int streamId, String data);
+    int uid, int streamId, Uint8List data);
 // ignore: public_member_api_docs
 typedef StreamMessageErrorCallback = void Function(
     int uid, int streamId, ErrorCode error, int missed, int cached);
@@ -129,8 +130,7 @@ typedef EnabledCallback = void Function(bool enabled);
 typedef AudioQualityCallback = void Function(
     int uid, int quality, int delay, int lost);
 // ignore: public_member_api_docs
-typedef MetadataCallback = void Function(
-    String buffer, int uid, int timeStampMs);
+typedef MetadataCallback = void Function(Metadata metadata);
 // ignore: public_member_api_docs
 typedef FacePositionCallback = void Function(
     int imageWidth, int imageHeight, List<FacePositionInfo> faces);
@@ -1102,7 +1102,7 @@ class RtcEngineEventHandler {
   });
 
   // ignore: public_member_api_docs
-  void process(String methodName, dynamic data) {
+  void process(String methodName, dynamic data, [Uint8List? buffer]) {
     List<dynamic> newData;
     if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
       if (methodName.startsWith('on')) {
@@ -1311,7 +1311,14 @@ class RtcEngineEventHandler {
             InjectStreamStatusConverter.fromValue(newData[2]).e);
         break;
       case 'StreamMessage':
-        streamMessage?.call(newData[0], newData[1], newData[2]);
+        if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
+          if (buffer == null) return;
+          streamMessage?.call(newData[0], newData[1], buffer);
+        } else {
+          String data = newData[2];
+          streamMessage?.call(
+              newData[0], newData[1], Uint8List.fromList(data.codeUnits));
+        }
         break;
       case 'StreamMessageError':
         streamMessageError?.call(newData[0], newData[1],
@@ -1390,7 +1397,17 @@ class RtcEngineEventHandler {
         videoStopped?.call();
         break;
       case 'MetadataReceived':
-        metadataReceived?.call(newData[0], newData[1], newData[2]);
+        Metadata metadata;
+        if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
+          if (buffer == null) return;
+          metadata = Metadata.fromJson(Map<String, dynamic>.from(newData[0]));
+          metadata.buffer = buffer;
+        } else {
+          metadata = Metadata(newData[1], newData[2]);
+          String buffer = newData[0];
+          metadata.buffer = Uint8List.fromList(buffer.codeUnits);
+        }
+        metadataReceived?.call(metadata);
         break;
       case 'FirstLocalAudioFramePublished':
         firstLocalAudioFramePublished?.call(newData[0]);
@@ -1850,7 +1867,7 @@ class RtcChannelEventHandler {
   });
 
   // ignore: public_member_api_docs
-  void process(String methodName, dynamic data) {
+  void process(String methodName, dynamic data, [Uint8List? buffer]) {
     List<dynamic> newData;
     if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
       if (methodName.startsWith('on')) {
@@ -1962,7 +1979,14 @@ class RtcChannelEventHandler {
             InjectStreamStatusConverter.fromValue(newData[2]).e);
         break;
       case 'StreamMessage':
-        streamMessage?.call(newData[0], newData[1], newData[2]);
+        if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
+          if (buffer == null) return;
+          streamMessage?.call(newData[0], newData[1], buffer);
+        } else {
+          String data = newData[2];
+          streamMessage?.call(
+              newData[0], newData[1], Uint8List.fromList(data.codeUnits));
+        }
         break;
       case 'StreamMessageError':
         streamMessageError?.call(newData[0], newData[1],
@@ -1979,7 +2003,17 @@ class RtcChannelEventHandler {
             ?.call(ChannelMediaRelayEventConverter.fromValue(newData[0]).e);
         break;
       case 'MetadataReceived':
-        metadataReceived?.call(newData[0], newData[1], newData[2]);
+        Metadata metadata;
+        if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
+          if (buffer == null) return;
+          metadata = Metadata.fromJson(Map<String, dynamic>.from(newData[0]));
+          metadata.buffer = buffer;
+        } else {
+          metadata = Metadata(newData[1], newData[2]);
+          String buffer = newData[0];
+          metadata.buffer = Uint8List.fromList(buffer.codeUnits);
+        }
+        metadataReceived?.call(metadata);
         break;
       case 'AudioPublishStateChanged':
         audioPublishStateChanged?.call(

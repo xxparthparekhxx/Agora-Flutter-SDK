@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -185,13 +187,16 @@ class _RtcSurfaceViewState extends State<RtcSurfaceView> {
   }
 
   void setData() {
-    _channels[_id]?.invokeMethod('setData', {
+    var params = <String, dynamic>{
       'data': {
         'uid': widget.uid,
         'channelId': widget.channelId,
       },
-      'subProcess': widget.subProcess,
-    });
+    };
+    if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
+      params['subProcess'] = widget.subProcess;
+    }
+    _channels[_id]?.invokeMethod('setData', params);
   }
 
   void setRenderMode() {
@@ -438,13 +443,16 @@ class _RtcTextureViewState extends State<RtcTextureView> {
   }
 
   void setData() {
-    _channels[_id]?.invokeMethod('setData', {
+    var params = <String, dynamic>{
       'data': {
         'uid': widget.uid,
         'channelId': widget.channelId,
       },
-      'subProcess': widget.subProcess,
-    });
+    };
+    if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
+      params['subProcess'] = widget.subProcess;
+    }
+    _channels[_id]?.invokeMethod('setData', params);
   }
 
   void setRenderMode() {

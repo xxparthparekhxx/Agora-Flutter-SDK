@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:typed_data';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
@@ -105,8 +106,8 @@ class _State extends State<CreateStreamData> {
           remoteUid = null;
         });
       },
-      streamMessage: (int uid, int streamId, String data) {
-        _showMyDialog(uid, streamId, data);
+      streamMessage: (int uid, int streamId, Uint8List data) {
+        _showMyDialog(uid, streamId, String.fromCharCodes(data));
         log('streamMessage $uid $streamId $data');
       },
       streamMessageError:
@@ -124,7 +125,8 @@ class _State extends State<CreateStreamData> {
     var streamId = await _engine
         .createDataStreamWithConfig(DataStreamConfig(false, false));
     if (streamId != null) {
-      _engine.sendStreamMessage(streamId, _controller.text);
+      _engine.sendStreamMessage(
+          streamId, Uint8List.fromList(_controller.text.codeUnits));
     }
     _controller.clear();
   }

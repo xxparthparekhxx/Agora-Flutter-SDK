@@ -43,9 +43,13 @@ public:
       if ([plugin events]) {
         NSString *eventApple = [NSString stringWithUTF8String:event];
         NSString *dataApple = [NSString stringWithUTF8String:data];
+        FlutterStandardTypedData *bufferApple = [FlutterStandardTypedData
+            typedDataWithBytes:[[NSData alloc] initWithBytes:buffer
+                                                      length:length]];
         [plugin events](@{
           @"methodName" : eventApple,
           @"data" : dataApple,
+          @"buffer" : bufferApple,
           @"subProcess" : @(sub_process_)
         });
       }
@@ -115,22 +119,48 @@ private:
   }
 }
 
+- (IrisRtcEngine *)engine:(id)arguments {
+  NSNumber *subProcess = arguments[@"subProcess"];
+  if ([subProcess boolValue]) {
+    return self.engine_sub;
+  } else {
+    return self.engine_main;
+  }
+}
+
 - (void)handleMethodCall:(FlutterMethodCall *)call
                   result:(FlutterResult)result {
   if ([@"callApi" isEqualToString:call.method]) {
     NSNumber *apiType = call.arguments[@"apiType"];
     NSString *params = call.arguments[@"params"];
-    NSNumber *subProcess = call.arguments[@"subProcess"];
     char res[kMaxResultLength] = "";
 
-    IrisRtcEngine *engine = nullptr;
-    if ([subProcess boolValue]) {
-      engine = self.engine_sub;
+    auto ret = [self engine:call.arguments]->CallApi(
+        (ApiTypeEngine)[apiType unsignedIntValue], [params UTF8String], res);
+
+    if (ret == 0) {
+      std::string res_str(res);
+      if (res_str.empty()) {
+        result(nil);
+      } else {
+        result([NSString stringWithUTF8String:res]);
+      }
+    } else if (ret > 0) {
+      result(@(ret));
     } else {
-      engine = self.engine_main;
+      result([FlutterError errorWithCode:[NSString stringWithFormat:@"%d", ret]
+                                 message:nil
+                                 details:nil]);
     }
-    auto ret = engine->CallApi((ApiTypeEngine)[apiType unsignedIntValue],
-                               [params UTF8String], res);
+  } else if ([@"callApiWithBuffer" isEqualToString:call.method]) {
+    NSNumber *apiType = call.arguments[@"apiType"];
+    NSString *params = call.arguments[@"params"];
+    FlutterStandardTypedData *buffer = call.arguments[@"buffer"];
+    char res[kMaxResultLength] = "";
+
+    auto ret = [self engine:call.arguments]->CallApi(
+        (ApiTypeEngine)[apiType unsignedIntValue], [params UTF8String],
+        (void *)[[buffer data] bytes], res);
 
     if (ret == 0) {
       std::string res_str(res);
@@ -147,15 +177,9 @@ private:
                                  details:nil]);
     }
   } else if ([@"createTextureRender" isEqualToString:call.method]) {
-    NSNumber *subProcess = call.arguments[@"subProcess"];
-    IrisRtcEngine *engine = nullptr;
-    if ([subProcess boolValue]) {
-      engine = self.engine_sub;
-    } else {
-      engine = self.engine_main;
-    }
-    int64_t textureId =
-        [self.factory createTextureRenderer:engine->raw_data()->renderer()];
+    int64_t textureId = [self.factory
+        createTextureRenderer:[self engine:call.arguments]->raw_data()
+                                  -> renderer()];
     result(@(textureId));
   } else if ([@"destroyTextureRender" isEqualToString:call.method]) {
     NSNumber *textureId = call.arguments[@"id"];

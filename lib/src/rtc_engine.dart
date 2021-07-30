@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -172,12 +173,10 @@ enum _ApiTypeEngine {
   kEngineRegisterMediaMetadataObserver,
   kEngineSetParameters,
   kEngineSetLocalAccessPoint,
-
   kEngineUnRegisterMediaMetadataObserver,
   kEngineSetMaxMetadataSize,
   kEngineSendMetadata,
   kEngineSetAppType,
-
   kMediaPushAudioFrame,
   kMediaPullAudioFrame,
   kMediaSetExternalVideoSource,
@@ -231,8 +230,10 @@ class RtcEngine with RtcEngineInterface {
 
   Future<T?> _invokeMethod<T>(String method,
       [Map<String, dynamic>? arguments]) {
-    if (method == 'callApi') {
-      arguments?['subProcess'] = _subProcess;
+    if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
+      if (method == 'callApi') {
+        arguments?['subProcess'] = _subProcess;
+      }
     }
     return _methodChannel.invokeMethod(method, arguments);
   }
@@ -432,11 +433,13 @@ class RtcEngine with RtcEngineInterface {
       final eventMap = Map<dynamic, dynamic>.from(event);
       final methodName = eventMap['methodName'] as String;
       final data = eventMap['data'];
+      final buffer = eventMap['buffer'];
       final subProcess = (eventMap['subProcess'] as bool?) ?? false;
       if (subProcess) {
-        _instance?._screenShareHelper?._handler?.process(methodName, data);
+        _instance?._screenShareHelper?._handler
+            ?.process(methodName, data, buffer);
       } else {
-        _instance?._handler?.process(methodName, data);
+        _instance?._handler?.process(methodName, data, buffer);
       }
     });
   }
@@ -1680,7 +1683,7 @@ class RtcEngine with RtcEngineInterface {
   }
 
   @override
-  Future<void> sendMetadata(String metadata) {
+  Future<void> sendMetadata(Uint8List metadata) {
     if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
       return _invokeMethod('callApiWithBuffer', {
         'apiType': _ApiTypeEngine.kEngineSendMetadata.index,
@@ -1693,12 +1696,12 @@ class RtcEngine with RtcEngineInterface {
       });
     }
     return _invokeMethod('sendMetadata', {
-      'metadata': metadata,
+      'metadata': String.fromCharCodes(metadata),
     });
   }
 
   @override
-  Future<void> sendStreamMessage(int streamId, String message) {
+  Future<void> sendStreamMessage(int streamId, Uint8List message) {
     if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
       return _invokeMethod('callApiWithBuffer', {
         'apiType': _ApiTypeEngine.kEngineSendStreamMessage.index,
@@ -1711,7 +1714,7 @@ class RtcEngine with RtcEngineInterface {
     }
     return _invokeMethod('sendStreamMessage', {
       'streamId': streamId,
-      'message': message,
+      'message': String.fromCharCodes(message),
     });
   }
 
@@ -4303,7 +4306,7 @@ mixin RtcMediaMetadataInterface {
   /// **Note**
   ///
   /// Ensure that the size of the metadata does not exceed the value set in the [setMaxMetadataSize] method.
-  Future<void> sendMetadata(String metadata);
+  Future<void> sendMetadata(Uint8List metadata);
 }
 
 /// @nodoc
@@ -4723,7 +4726,7 @@ mixin RtcStreamMessageInterface {
   /// **Parameter** [streamId] ID of the sent data stream returned by the [RtcEngine.createDataStream] method.
   ///
   /// **Parameter** [message] Sent data.
-  Future<void> sendStreamMessage(int streamId, String message);
+  Future<void> sendStreamMessage(int streamId, Uint8List message);
 }
 
 /// TODO(doc)
