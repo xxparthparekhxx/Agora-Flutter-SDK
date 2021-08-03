@@ -231,9 +231,7 @@ class RtcEngine with RtcEngineInterface {
   Future<T?> _invokeMethod<T>(String method,
       [Map<String, dynamic>? arguments]) {
     if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
-      if (method == 'callApi') {
-        arguments?['subProcess'] = _subProcess;
-      }
+      arguments?['subProcess'] = _subProcess;
     }
     return _methodChannel.invokeMethod(method, arguments);
   }
