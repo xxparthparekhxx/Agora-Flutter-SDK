@@ -39,6 +39,8 @@ public:
   EventSink<EncodableValue> *event_sink();
 
 private:
+  IrisRtcEngine *engine(EncodableMap &arguments);
+
   // Called when a method is called on this plugin's channel from Dart.
   void HandleMethodCall(const MethodCall<EncodableValue> &method_call,
                         std::unique_ptr<MethodResult<EncodableValue>> result);
@@ -72,7 +74,7 @@ public:
     if (plugin_->event_sink()) {
       std::vector<uint8_t> vector(length);
       if (buffer && length) {
-        memcpy((void *)vector[0], buffer, length);
+        memcpy(&vector[0], buffer, length);
       }
       EncodableMap ret = {
           {EncodableValue("methodName"), EncodableValue(event)},
@@ -144,6 +146,15 @@ EventSink<EncodableValue> *AgoraRtcEnginePlugin::event_sink() {
   return event_sink_.get();
 }
 
+IrisRtcEngine *AgoraRtcEnginePlugin::engine(EncodableMap &arguments) {
+  auto subProcess = std::get<bool>(arguments[EncodableValue("subProcess")]);
+  if (subProcess) {
+    return engine_sub_.get();
+  } else {
+    return engine_main_.get();
+  }
+}
+
 void AgoraRtcEnginePlugin::HandleMethodCall(
     const MethodCall<EncodableValue> &method_call,
     std::unique_ptr<MethodResult<EncodableValue>> result) {
@@ -156,16 +167,31 @@ void AgoraRtcEnginePlugin::HandleMethodCall(
     auto arguments = std::get<EncodableMap>(*method_call.arguments());
     auto api_type = std::get<int32_t>(arguments[EncodableValue("apiType")]);
     auto &params = std::get<std::string>(arguments[EncodableValue("params")]);
-    auto subProcess = std::get<bool>(arguments[EncodableValue("subProcess")]);
     char res[kMaxResultLength] = "";
-    IrisRtcEngine *engine = nullptr;
-    if (subProcess) {
-      engine = engine_sub_.get();
+    auto ret = engine(arguments)->CallApi(static_cast<ApiTypeEngine>(api_type),
+                                          params.c_str(), res);
+
+    if (ret == 0) {
+      std::string res_str(res);
+      if (res_str.empty()) {
+        result->Success();
+      } else {
+        result->Success(EncodableValue(res_str));
+      }
+    } else if (ret > 0) {
+      result->Success(EncodableValue(ret));
     } else {
-      engine = engine_main_.get();
+      result->Error(std::to_string(ret));
     }
-    auto ret = engine->CallApi(static_cast<ApiTypeEngine>(api_type),
-                               params.c_str(), res);
+  } else if (method.compare("callApiWithBuffer") == 0) {
+    auto arguments = std::get<EncodableMap>(*method_call.arguments());
+    auto api_type = std::get<int32_t>(arguments[EncodableValue("apiType")]);
+    auto &params = std::get<std::string>(arguments[EncodableValue("params")]);
+    auto &buffer =
+        std::get<std::vector<uint8_t>>(arguments[EncodableValue("buffer")]);
+    char res[kMaxResultLength] = "";
+    auto ret = engine(arguments)->CallApi(static_cast<ApiTypeEngine>(api_type),
+                                          params.c_str(), buffer.data(), res);
 
     if (ret == 0) {
       std::string res_str(res);
@@ -181,15 +207,8 @@ void AgoraRtcEnginePlugin::HandleMethodCall(
     }
   } else if (method.compare("createTextureRender") == 0) {
     auto arguments = std::get<EncodableMap>(*method_call.arguments());
-    auto subProcess = std::get<bool>(arguments[EncodableValue("subProcess")]);
-    IrisRtcEngine *engine = nullptr;
-    if (subProcess) {
-      engine = engine_sub_.get();
-    } else {
-      engine = engine_main_.get();
-    }
-    auto texture_id =
-        factory_->CreateTextureRenderer(engine->raw_data()->renderer());
+    auto texture_id = factory_->CreateTextureRenderer(
+        engine(arguments)->raw_data()->renderer());
     result->Success(EncodableValue(texture_id));
   } else if (method.compare("destroyTextureRender") == 0) {
     auto arguments = std::get<EncodableMap>(*method_call.arguments());
