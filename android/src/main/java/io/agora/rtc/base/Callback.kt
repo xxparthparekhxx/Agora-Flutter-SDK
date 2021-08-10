@@ -1,7 +1,7 @@
 package io.agora.rtc.base
 
-import io.agora.rtc.Constants
-import io.agora.rtc.RtcEngine
+import io.agora.rtc2.Constants
+import io.agora.rtc2.RtcEngine
 import kotlin.math.abs
 
 abstract class Callback {

@@ -2,8 +2,7 @@ package io.agora.rtc.base
 
 import android.content.Context
 import io.agora.rtc.*
-import io.agora.rtc.internal.EncryptionConfig
-import io.agora.rtc.models.UserInfo
+import io.agora.rtc2.*
 
 class IRtcEngine {
   interface RtcEngineInterface : RtcUserInfoInterface, RtcAudioInterface, RtcVideoInterface,
@@ -366,7 +365,7 @@ class IRtcEngine {
 class RtcEngineManager(
   private val emit: (methodName: String, data: Map<String, Any?>?) -> Unit
 ) : IRtcEngine.RtcEngineInterface {
-  var engine: RtcEngine? = null
+  var engine: RtcEngineEx? = null
     private set
   private var mediaObserver: MediaObserver? = null
 
@@ -377,13 +376,14 @@ class RtcEngineManager(
   }
 
   override fun create(params: Map<String, *>, callback: Callback) {
-    engine = RtcEngineEx.create(mapToRtcEngineConfig(params["config"] as Map<*, *>).apply {
+    RtcEngine.crea
+    engine = RtcEngine.create(mapToRtcEngineConfig(params["config"] as Map<*, *>).apply {
       mContext = params["context"] as Context
       mEventHandler = RtcEngineEventHandler { methodName, data ->
         emit(methodName, data)
       }
-    })
-    callback.code((engine as RtcEngineEx).setAppType((params["appType"] as Number).toInt()))
+    }) as RtcEngineEx
+//    callback.code((engine as RtcEngineEx).setAppType((params["appType"] as Number).toInt()))
   }
 
   override fun destroy(callback: Callback) {
@@ -396,10 +396,10 @@ class RtcEngineManager(
 
   override fun setClientRole(params: Map<String, *>, callback: Callback) {
     val role = (params["role"] as Number).toInt()
-    (params["options"] as? Map<*, *>)?.let {
-      callback.code(engine?.setClientRole(role, mapToClientRoleOptions(it)))
-      return@setClientRole
-    }
+//    (params["options"] as? Map<*, *>)?.let {
+//      callback.code(engine?.setClientRole(role, mapToClientRoleOptions(it)))
+//      return@setClientRole
+//    }
     callback.code(engine?.setClientRole(role))
   }
 
@@ -413,7 +413,6 @@ class RtcEngineManager(
         engine?.joinChannel(
           token,
           channelName,
-          optionalInfo,
           optionalUid,
           mapToChannelMediaOptions(it)
         )
@@ -426,11 +425,11 @@ class RtcEngineManager(
   override fun switchChannel(params: Map<String, *>, callback: Callback) {
     val token = params["token"] as? String
     val channelName = params["channelName"] as String
-    (params["options"] as? Map<*, *>)?.let {
-      callback.code(engine?.switchChannel(token, channelName, mapToChannelMediaOptions(it)))
-      return@switchChannel
-    }
-    callback.code(engine?.switchChannel(token, channelName))
+//    (params["options"] as? Map<*, *>)?.let {
+//      callback.code(engine?.switchChannel(token, channelName, mapToChannelMediaOptions(it)))
+//      return@switchChannel
+//    }
+//    callback.code(engine?.switchChannel(token, channelName))
   }
 
   override fun leaveChannel(callback: Callback) {
@@ -488,7 +487,7 @@ class RtcEngineManager(
   }
 
   override fun setLogFileSize(params: Map<String, *>, callback: Callback) {
-    callback.code(engine?.setLogFileSize((params["fileSizeInKBytes"] as Number).toInt()))
+    callback.code(engine?.setLogFileSize((params["fileSizeInKBytes"] as Number).toLong()))
   }
 
   override fun setParameters(params: Map<String, *>, callback: Callback) {
@@ -508,15 +507,15 @@ class RtcEngineManager(
   }
 
   override fun enableDeepLearningDenoise(params: Map<String, *>, callback: Callback) {
-    callback.code(engine?.enableDeepLearningDenoise(params["enabled"] as Boolean))
+//    callback.code(engine?.enableDeepLearningDenoise(params["enabled"] as Boolean))
   }
 
   override fun setCloudProxy(params: Map<String, *>, callback: Callback) {
-    callback.code(engine?.setCloudProxy((params["proxyType"] as Number).toInt()))
+//    callback.code(engine?.setCloudProxy((params["proxyType"] as Number).toInt()))
   }
 
   override fun uploadLogFile(callback: Callback) {
-    callback.resolve(engine) { it.uploadLogFile() }
+//    callback.resolve(engine) { it.uploadLogFile() }
   }
 
   override fun registerLocalUserAccount(params: Map<String, *>, callback: Callback) {
@@ -548,16 +547,14 @@ class RtcEngineManager(
 
   override fun getUserInfoByUserAccount(params: Map<String, *>, callback: Callback) {
     callback.resolve(engine) {
-      val userInfo = UserInfo()
-      it.getUserInfoByUserAccount(params["userAccount"] as String, userInfo)
+      val userInfo = it.getUserInfoByUserAccount(params["userAccount"] as String)
       userInfo.toMap()
     }
   }
 
   override fun getUserInfoByUid(params: Map<String, *>, callback: Callback) {
     callback.resolve(engine) {
-      val userInfo = UserInfo()
-      it.getUserInfoByUid((params["uid"] as Number).toNativeUInt(), userInfo)
+      val userInfo = it.getUserInfoByUid((params["uid"] as Number).toNativeUInt())
       userInfo.toMap()
     }
   }
@@ -625,28 +622,28 @@ class RtcEngineManager(
     callback.code(
       engine?.enableAudioVolumeIndication(
         (params["interval"] as Number).toInt(),
-        (params["smooth"] as Number).toInt(),
-        params["report_vad"] as Boolean
+        (params["smooth"] as Number).toInt()
+//        , params["report_vad"] as Boolean
       )
     )
   }
 
   override fun startRhythmPlayer(params: Map<String, *>, callback: Callback) {
-    callback.code(
-      engine?.audioEffectManager?.startRhythmPlayer(
-        params["sound1"] as String,
-        params["sound2"] as String,
-        mapToRhythmPlayerConfig(params["config"] as Map<*, *>)
-      )
-    )
+//    callback.code(
+//      engine?.audioEffectManager?.startRhythmPlayer(
+//        params["sound1"] as String,
+//        params["sound2"] as String,
+//        mapToRhythmPlayerConfig(params["config"] as Map<*, *>)
+//      )
+//    )
   }
 
   override fun stopRhythmPlayer(callback: Callback) {
-    callback.code(engine?.audioEffectManager?.stopRhythmPlayer())
+//    callback.code(engine?.audioEffectManager?.stopRhythmPlayer())
   }
 
   override fun configRhythmPlayer(params: Map<String, *>, callback: Callback) {
-    callback.code(engine?.audioEffectManager?.configRhythmPlayer(mapToRhythmPlayerConfig(params as Map<*, *>)))
+//    callback.code(engine?.audioEffectManager?.configRhythmPlayer(mapToRhythmPlayerConfig(params as Map<*, *>)))
   }
 
   override fun enableVideo(callback: Callback) {
@@ -695,36 +692,36 @@ class RtcEngineManager(
   }
 
   override fun setBeautyEffectOptions(params: Map<String, *>, callback: Callback) {
-    callback.code(
-      engine?.setBeautyEffectOptions(
-        params["enabled"] as Boolean,
-        mapToBeautyOptions(params["options"] as Map<*, *>)
-      )
-    )
+//    callback.code(
+//      engine?.setBeautyEffectOptions(
+//        params["enabled"] as Boolean,
+//        mapToBeautyOptions(params["options"] as Map<*, *>)
+//      )
+//    )
   }
 
   override fun enableRemoteSuperResolution(params: Map<String, *>, callback: Callback) {
-    callback.code(
-      engine?.enableRemoteSuperResolution(
-        (params["uid"] as Number).toNativeUInt(),
-        params["enable"] as Boolean
-      )
-    )
+//    callback.code(
+//      engine?.enableRemoteSuperResolution(
+//        (params["uid"] as Number).toNativeUInt(),
+//        params["enable"] as Boolean
+//      )
+//    )
   }
 
   override fun startAudioMixing(params: Map<String, *>, callback: Callback) {
-    (params["startPos"] as? Number)?.let { startPos ->
-      callback.code(
-        engine?.startAudioMixing(
-          params["filePath"] as String,
-          params["loopback"] as Boolean,
-          params["replace"] as Boolean,
-          (params["cycle"] as Number).toInt(),
-          startPos.toInt()
-        )
-      )
-      return@startAudioMixing
-    }
+//    (params["startPos"] as? Number)?.let { startPos ->
+//      callback.code(
+//        engine?.startAudioMixing(
+//          params["filePath"] as String,
+//          params["loopback"] as Boolean,
+//          params["replace"] as Boolean,
+//          (params["cycle"] as Number).toInt(),
+//          startPos.toInt()
+//        )
+//      )
+//      return@startAudioMixing
+//    }
     callback.code(
       engine?.startAudioMixing(
         params["filePath"] as String,
@@ -768,10 +765,10 @@ class RtcEngineManager(
   }
 
   override fun getAudioMixingDuration(params: Map<String, *>, callback: Callback) {
-    (params["filePath"] as? String)?.let { file ->
-      callback.code(engine?.getAudioMixingDuration(file)) { it }
-      return@getAudioMixingDuration
-    }
+//    (params["filePath"] as? String)?.let { file ->
+//      callback.code(engine?.getAudioMixingDuration(file)) { it }
+//      return@getAudioMixingDuration
+//    }
     callback.code(engine?.audioMixingDuration) { it }
   }
 
@@ -784,7 +781,7 @@ class RtcEngineManager(
   }
 
   override fun setAudioMixingPitch(params: Map<String, *>, callback: Callback) {
-    callback.code(engine?.setAudioMixingPitch((params["pitch"] as Number).toInt()))
+//    callback.code(engine?.setAudioMixingPitch((params["pitch"] as Number).toInt()))
   }
 
   override fun getEffectsVolume(callback: Callback) {
@@ -805,21 +802,21 @@ class RtcEngineManager(
   }
 
   override fun playEffect(params: Map<String, *>, callback: Callback) {
-    (params["startPos"] as? Number)?.let { startPos ->
-      callback.code(
-        engine?.audioEffectManager?.playEffect(
-          (params["soundId"] as Number).toInt(),
-          params["filePath"] as String,
-          (params["loopCount"] as Number).toInt(),
-          (params["pitch"] as Number).toDouble(),
-          (params["pan"] as Number).toDouble(),
-          (params["gain"] as Number).toDouble(),
-          params["publish"] as Boolean,
-          startPos.toInt()
-        )
-      )
-      return@playEffect
-    }
+//    (params["startPos"] as? Number)?.let { startPos ->
+//      callback.code(
+//        engine?.audioEffectManager?.playEffect(
+//          (params["soundId"] as Number).toInt(),
+//          params["filePath"] as String,
+//          (params["loopCount"] as Number).toInt(),
+//          (params["pitch"] as Number).toDouble(),
+//          (params["pan"] as Number).toDouble(),
+//          (params["gain"] as Number).toDouble(),
+//          params["publish"] as Boolean,
+//          startPos.toInt()
+//        )
+//      )
+//      return@playEffect
+//    }
     callback.code(
       engine?.audioEffectManager?.playEffect(
         (params["soundId"] as Number).toInt(),
@@ -834,22 +831,22 @@ class RtcEngineManager(
   }
 
   override fun setEffectPosition(params: Map<String, *>, callback: Callback) {
-    callback.code(
-      engine?.audioEffectManager?.setEffectPosition(
-        (params["soundId"] as Number).toInt(),
-        (params["pos"] as Number).toInt()
-      )
-    )
+//    callback.code(
+//      engine?.audioEffectManager?.setEffectPosition(
+//        (params["soundId"] as Number).toInt(),
+//        (params["pos"] as Number).toInt()
+//      )
+//    )
   }
 
   override fun getEffectDuration(params: Map<String, *>, callback: Callback) {
-    callback.code(engine?.audioEffectManager?.getEffectDuration(params["filePath"] as String)) {
-      it
-    }
+//    callback.code(engine?.audioEffectManager?.getEffectDuration(params["filePath"] as String)) {
+//      it
+//    }
   }
 
   override fun getEffectCurrentPosition(params: Map<String, *>, callback: Callback) {
-    callback.code(engine?.audioEffectManager?.getEffectCurrentPosition((params["soundId"] as Number).toInt())) { it }
+//    callback.code(engine?.audioEffectManager?.getEffectCurrentPosition((params["soundId"] as Number).toInt())) { it }
   }
 
   override fun stopEffect(params: Map<String, *>, callback: Callback) {
@@ -1061,11 +1058,11 @@ class RtcEngineManager(
   }
 
   override fun enableLastmileTest(callback: Callback) {
-    callback.code(engine?.enableLastmileTest())
+//    callback.code(engine?.enableLastmileTest())
   }
 
   override fun disableLastmileTest(callback: Callback) {
-    callback.code(engine?.disableLastmileTest())
+//    callback.code(engine?.disableLastmileTest())
   }
 
   override fun startLastmileProbeTest(params: Map<String, *>, callback: Callback) {
@@ -1132,9 +1129,9 @@ class RtcEngineManager(
     callback.code(
       engine?.setEncryptionMode(
         when ((params["encryptionMode"] as Number).toInt()) {
-          EncryptionConfig.EncryptionMode.AES_128_XTS.value -> "aes-128-xts"
-          EncryptionConfig.EncryptionMode.AES_128_ECB.value -> "aes-128-ecb"
-          EncryptionConfig.EncryptionMode.AES_256_XTS.value -> "aes-256-xts"
+//          EncryptionConfig.EncryptionMode.AES_128_XTS.value -> "aes-128-xts"
+//          EncryptionConfig.EncryptionMode.AES_128_ECB.value -> "aes-128-ecb"
+//          EncryptionConfig.EncryptionMode.AES_256_XTS.value -> "aes-256-xts"
           else -> ""
         }
       )
@@ -1151,15 +1148,15 @@ class RtcEngineManager(
   }
 
   override fun startAudioRecording(params: Map<String, *>, callback: Callback) {
-    (params["config"] as? Map<*, *>)?.let {
-      callback.code(engine?.startAudioRecording(mapToAudioRecordingConfiguration(it)))
-      return@startAudioRecording
-    }
+//    (params["config"] as? Map<*, *>)?.let {
+//      callback.code(engine?.startAudioRecording(mapToAudioRecordingConfiguration(it)))
+//      return@startAudioRecording
+//    }
     callback.code(
       engine?.startAudioRecording(
         params["filePath"] as String,
-        (params["sampleRate"] as Number).toInt(),
-        (params["quality"] as Number).toInt()
+        (params["sampleRate"] as Number).toInt()
+//        , (params["quality"] as Number).toInt()
       )
     )
   }
@@ -1232,7 +1229,7 @@ class RtcEngineManager(
   }
 
   override fun enableFaceDetection(params: Map<String, *>, callback: Callback) {
-    callback.code(engine?.enableFaceDetection(params["enable"] as Boolean))
+//    callback.code(engine?.enableFaceDetection(params["enable"] as Boolean))
   }
 
   override fun setCameraTorchOn(params: Map<String, *>, callback: Callback) {

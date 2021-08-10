@@ -3,9 +3,9 @@ package io.agora.agora_rtc_engine
 import android.os.Handler
 import android.os.Looper
 import androidx.annotation.NonNull
-import io.agora.rtc.RtcChannel
-import io.agora.rtc.RtcEngine
 import io.agora.rtc.base.RtcChannelManager
+import io.agora.rtc2.RtcConnection
+import io.agora.rtc2.RtcEngine
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
@@ -65,7 +65,7 @@ class AgoraRtcChannelPlugin(
     return rtcEnginePlugin.engine()
   }
 
-  fun channel(channelId: String): RtcChannel? {
+  fun channel(channelId: String): RtcConnection? {
     return manager[channelId]
   }
 

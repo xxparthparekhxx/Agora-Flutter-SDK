@@ -4,8 +4,8 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import androidx.annotation.NonNull
-import io.agora.rtc.RtcEngine
 import io.agora.rtc.base.RtcEngineManager
+import io.agora.rtc2.RtcEngineEx
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.*
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -101,29 +101,29 @@ class AgoraRtcEnginePlugin : FlutterPlugin, MethodCallHandler, EventChannel.Stre
     }
   }
 
-  fun engine(): RtcEngine? {
+  fun engine(): RtcEngineEx? {
     return manager.engine
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     val textureRegistry = registrar?.textures() ?: binding?.textureRegistry
     val messenger = registrar?.messenger() ?: binding?.binaryMessenger
-    if (call.method == "createTextureRender") {
-      val id = AgoraTextureViewFactory.createTextureRender(
-        textureRegistry!!,
-        messenger!!,
-        this,
-        rtcChannelPlugin
-      )
-      result.success(id)
-      return
-    } else if (call.method == "destroyTextureRender") {
-      (call.arguments<Map<*, *>>()?.get("id") as? Number)?.let {
-        AgoraTextureViewFactory.destroyTextureRender(it.toLong())
-        result.success(null)
-      }
-      return
-    }
+//    if (call.method == "createTextureRender") {
+//      val id = AgoraTextureViewFactory.createTextureRender(
+//        textureRegistry!!,
+//        messenger!!,
+//        this,
+//        rtcChannelPlugin
+//      )
+//      result.success(id)
+//      return
+//    } else if (call.method == "destroyTextureRender") {
+//      (call.arguments<Map<*, *>>()?.get("id") as? Number)?.let {
+//        AgoraTextureViewFactory.destroyTextureRender(it.toLong())
+//        result.success(null)
+//      }
+//      return
+//    }
 
     if (call.method == "getAssetAbsolutePath") {
       getAssetAbsolutePath(call, result)

@@ -1,18 +1,15 @@
 package io.agora.rtc.base
 
 import android.graphics.Color
-import io.agora.rtc.RtcEngineConfig
-import io.agora.rtc.audio.AgoraRhythmPlayerConfig
-import io.agora.rtc.audio.AudioRecordingConfiguration
-import io.agora.rtc.internal.EncryptionConfig
-import io.agora.rtc.internal.LastmileProbeConfig
-import io.agora.rtc.live.LiveInjectStreamConfig
-import io.agora.rtc.live.LiveTranscoding
-import io.agora.rtc.live.LiveTranscoding.TranscodingUser
-import io.agora.rtc.models.ChannelMediaOptions
-import io.agora.rtc.models.ClientRoleOptions
-import io.agora.rtc.models.DataStreamConfig
-import io.agora.rtc.video.*
+import io.agora.rtc2.ChannelMediaOptions
+import io.agora.rtc2.DataStreamConfig
+import io.agora.rtc2.RtcEngineConfig
+import io.agora.rtc2.internal.EncryptionConfig
+import io.agora.rtc2.internal.LastmileProbeConfig
+import io.agora.rtc2.live.LiveInjectStreamConfig
+import io.agora.rtc2.live.LiveTranscoding
+import io.agora.rtc2.live.LiveTranscoding.TranscodingUser
+import io.agora.rtc2.video.*
 
 fun mapToVideoDimensions(map: Map<*, *>): VideoEncoderConfiguration.VideoDimensions {
   return VideoEncoderConfiguration.VideoDimensions().apply {
@@ -32,18 +29,18 @@ fun mapToVideoEncoderConfiguration(map: Map<*, *>): VideoEncoderConfiguration {
     (map["degradationPrefer"] as? Number)?.let {
       degradationPrefer = intToDegradationPreference(it.toInt())
     }
-    (map["mirrorMode"] as? Number)?.let { mirrorMode = it.toInt() }
+    (map["mirrorMode"] as? Number)?.let { mirrorMode = intToMirrorMode(it.toInt()) }
   }
 }
 
-fun mapToBeautyOptions(map: Map<*, *>): BeautyOptions {
-  return BeautyOptions().apply {
-    (map["lighteningContrastLevel"] as? Number)?.let { lighteningContrastLevel = it.toInt() }
-    (map["lighteningLevel"] as? Number)?.let { lighteningLevel = it.toFloat() }
-    (map["smoothnessLevel"] as? Number)?.let { smoothnessLevel = it.toFloat() }
-    (map["rednessLevel"] as? Number)?.let { rednessLevel = it.toFloat() }
-  }
-}
+//fun mapToBeautyOptions(map: Map<*, *>): BeautyOptions {
+//  return BeautyOptions().apply {
+//    (map["lighteningContrastLevel"] as? Number)?.let { lighteningContrastLevel = it.toInt() }
+//    (map["lighteningLevel"] as? Number)?.let { lighteningLevel = it.toFloat() }
+//    (map["smoothnessLevel"] as? Number)?.let { smoothnessLevel = it.toFloat() }
+//    (map["rednessLevel"] as? Number)?.let { rednessLevel = it.toFloat() }
+//  }
+//}
 
 fun mapToAgoraImage(map: Map<*, *>): AgoraImage {
   return AgoraImage().apply {
@@ -176,50 +173,92 @@ fun mapToLiveInjectStreamConfig(map: Map<*, *>): LiveInjectStreamConfig {
   }
 }
 
-fun mapToRhythmPlayerConfig(map: Map<*, *>): AgoraRhythmPlayerConfig {
-  return AgoraRhythmPlayerConfig().apply {
-    (map["beatsPerMeasure"] as? Number)?.let { beatsPerMeasure = it.toInt() }
-    (map["beatsPerMinute"] as? Number)?.let { beatsPerMinute = it.toInt() }
-    (map["publish"] as? Boolean)?.let { publish = it }
-  }
-}
+//fun mapToRhythmPlayerConfig(map: Map<*, *>): AgoraRhythmPlayerConfig {
+//  return AgoraRhythmPlayerConfig().apply {
+//    (map["beatsPerMeasure"] as? Number)?.let { beatsPerMeasure = it.toInt() }
+//    (map["beatsPerMinute"] as? Number)?.let { beatsPerMinute = it.toInt() }
+//    (map["publish"] as? Boolean)?.let { publish = it }
+//  }
+//}
 
 fun mapToCameraCapturerConfiguration(map: Map<*, *>): CameraCapturerConfiguration {
   return CameraCapturerConfiguration(
-    intToCapturerOutputPreference((map["preference"] as Number).toInt()),
     intToCameraDirection((map["cameraDirection"] as Number).toInt())
   ).apply {
-    dimensions = CameraCapturerConfiguration.CaptureDimensions()
-    (map["captureWidth"] as? Number)?.toInt()?.let { dimensions.width = it }
-    (map["captureHeight"] as? Number)?.toInt()?.let { dimensions.height = it }
+    captureFormat = CameraCapturerConfiguration.CaptureFormat()
+    (map["captureWidth"] as? Number)?.toInt()?.let { captureFormat.width = it }
+    (map["captureHeight"] as? Number)?.toInt()?.let { captureFormat.height = it }
   }
 }
 
 fun mapToChannelMediaOptions(map: Map<*, *>): ChannelMediaOptions {
   return ChannelMediaOptions().apply {
+    (map["publishCameraTrack"] as? Boolean)?.let { publishCameraTrack = it }
+    (map["publishScreenTrack"] as? Boolean)?.let { publishScreenTrack = it }
+    (map["publishCustomAudioTrack"] as? Boolean)?.let { publishCustomAudioTrack = it }
+    (map["publishCustomAudioTrackEnableAec"] as? Boolean)?.let {
+      publishCustomAudioTrackEnableAec = it
+    }
+    (map["publishCustomVideoTrack"] as? Boolean)?.let { publishCustomVideoTrack = it }
+    (map["publishEncodedVideoTrack"] as? Boolean)?.let { publishEncodedVideoTrack = it }
+    (map["publishMediaPlayerAudioTrack"] as? Boolean)?.let { publishMediaPlayerAudioTrack = it }
+    (map["publishMediaPlayerVideoTrack"] as? Boolean)?.let { publishMediaPlayerVideoTrack = it }
+    (map["publishMediaPlayerId"] as? Int)?.let { publishMediaPlayerId = it }
+    (map["publishAudioTrack"] as? Boolean)?.let { publishAudioTrack = it }
     (map["autoSubscribeAudio"] as? Boolean)?.let { autoSubscribeAudio = it }
     (map["autoSubscribeVideo"] as? Boolean)?.let { autoSubscribeVideo = it }
-    (map["publishLocalAudio"] as? Boolean)?.let { publishLocalAudio = it }
-    (map["publishLocalVideo"] as? Boolean)?.let { publishLocalVideo = it }
+    (map["enableAudioRecordingOrPlayout"] as? Boolean)?.let { enableAudioRecordingOrPlayout = it }
+    (map["clientRoleType"] as? Int)?.let { clientRoleType = it }
+    (map["defaultVideoStreamType"] as? Int)?.let { defaultVideoStreamType = it }
+    (map["channelProfile"] as? Int)?.let { channelProfile = it }
+    (map["audioDelayMs"] as? Int)?.let { audioDelayMs = it }
+//    (map["publishLocalAudio"] as? Boolean)?.let { publishLocalAudio = it }
+//    (map["publishLocalVideo"] as? Boolean)?.let { publishLocalVideo = it }
+  }
+}
+
+fun mapToChannelMediaOptions(map: Map<*, *>, channelMediaOptions: ChannelMediaOptions?) {
+  channelMediaOptions?.apply {
+    (map["publishCameraTrack"] as? Boolean)?.let { publishCameraTrack = it }
+    (map["publishScreenTrack"] as? Boolean)?.let { publishScreenTrack = it }
+    (map["publishCustomAudioTrack"] as? Boolean)?.let { publishCustomAudioTrack = it }
+    (map["publishCustomAudioTrackEnableAec"] as? Boolean)?.let {
+      publishCustomAudioTrackEnableAec = it
+    }
+    (map["publishCustomVideoTrack"] as? Boolean)?.let { publishCustomVideoTrack = it }
+    (map["publishEncodedVideoTrack"] as? Boolean)?.let { publishEncodedVideoTrack = it }
+    (map["publishMediaPlayerAudioTrack"] as? Boolean)?.let { publishMediaPlayerAudioTrack = it }
+    (map["publishMediaPlayerVideoTrack"] as? Boolean)?.let { publishMediaPlayerVideoTrack = it }
+    (map["publishMediaPlayerId"] as? Int)?.let { publishMediaPlayerId = it }
+    (map["publishAudioTrack"] as? Boolean)?.let { publishAudioTrack = it }
+    (map["autoSubscribeAudio"] as? Boolean)?.let { autoSubscribeAudio = it }
+    (map["autoSubscribeVideo"] as? Boolean)?.let { autoSubscribeVideo = it }
+    (map["enableAudioRecordingOrPlayout"] as? Boolean)?.let { enableAudioRecordingOrPlayout = it }
+    (map["clientRoleType"] as? Int)?.let { clientRoleType = it }
+    (map["defaultVideoStreamType"] as? Int)?.let { defaultVideoStreamType = it }
+    (map["channelProfile"] as? Int)?.let { channelProfile = it }
+    (map["audioDelayMs"] as? Int)?.let { audioDelayMs = it }
+//    (map["publishLocalAudio"] as? Boolean)?.let { publishLocalAudio = it }
+//    (map["publishLocalVideo"] as? Boolean)?.let { publishLocalVideo = it }
   }
 }
 
 fun mapToRtcEngineConfig(map: Map<*, *>): RtcEngineConfig {
   return RtcEngineConfig().apply {
     mAppId = map["appId"] as String
-    (map["areaCode"] as? Number)?.toInt()?.let { mAreaCode = it }
+    (map["areaCode"] as? Number)?.toInt()?.let { mAreaCode = intToAreaCode(it) }
     (map["logConfig"] as? Map<*, *>)?.let { mLogConfig = mapToLogConfig(it) }
   }
 }
 
-fun mapToAudioRecordingConfiguration(map: Map<*, *>): AudioRecordingConfiguration {
-  return AudioRecordingConfiguration().apply {
-    (map["filePath"] as? String)?.let { filePath = it }
-    (map["recordingQuality"] as? Number)?.let { recordingQuality = it.toInt() }
-    (map["recordingPosition"] as? Number)?.let { recordingPosition = it.toInt() }
-    (map["recordingSampleRate"] as? Number)?.let { recordingSampleRate = it.toInt() }
-  }
-}
+//fun mapToAudioRecordingConfiguration(map: Map<*, *>): AudioRecordingConfiguration {
+//  return AudioRecordingConfiguration().apply {
+//    (map["filePath"] as? String)?.let { filePath = it }
+//    (map["recordingQuality"] as? Number)?.let { recordingQuality = it.toInt() }
+//    (map["recordingPosition"] as? Number)?.let { recordingPosition = it.toInt() }
+//    (map["recordingSampleRate"] as? Number)?.let { recordingSampleRate = it.toInt() }
+//  }
+//}
 
 fun mapToEncryptionConfig(map: Map<*, *>): EncryptionConfig {
   return EncryptionConfig().apply {
@@ -235,16 +274,16 @@ fun mapToEncryptionConfig(map: Map<*, *>): EncryptionConfig {
   }
 }
 
-fun mapToClientRoleOptions(map: Map<*, *>): ClientRoleOptions {
-  return ClientRoleOptions().apply {
-    (map["audienceLatencyLevel"] as? Number)?.let { audienceLatencyLevel = it.toInt() }
-  }
-}
+//fun mapToClientRoleOptions(map: Map<*, *>): ClientRoleOptions {
+//  return ClientRoleOptions().apply {
+//    (map["audienceLatencyLevel"] as? Number)?.let { audienceLatencyLevel = it.toInt() }
+//  }
+//}
 
 fun mapToLogConfig(map: Map<*, *>): RtcEngineConfig.LogConfig {
   return RtcEngineConfig.LogConfig().apply {
     (map["filePath"] as? String)?.let { filePath = it }
-    (map["fileSize"] as? Number)?.let { fileSize = it.toInt() }
+    (map["fileSize"] as? Number)?.let { fileSizeInKB = it.toInt() }
     (map["level"] as? Number)?.let { level = it.toInt() }
   }
 }

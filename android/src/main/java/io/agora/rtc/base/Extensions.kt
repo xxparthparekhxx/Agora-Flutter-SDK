@@ -1,8 +1,8 @@
 package io.agora.rtc.base
 
 import android.graphics.Rect
-import io.agora.rtc.IRtcEngineEventHandler.*
-import io.agora.rtc.models.UserInfo
+import io.agora.rtc2.IRtcEngineEventHandler.*
+import io.agora.rtc2.UserInfo
 
 fun UserInfo.toMap(): Map<String, Any?> {
   return hashMapOf(
@@ -16,32 +16,34 @@ fun LocalAudioStats.toMap(): Map<String, Any?> {
     "numChannels" to numChannels,
     "sentSampleRate" to sentSampleRate,
     "sentBitrate" to sentBitrate,
-    "txPacketLossRate" to txPacketLossRate
+//    "txPacketLossRate" to txPacketLossRate
+    "internalCodec" to internalCodec
   )
 }
 
 fun RtcStats.toMap(): Map<String, Any?> {
   return hashMapOf(
+    "connectionId" to connectionId,
     "duration" to totalDuration,
     "txBytes" to txBytes,
     "rxBytes" to rxBytes,
-    "txAudioBytes" to txAudioBytes,
-    "txVideoBytes" to txVideoBytes,
-    "rxAudioBytes" to rxAudioBytes,
-    "rxVideoBytes" to rxVideoBytes,
     "txKBitRate" to txKBitRate,
+    "txAudioBytes" to txAudioBytes,
+    "rxAudioBytes" to rxAudioBytes,
+    "txVideoBytes" to txVideoBytes,
+    "rxVideoBytes" to rxVideoBytes,
     "rxKBitRate" to rxKBitRate,
     "txAudioKBitRate" to txAudioKBitRate,
     "rxAudioKBitRate" to rxAudioKBitRate,
     "txVideoKBitRate" to txVideoKBitRate,
     "rxVideoKBitRate" to rxVideoKBitRate,
-    "userCount" to users,
     "lastmileDelay" to lastmileDelay,
-    "txPacketLossRate" to txPacketLossRate,
-    "rxPacketLossRate" to rxPacketLossRate,
     "cpuTotalUsage" to cpuTotalUsage,
     "cpuAppUsage" to cpuAppUsage,
-    "gatewayRtt" to gatewayRtt,
+    "userCount" to users,
+    "connectTimeMs" to connectTimeMs,
+    "txPacketLossRate" to txPacketLossRate,
+    "rxPacketLossRate" to rxPacketLossRate,
     "memoryAppUsageRatio" to memoryAppUsageRatio,
     "memoryTotalUsageRatio" to memoryTotalUsageRatio,
     "memoryAppUsageInKbytes" to memoryAppUsageInKbytes
@@ -69,31 +71,32 @@ fun RemoteAudioStats.toMap(): Map<String, Any?> {
     "receivedBitrate" to receivedBitrate,
     "totalFrozenTime" to totalFrozenTime,
     "frozenRate" to frozenRate,
-    "totalActiveTime" to totalActiveTime,
-    "publishDuration" to publishDuration,
-    "qoeQuality" to qoeQuality,
-    "qualityChangedReason" to qualityChangedReason,
+//    "totalActiveTime" to totalActiveTime,
+//    "publishDuration" to publishDuration,
+//    "qoeQuality" to qoeQuality,
+//    "qualityChangedReason" to qualityChangedReason,
     "mosValue" to mosValue
   )
 }
 
 fun LocalVideoStats.toMap(): Map<String, Any?> {
   return hashMapOf(
+    "uid" to uid.toUInt().toLong(),
     "sentBitrate" to sentBitrate,
     "sentFrameRate" to sentFrameRate,
     "encoderOutputFrameRate" to encoderOutputFrameRate,
     "rendererOutputFrameRate" to rendererOutputFrameRate,
     "targetBitrate" to targetBitrate,
     "targetFrameRate" to targetFrameRate,
-    "qualityAdaptIndication" to qualityAdaptIndication,
+//    "qualityAdaptIndication" to qualityAdaptIndication,
     "encodedBitrate" to encodedBitrate,
     "encodedFrameWidth" to encodedFrameWidth,
     "encodedFrameHeight" to encodedFrameHeight,
     "encodedFrameCount" to encodedFrameCount,
-    "codecType" to codecType,
-    "txPacketLossRate" to txPacketLossRate,
-    "captureFrameRate" to captureFrameRate,
-    "captureBrightnessLevel" to captureBrightnessLevel
+    "codecType" to codecType
+//    "txPacketLossRate" to txPacketLossRate,
+//    "captureFrameRate" to captureFrameRate,
+//    "captureBrightnessLevel" to captureBrightnessLevel
   )
 }
 
@@ -106,21 +109,24 @@ fun RemoteVideoStats.toMap(): Map<String, Any?> {
     "receivedBitrate" to receivedBitrate,
     "decoderOutputFrameRate" to decoderOutputFrameRate,
     "rendererOutputFrameRate" to rendererOutputFrameRate,
+    "frameLossRate" to frameLossRate,
     "packetLossRate" to packetLossRate,
     "rxStreamType" to rxStreamType,
     "totalFrozenTime" to totalFrozenTime,
     "frozenRate" to frozenRate,
-    "totalActiveTime" to totalActiveTime,
-    "publishDuration" to publishDuration
+    "avSyncTimeMs" to avSyncTimeMs
+//    "totalActiveTime" to totalActiveTime,
+//    "publishDuration" to publishDuration
   )
 }
 
 fun AudioVolumeInfo.toMap(): Map<String, Any?> {
   return hashMapOf(
     "uid" to uid.toUInt().toLong(),
-    "volume" to volume,
-    "vad" to vad,
-    "channelId" to channelId
+    "userId" to userId,
+    "volume" to volume
+//    "vad" to vad,
+//    "channelId" to channelId
   )
 }
 

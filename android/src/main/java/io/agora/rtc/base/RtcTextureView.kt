@@ -3,9 +3,10 @@ package io.agora.rtc.base
 import android.content.Context
 import android.view.TextureView
 import android.widget.FrameLayout
-import io.agora.rtc.RtcChannel
-import io.agora.rtc.RtcEngine
-import io.agora.rtc.video.VideoCanvas
+import io.agora.rtc2.RtcConnection
+import io.agora.rtc2.RtcEngine
+import io.agora.rtc2.RtcEngineEx
+import io.agora.rtc2.video.VideoCanvas
 import java.lang.ref.WeakReference
 
 class RtcTextureView(
@@ -13,7 +14,7 @@ class RtcTextureView(
 ) : FrameLayout(context) {
   private var texture: TextureView
   private var canvas: VideoCanvas
-  private var channel: WeakReference<RtcChannel>? = null
+  private var channel: WeakReference<RtcConnection>? = null
 
   init {
     try {
@@ -25,16 +26,15 @@ class RtcTextureView(
     addView(texture)
   }
 
-  fun setData(engine: RtcEngine, channel: RtcChannel?, uid: Number) {
+  fun setData(engine: RtcEngineEx, channel: RtcConnection?, uid: Number) {
     this.channel = if (channel != null) WeakReference(channel) else null
-    canvas.channelId = this.channel?.get()?.channelId()
     canvas.uid = uid.toNativeUInt()
     setupVideoCanvas(engine)
   }
 
   fun resetVideoCanvas(engine: RtcEngine) {
     val canvas =
-      VideoCanvas(null, canvas.renderMode, canvas.channelId, canvas.uid, canvas.mirrorMode)
+      VideoCanvas(null, canvas.renderMode, canvas.mirrorMode, canvas.uid)
     if (canvas.uid == 0) {
       engine.setupLocalVideo(canvas)
     } else {
@@ -42,7 +42,7 @@ class RtcTextureView(
     }
   }
 
-  private fun setupVideoCanvas(engine: RtcEngine) {
+  private fun setupVideoCanvas(engine: RtcEngineEx) {
     removeAllViews()
     texture = RtcEngine.CreateTextureView(context.applicationContext)
     addView(texture)
@@ -55,22 +55,22 @@ class RtcTextureView(
     }
   }
 
-  fun setRenderMode(engine: RtcEngine, @Annotations.AgoraVideoRenderMode renderMode: Int) {
+  fun setRenderMode(engine: RtcEngineEx, renderMode: Int) {
     canvas.renderMode = renderMode
     setupRenderMode(engine)
   }
 
-  fun setMirrorMode(engine: RtcEngine, @Annotations.AgoraVideoMirrorMode mirrorMode: Int) {
+  fun setMirrorMode(engine: RtcEngineEx, mirrorMode: Int) {
     canvas.mirrorMode = mirrorMode
     setupRenderMode(engine)
   }
 
-  private fun setupRenderMode(engine: RtcEngine) {
+  private fun setupRenderMode(engine: RtcEngineEx) {
     if (canvas.uid == 0) {
       engine.setLocalRenderMode(canvas.renderMode, canvas.mirrorMode)
     } else {
       channel?.get()?.let {
-        it.setRemoteRenderMode(canvas.uid, canvas.renderMode, canvas.mirrorMode)
+        engine.setRemoteRenderModeEx(canvas.uid, canvas.renderMode, canvas.mirrorMode, it)
         return@setupRenderMode
       }
       engine.setRemoteRenderMode(canvas.uid, canvas.renderMode, canvas.mirrorMode)

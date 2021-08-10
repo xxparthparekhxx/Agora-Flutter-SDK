@@ -2,9 +2,9 @@ package io.agora.agora_rtc_engine
 
 import android.content.Context
 import android.view.View
-import io.agora.rtc.RtcChannel
-import io.agora.rtc.RtcEngine
 import io.agora.rtc.base.RtcSurfaceView
+import io.agora.rtc2.RtcConnection
+import io.agora.rtc2.RtcEngineEx
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -102,11 +102,11 @@ class AgoraSurfaceView(
     view.setZOrderMediaOverlay(isMediaOverlay)
   }
 
-  private fun getEngine(): RtcEngine? {
+  private fun getEngine(): RtcEngineEx? {
     return rtcEnginePlugin.engine()
   }
 
-  private fun getChannel(channelId: String): RtcChannel? {
+  private fun getChannel(channelId: String): RtcConnection? {
     return rtcChannelPlugin.channel(channelId)
   }
 }

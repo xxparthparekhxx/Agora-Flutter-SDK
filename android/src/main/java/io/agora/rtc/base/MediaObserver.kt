@@ -1,7 +1,7 @@
 package io.agora.rtc.base
 
 import androidx.annotation.IntRange
-import io.agora.rtc.IMetadataObserver
+import io.agora.rtc2.IMetadataObserver
 import java.util.*
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -19,7 +19,7 @@ class MediaObserver(
     maxMetadataSize.set(size)
   }
 
-  override fun onReadyToSendMetadata(timeStampMs: Long): ByteArray? {
+  override fun onReadyToSendMetadata(timeStampMs: Long, sourceType: Int): ByteArray? {
     if (metadataList.size > 0) {
       return metadataList.removeAt(0).toByteArray()
     }
