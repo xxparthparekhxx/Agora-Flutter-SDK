@@ -18,10 +18,7 @@ class JoinChannelVideo extends StatefulWidget {
 class _State extends State<JoinChannelVideo> {
   late final RtcEngine _engine;
   String channelId = config.channelId;
-  bool startPreview = false,
-      isJoined = false,
-      switchCamera = true,
-      switchRender = true;
+  bool isJoined = false, switchCamera = true, switchRender = true;
   List<int> remoteUid = [];
   TextEditingController? _controller;
 
@@ -46,9 +43,6 @@ class _State extends State<JoinChannelVideo> {
     await _engine.startPreview();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
     await _engine.setClientRole(ClientRole.Broadcaster);
-    setState(() {
-      startPreview = true;
-    });
   }
 
   _addListeners() {
@@ -167,8 +161,7 @@ class _State extends State<JoinChannelVideo> {
     return Expanded(
       child: Stack(
         children: [
-          if (startPreview)
-            kIsWeb ? RtcLocalView.SurfaceView() : RtcLocalView.TextureView(),
+          kIsWeb ? RtcLocalView.SurfaceView() : RtcLocalView.TextureView(),
           Align(
             alignment: Alignment.topLeft,
             child: SingleChildScrollView(

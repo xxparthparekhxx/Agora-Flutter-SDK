@@ -19,7 +19,7 @@ class ScreenSharing extends StatefulWidget {
 class _State extends State<ScreenSharing> {
   late final RtcEngine _engine;
   String channelId = config.channelId;
-  bool startPreview = false, isJoined = false, screenSharing = false;
+  bool isJoined = false, screenSharing = false;
   List<int> remoteUid = [];
   TextEditingController? _controller;
 
@@ -44,9 +44,6 @@ class _State extends State<ScreenSharing> {
     await _engine.startPreview();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
     await _engine.setClientRole(ClientRole.Broadcaster);
-    setState(() {
-      startPreview = true;
-    });
   }
 
   _addListeners() {
@@ -71,14 +68,6 @@ class _State extends State<ScreenSharing> {
         setState(() {
           remoteUid.add(uid);
         });
-      },
-      remoteVideoStateChanged: (uid, state, reason, elapsed) {
-        log('remoteVideoStateChanged ${uid} ${state} ${reason} ${elapsed}');
-        // if (state == VideoRemoteState.Decoding) {
-        //   setState(() {
-        //     remoteUid.add(uid);
-        //   });
-        // }
       },
       userOffline: (uid, reason) {
         log('userOffline  ${uid} ${reason}');
@@ -202,12 +191,11 @@ class _State extends State<ScreenSharing> {
       children: [
         Row(
           children: [
-            if (startPreview)
-              Expanded(
-                  flex: 1,
-                  child: kIsWeb
-                      ? RtcLocalView.SurfaceView()
-                      : RtcLocalView.TextureView()),
+            Expanded(
+                flex: 1,
+                child: kIsWeb
+                    ? RtcLocalView.SurfaceView()
+                    : RtcLocalView.TextureView()),
             if (screenSharing)
               Expanded(
                   flex: 1,

@@ -23,7 +23,7 @@ class _State extends State<MultiChannel> {
   late final RtcEngine _engine;
   late final RtcChannel _channel0, _channel1;
   String? renderChannelId;
-  bool startPreview = false, isJoined0 = false, isJoined1 = false;
+  bool isJoined0 = false, isJoined1 = false;
   List<int> remoteUid0 = [], remoteUid1 = [];
 
   @override
@@ -45,9 +45,6 @@ class _State extends State<MultiChannel> {
     await _engine.startPreview();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
     await _engine.setClientRole(ClientRole.Broadcaster);
-    setState(() {
-      startPreview = true;
-    });
 
     _channel0 = await RtcChannel.create(_channelId0);
     this._addListener(_channel0);
@@ -257,8 +254,7 @@ class _State extends State<MultiChannel> {
     return Expanded(
       child: Stack(
         children: [
-          if (startPreview)
-            kIsWeb ? RtcLocalView.SurfaceView() : RtcLocalView.TextureView(),
+          kIsWeb ? RtcLocalView.SurfaceView() : RtcLocalView.TextureView(),
           if (remoteUid != null)
             Align(
               alignment: Alignment.topLeft,
