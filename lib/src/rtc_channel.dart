@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:agora_rtc_engine/src/rtc_channel_impl.dart';
+import 'package:agora_rtc_engine/src/impl/rtc_channel_impl.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -11,7 +11,7 @@ import 'classes.dart';
 import 'enum_converter.dart';
 import 'enums.dart';
 import 'events.dart';
-import 'api_types.dart';
+import 'impl/api_types.dart';
 
 ///
 /// Provides methods that enable real-time communications in an

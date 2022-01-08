@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:agora_rtc_engine/src/impl/rtc_device_manager_impl.dart';
 
-import 'rtc_device_manager_impl.dart';
 
 /* class-RtcDeviceManager */
 abstract class RtcDeviceManager {

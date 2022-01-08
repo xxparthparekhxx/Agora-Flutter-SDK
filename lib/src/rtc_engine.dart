@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:agora_rtc_engine/src/rtc_engine_impl.dart';
+import 'package:agora_rtc_engine/src/impl/rtc_engine_impl.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -13,7 +13,7 @@ import 'enums.dart';
 import 'events.dart';
 import 'rtc_channel.dart';
 import 'rtc_device_manager.dart';
-import 'api_types.dart';
+import 'impl/api_types.dart';
 
 ///
 /// The basic interface of the Agora SDK that implements the core functions of real-time communication.

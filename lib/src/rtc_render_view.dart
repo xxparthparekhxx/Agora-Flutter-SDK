@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:agora_rtc_engine/src/rtc_engine_impl.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +9,9 @@ import 'package:flutter/services.dart';
 
 import 'enum_converter.dart';
 import 'enums.dart';
+import 'impl/rtc_engine_impl.dart';
 import 'rtc_engine.dart';
-import 'api_types.dart';
+import 'impl/api_types.dart';
 
 ApiTypeEngine _getSetRenderModeApiType(int uid) {
   return uid == 0

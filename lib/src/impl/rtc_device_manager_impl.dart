@@ -2,9 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:agora_rtc_engine/src/rtc_device_manager.dart';
 import 'package:flutter/services.dart';
-
-import 'rtc_device_manager.dart';
 
 enum _ApiTypeAudioDeviceManager {
   kADMEnumeratePlaybackDevices,
