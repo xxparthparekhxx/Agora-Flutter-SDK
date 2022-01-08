@@ -29,11 +29,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  analyzer: ^2.4.0
+  analyzer: ^3.0.0
   path: ^1.8.0
   ffi: ^1.1.2
   agora_rtc_engine:
     path: ../
+  code_vistor:
+    path: tools/code_vistor
 
 dev_dependencies:
   integration_test:
