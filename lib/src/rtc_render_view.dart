@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:agora_rtc_engine/src/rtc_engine_impl.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -115,22 +116,13 @@ class _RtcSurfaceViewState extends State<RtcSurfaceView> {
           'apiType': _apiType.index,
           'params': jsonEncode({
             'canvas': {
-              // 'data': {'uid': widget.uid, 'channelId': widget.channelId},
-              'uid': widget.uid, 'channelId': widget.channelId,
+              'uid': widget.uid,
+              'channelId': widget.channelId,
               'renderMode': _renderMode,
               'mirrorMode': _mirrorMode,
-              // 'zOrderOnTop': widget.zOrderOnTop,
-              // 'zOrderMediaOverlay': widget.zOrderMediaOverlay,
             }
           }),
         },
-        // 'callApi': {
-        //   'apiType': _getSetRenderModeApiType(widget.uid),
-        //   'params': jsonEncode({
-        //     'renderMode': _renderMode,
-        //     'mirrorMode': _mirrorMode,
-        //   }),
-        // },
       };
 
   @override
@@ -142,13 +134,6 @@ class _RtcSurfaceViewState extends State<RtcSurfaceView> {
           viewType: 'AgoraSurfaceView',
           onPlatformViewCreated: onPlatformViewCreated,
           hitTestBehavior: PlatformViewHitTestBehavior.transparent,
-          // creationParams: {
-          //   'data': {'uid': widget.uid, 'channelId': widget.channelId},
-          //   'renderMode': _renderMode,
-          //   'mirrorMode': _mirrorMode,
-          //   'zOrderOnTop': widget.zOrderOnTop,
-          //   'zOrderMediaOverlay': widget.zOrderMediaOverlay,
-          // },
           creationParams: {
             ..._creationParams,
             'setZOrderOnTop': {
@@ -169,11 +154,6 @@ class _RtcSurfaceViewState extends State<RtcSurfaceView> {
           viewType: 'AgoraSurfaceView',
           onPlatformViewCreated: onPlatformViewCreated,
           hitTestBehavior: PlatformViewHitTestBehavior.transparent,
-          // creationParams: {
-          //   'data': {'uid': widget.uid, 'channelId': widget.channelId},
-          //   'renderMode': _renderMode,
-          //   'mirrorMode': _mirrorMode,
-          // },
           creationParams: _creationParams,
           creationParamsCodec: const StandardMessageCodec(),
           gestureRecognizers: widget.gestureRecognizers,
@@ -246,13 +226,6 @@ class _RtcSurfaceViewState extends State<RtcSurfaceView> {
   }
 
   void setData() {
-    // var params = <String, dynamic>{
-    //   'data': {
-    //     'uid': widget.uid,
-    //     'channelId': widget.channelId,
-    //   },
-    // };
-
     var params = <String, dynamic>{
       'uid': widget.uid,
       'channelId': widget.channelId,
@@ -276,35 +249,25 @@ class _RtcSurfaceViewState extends State<RtcSurfaceView> {
 
   void setRenderMode() {
     _renderMode = VideoRenderModeConverter(widget.renderMode).value();
-    // _channels[_id]?.invokeMethod('setRenderMode', {
-    //   'renderMode': _renderMode,
-    // });
 
-    _channels[_id]?.invokeMethod('callApi',
-        // 'renderMode': _renderMode,
-        {
-          'apiType': _getSetRenderModeApiType(widget.uid).index,
-          'params': jsonEncode({
-            'renderMode': _renderMode,
-            'mirrorMode': _mirrorMode,
-          }),
-        });
+    _channels[_id]?.invokeMethod('callApi', {
+      'apiType': _getSetRenderModeApiType(widget.uid).index,
+      'params': jsonEncode({
+        'renderMode': _renderMode,
+        'mirrorMode': _mirrorMode,
+      }),
+    });
   }
 
   void setMirrorMode() {
     _mirrorMode = VideoMirrorModeConverter(widget.mirrorMode).value();
-    // _channels[_id]?.invokeMethod('setMirrorMode', {
-    //   'mirrorMode': _mirrorMode,
-    // });
-    _channels[_id]?.invokeMethod('callApi',
-        // 'renderMode': _renderMode,
-        {
-          'apiType': _getSetRenderModeApiType(widget.uid).index,
-          'params': jsonEncode({
-            'renderMode': _renderMode,
-            'mirrorMode': _mirrorMode,
-          }),
-        });
+    _channels[_id]?.invokeMethod('callApi', {
+      'apiType': _getSetRenderModeApiType(widget.uid).index,
+      'params': jsonEncode({
+        'renderMode': _renderMode,
+        'mirrorMode': _mirrorMode,
+      }),
+    });
   }
 
   void setZOrderOnTop() {
@@ -475,11 +438,6 @@ class _RtcTextureViewState extends State<RtcTextureView> {
             viewType: 'AgoraTextureView',
             onPlatformViewCreated: onPlatformViewCreated,
             hitTestBehavior: PlatformViewHitTestBehavior.transparent,
-            // creationParams: {
-            //   'data': {'uid': widget.uid, 'channelId': widget.channelId},
-            //   'renderMode': _renderMode,
-            //   'mirrorMode': _mirrorMode,
-            // },
             creationParams: {
               'callApi': {
                 'apiType': _getSetupVideoApiType(widget.uid).index,
@@ -490,8 +448,6 @@ class _RtcTextureViewState extends State<RtcTextureView> {
                     'channelId': widget.channelId,
                     'renderMode': _renderMode,
                     'mirrorMode': _mirrorMode,
-                    // 'zOrderOnTop': widget.zOrderOnTop,
-                    // 'zOrderMediaOverlay': widget.zOrderMediaOverlay,
                   }
                 }),
               },
@@ -512,7 +468,7 @@ class _RtcTextureViewState extends State<RtcTextureView> {
     _mirrorMode = VideoMirrorModeConverter(widget.mirrorMode).value();
     if (widget.useFlutterTexture &&
         defaultTargetPlatform != TargetPlatform.android) {
-      RtcEngine.methodChannel.invokeMethod('createTextureRender', {
+      RtcEngineImpl.methodChannel.invokeMethod('createTextureRender', {
         'subProcess': widget.subProcess,
       }).then((value) {
         setState(() {
@@ -546,8 +502,9 @@ class _RtcTextureViewState extends State<RtcTextureView> {
   void dispose() {
     super.dispose();
     _channels.remove(_id);
-    if (widget.useFlutterTexture && defaultTargetPlatform != TargetPlatform.android) {
-      RtcEngine.methodChannel.invokeMethod('destroyTextureRender', {
+    if (widget.useFlutterTexture &&
+        defaultTargetPlatform != TargetPlatform.android) {
+      RtcEngineImpl.methodChannel.invokeMethod('destroyTextureRender', {
         'id': _id,
         'subProcess': widget.subProcess,
       });
@@ -563,14 +520,9 @@ class _RtcTextureViewState extends State<RtcTextureView> {
           'channelId': widget.channelId,
         },
       };
-      // var params = <String, dynamic>{
-      //   'uid': widget.uid,
-      //     'channelId': widget.channelId,
-      // };
       if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
         params['subProcess'] = widget.subProcess;
       }
-      // _channels[_id]?.invokeMethod('setData', params);
       _channels[_id]?.invokeMethod('callApi', {
         'apiType': _getSetRenderModeApiType(widget.uid),
         'params': jsonEncode({params}),
@@ -584,63 +536,24 @@ class _RtcTextureViewState extends State<RtcTextureView> {
         'channelId': widget.channelId,
       },
     };
-    // var params = <String, dynamic>{
-    //   'uid': widget.uid,
-    //     'channelId': widget.channelId,
-    // };
     if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
       params['subProcess'] = widget.subProcess;
     }
     _channels[_id]?.invokeMethod('setData', params);
-    // _channels[_id]?.invokeMethod('callApi',           {
-    //       'apiType': _getSetRenderModeApiType(widget.uid),
-    //       'params': jsonEncode({params
-    //       }),
-    //     });
   }
 
-// kEngineSetLocalRenderMode/kEngineSetRemoteRenderMode
   void setRenderMode() {
     _renderMode = VideoRenderModeConverter(widget.renderMode).value();
     _channels[_id]?.invokeMethod('setRenderMode', {
       'renderMode': _renderMode,
     });
-
-    // _channels[_id]?.invokeMethod('callApi',
-    //     // 'renderMode': _renderMode,
-    //     {
-    //       'apiType': _getSetRenderModeApiType(widget.uid),
-    //       'params': jsonEncode({
-    //         'renderMode': _renderMode,
-    //         'mirrorMode': _mirrorMode,
-    //       }),
-    //     });
-
-    // {
-    //       'apiType': _apiType.index,
-    //       'params': jsonEncode({
-    //         'canvas': canvas.toJson(),
-    //         'connection': connection?.toJson(),
-    //       }),
-    //     }
   }
 
-  // kEngineSetLocalRenderMode/kEngineSetRemoteRenderMode
   void setMirrorMode() {
     _mirrorMode = VideoMirrorModeConverter(widget.mirrorMode).value();
     _channels[_id]?.invokeMethod('setMirrorMode', {
       'mirrorMode': _mirrorMode,
     });
-
-    // _channels[_id]?.invokeMethod('callApi',
-    //     // 'renderMode': _renderMode,
-    //     {
-    //       'apiType': _getSetRenderModeApiType(widget.uid),
-    //       'params': jsonEncode({
-    //         'renderMode': _renderMode,
-    //         'mirrorMode': _mirrorMode,
-    //       }),
-    //     });
   }
 
   Future<void> onPlatformViewCreated(int id) async {

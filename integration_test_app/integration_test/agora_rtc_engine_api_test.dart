@@ -151,7 +151,7 @@ void main() {
         'Fail',
       );
 
-      final ret = await RtcEngine.getErrorDescription(1);
+      final ret = rtcEngine.getErrorDescription(1);
 
       fakeIrisEngine.expectCalledApi(
         ApiTypeEngine.kEngineGetErrorDescription.index,

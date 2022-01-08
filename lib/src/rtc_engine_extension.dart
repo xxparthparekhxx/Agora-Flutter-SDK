@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:ffi';
 import 'dart:io';
 
+import 'package:agora_rtc_engine/src/rtc_engine_impl.dart';
+
 import 'classes.dart';
 import 'rtc_engine.dart';
 
@@ -134,7 +136,7 @@ extension RtcEngineExtension on RtcEngine {
   /// - [assetPath] The resource path configured in the `flutter` -> `assets` field of pubspec.yaml, for example: assets/Sound_Horizon.mp3
   /// - Returns the actual absolute path of the asset
   Future<String?> getAssetAbsolutePath(String assetPath) {
-    return RtcEngine.methodChannel
+    return RtcEngineImpl.methodChannel
         .invokeMethod('getAssetAbsolutePath', assetPath);
   }
 
