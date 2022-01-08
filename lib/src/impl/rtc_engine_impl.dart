@@ -12,6 +12,7 @@ import 'package:agora_rtc_engine/src/rtc_device_manager.dart';
 import 'package:agora_rtc_engine/src/rtc_engine.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'events_impl.dart';
 
 import 'api_types.dart';
 
