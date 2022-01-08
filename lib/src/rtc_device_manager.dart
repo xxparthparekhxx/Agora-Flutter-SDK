@@ -37,7 +37,7 @@ enum _ApiTypeVideoDeviceManager {
   kVDMStopDeviceTest,
 }
 
-/// TODO(doc)
+/* class-RtcDeviceManager */
 class RtcDeviceManager {
   static const MethodChannel _audioMethodChannel =
       MethodChannel('agora_rtc_audio_device_manager');
@@ -54,7 +54,7 @@ class RtcDeviceManager {
     return _videoMethodChannel.invokeMethod(method, arguments);
   }
 
-  /// TODO(doc)
+  /* api-audio-enumerateAudioPlaybackDevices */
   Future<List<MediaDeviceInfo>> enumerateAudioPlaybackDevices() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMEnumeratePlaybackDevices.index,
@@ -65,7 +65,7 @@ class RtcDeviceManager {
         })));
   }
 
-  /// TODO(doc)
+  /* api-audio-setAudioPlaybackDevice */
   Future<void> setAudioPlaybackDevice(String deviceId) {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMSetPlaybackDevice.index,
@@ -75,7 +75,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-getAudioPlaybackDevice */
   Future<String?> getAudioPlaybackDevice() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMGetPlaybackDevice.index,
@@ -83,7 +83,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-getAudioPlaybackDeviceInfo */
   Future<MediaDeviceInfo?> getAudioPlaybackDeviceInfo() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMGetPlaybackDeviceInfo.index,
@@ -91,7 +91,7 @@ class RtcDeviceManager {
     }).then((value) => MediaDeviceInfo.fromJson(jsonDecode(value)));
   }
 
-  /// TODO(doc)
+  /* api-audio-setAudioPlaybackDeviceVolume */
   Future<void> setAudioPlaybackDeviceVolume(int volume) {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMSetPlaybackDeviceVolume.index,
@@ -101,7 +101,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-getAudioPlaybackDeviceVolume */
   Future<int?> getAudioPlaybackDeviceVolume() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMGetPlaybackDeviceVolume.index,
@@ -109,7 +109,7 @@ class RtcDeviceManager {
     }).then((value) => int.tryParse(value));
   }
 
-  /// TODO(doc)
+  /* api-audio-setAudioPlaybackDeviceMute */
   Future<void> setAudioPlaybackDeviceMute(bool mute) {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMSetPlaybackDeviceMute.index,
@@ -119,7 +119,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-getAudioPlaybackDeviceMute */
   Future<bool?> getAudioPlaybackDeviceMute() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMGetPlaybackDeviceMute.index,
@@ -127,7 +127,7 @@ class RtcDeviceManager {
     }).then((value) => value == 'true');
   }
 
-  /// TODO(doc)
+  /* api-audio-startAudioPlaybackDeviceTest */
   Future<void> startAudioPlaybackDeviceTest(String testAudioFilePath) {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMStartPlaybackDeviceTest.index,
@@ -137,7 +137,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-stopAudioPlaybackDeviceTest */
   Future<void> stopAudioPlaybackDeviceTest() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMStopPlaybackDeviceTest.index,
@@ -145,7 +145,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-enumerateAudioRecordingDevices */
   Future<List<MediaDeviceInfo>> enumerateAudioRecordingDevices() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMEnumerateRecordingDevices.index,
@@ -156,7 +156,7 @@ class RtcDeviceManager {
         })));
   }
 
-  /// TODO(doc)
+  /* api-audio-setAudioRecordingDevice */
   Future<void> setAudioRecordingDevice(String deviceId) {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMSetRecordingDevice.index,
@@ -166,7 +166,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-getAudioRecordingDevice */
   Future<String?> getAudioRecordingDevice() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMGetRecordingDevice.index,
@@ -174,7 +174,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-getAudioRecordingDeviceInfo */
   Future<MediaDeviceInfo?> getAudioRecordingDeviceInfo() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMGetRecordingDeviceInfo.index,
@@ -183,7 +183,7 @@ class RtcDeviceManager {
         value != null ? MediaDeviceInfo.fromJson(jsonDecode(value)) : null);
   }
 
-  /// TODO(doc)
+  /* api-audio-setAudioRecordingDeviceVolume */
   Future<void> setAudioRecordingDeviceVolume(int volume) {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMSetRecordingDeviceVolume.index,
@@ -193,7 +193,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-getAudioRecordingDeviceVolume */
   Future<int?> getAudioRecordingDeviceVolume() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMGetRecordingDeviceVolume.index,
@@ -201,7 +201,7 @@ class RtcDeviceManager {
     }).then((value) => int.tryParse(value));
   }
 
-  /// TODO(doc)
+  /* api-audio-setAudioRecordingDeviceMute */
   Future<void> setAudioRecordingDeviceMute(bool mute) {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMSetRecordingDeviceMute.index,
@@ -211,7 +211,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-getAudioRecordingDeviceMute */
   Future<bool?> getAudioRecordingDeviceMute() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMGetRecordingDeviceMute.index,
@@ -219,7 +219,7 @@ class RtcDeviceManager {
     }).then((value) => value == 'true');
   }
 
-  /// TODO(doc)
+  /* api-audio-startAudioRecordingDeviceTest */
   Future<void> startAudioRecordingDeviceTest(int indicationInterval) {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMStartRecordingDeviceTest.index,
@@ -229,7 +229,7 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  /* api-audio-stopAudioRecordingDeviceTest */
   Future<void> stopAudioRecordingDeviceTest() {
     return _invokeAudioMethod('callApi', {
       'apiType': _ApiTypeAudioDeviceManager.kADMStopRecordingDeviceTest.index,
@@ -237,6 +237,7 @@ class RtcDeviceManager {
     });
   }
 
+  /* api-audio-startAudioDeviceLoopbackTest */
   Future<void> startAudioDeviceLoopbackTest(int indicationInterval) {
     return _invokeAudioMethod('callApi', {
       'apiType':
@@ -247,6 +248,7 @@ class RtcDeviceManager {
     });
   }
 
+  /* api-audio-stopAudioDeviceLoopbackTest */
   Future<void> stopAudioDeviceLoopbackTest() {
     return _invokeAudioMethod('callApi', {
       'apiType':
@@ -255,6 +257,7 @@ class RtcDeviceManager {
     });
   }
 
+  /* api-video-enumerateVideoDevices */
   Future<List<MediaDeviceInfo>> enumerateVideoDevices() {
     return _invokeVideoMethod('callApi', {
       'apiType': _ApiTypeVideoDeviceManager.kVDMEnumerateVideoDevices.index,
@@ -265,7 +268,13 @@ class RtcDeviceManager {
         })));
   }
 
-  /// TODO(doc)
+  ///
+  /// Specifies the video capture device with the device ID.
+  /// Plugging or unplugging a device does not change its device ID.
+  ///
+  /// Param [deviceId] The device ID. You can get the device ID by calling enumerateVideoDevices.
+  /// 
+  ///
   Future<void> setVideoDevice(String deviceId) {
     return _invokeVideoMethod('callApi', {
       'apiType': _ApiTypeVideoDeviceManager.kVDMSetDevice.index,
@@ -275,7 +284,16 @@ class RtcDeviceManager {
     });
   }
 
-  /// TODO(doc)
+  ///
+  /// Retrieves the current video capture device.
+  /// 
+  ///
+  /// **return** 0: Success.
+  /// < 0: Failure.
+  /// 
+  /// The video capture device. See .
+  /// The video capture device.
+  ///
   Future<String?> getVideoDevice() {
     return _invokeVideoMethod('callApi', {
       'apiType': _ApiTypeVideoDeviceManager.kVDMGetDevice.index,
