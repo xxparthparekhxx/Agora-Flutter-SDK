@@ -126,37 +126,47 @@ class SimpleAnnotation {
   List<SimpleLiteral> arguments = [];
 }
 
-class Method {
+class SimpleComment {
+  List<String> commentLines = [];
+  late int offset;
+  late int end;
+}
+
+class BaseNode {
+  late SimpleComment comment;
+}
+
+class Method extends BaseNode {
   late String name;
   late FunctionBody body;
   List<Parameter> parameters = [];
   late Type returnType;
 }
 
-class Field {
+class Field extends BaseNode {
   late Type type;
   late String name;
 }
 
-class Constructor {
+class Constructor extends BaseNode {
   late String name;
   List<Parameter> parameters = [];
   late bool isFactory;
 }
 
-class Clazz {
+class Clazz extends BaseNode {
   late String name;
   List<Constructor> constructors = [];
   List<Method> methods = [];
   List<Field> fields = [];
 }
 
-class EnumConstant {
+class EnumConstant extends BaseNode {
   late String name;
   List<SimpleAnnotation> annotations = [];
 }
 
-class Enumz {
+class Enumz extends BaseNode {
   late String name;
   List<EnumConstant> enumConstants = [];
 }
@@ -183,7 +193,6 @@ class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
   Object? visitFieldDeclaration(dart_ast.FieldDeclaration node) {
     stdout.writeln(
         'variables: ${node.fields.variables}, type: ${node.fields.type}');
-        
 
     final clazz = _getClazz(node);
     if (clazz == null) return null;
@@ -192,7 +201,9 @@ class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
     if (type is dart_ast.NamedType) {
       final fieldName = node.fields.variables[0].name.name;
 
-      Field field = Field()..name = fieldName;
+      Field field = Field()
+        ..name = fieldName
+        ..comment = _generateComment(node);
 
       // if (node.parent is dart_ast.ClassDeclaration) {
       //   final fieldList = classFieldsMap.putIfAbsent(
@@ -222,7 +233,8 @@ class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
     Constructor constructor = Constructor()
       ..name = node.name?.name ?? ''
       ..parameters = _getParameter(node.parent, node.parameters)
-      ..isFactory = node.factoryKeyword != null;
+      ..isFactory = node.factoryKeyword != null
+      ..comment = _generateComment(node);
 
     clazz.constructors.add(constructor);
 
@@ -245,10 +257,12 @@ class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
     final enumz = enumMap.putIfAbsent(node.name.name, () => Enumz());
     enumz.name = node.name.name;
+    enumz.comment = _generateComment(node);
 
     for (final constant in node.constants) {
       EnumConstant enumConstant = EnumConstant()
-        ..name = '${node.name.name}.${constant.name.name}';
+        ..name = '${node.name.name}.${constant.name.name}'
+        ..comment = _generateComment(constant);
       enumz.enumConstants.add(enumConstant);
 
       for (final meta in constant.metadata) {
@@ -293,7 +307,9 @@ class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
     Clazz clazz = classMap.putIfAbsent(
       classNode.name.name,
-      () => Clazz()..name = classNode.name.name,
+      () => Clazz()
+        ..name = classNode.name.name
+        ..comment = _generateComment(node as AnnotatedNode),
     );
 
     return clazz;
@@ -433,6 +449,17 @@ class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
     return callApiInvoke;
   }
 
+  SimpleComment _generateComment(AnnotatedNode node) {
+    SimpleComment simpleComment = SimpleComment()
+      ..offset = node.documentationComment?.offset ?? 0
+      ..end = node.documentationComment?.end ?? 0;
+
+    for (final token in node.documentationComment?.tokens ?? []) {
+      simpleComment.commentLines.add(token.stringValue ?? '');
+    }
+    return simpleComment;
+  }
+
   @override
   Object? visitMethodDeclaration(MethodDeclaration node) {
     final classNode = node.parent;
@@ -447,6 +474,8 @@ class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
     Method method = Method()..name = node.name.name;
     clazz.methods.add(method);
+
+    method.comment = _generateComment(node);
 
     if (node.parameters != null) {
       method.parameters.addAll(_getParameter(node.parent, node.parameters));
