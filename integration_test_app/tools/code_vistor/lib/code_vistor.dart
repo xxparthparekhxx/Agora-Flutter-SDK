@@ -181,7 +181,7 @@ class ParseResult {
   late Map<String, List<String>> genericTypeAliasParametersMap;
 }
 
-class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
+class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
   final classFieldsMap = <String, List<String>>{};
   final fieldsTypeMap = <String, String>{};
   final genericTypeAliasParametersMap = <String, List<String>>{};
@@ -546,26 +546,9 @@ class CodeVistor {
   final List<String> includedPaths;
 
   ParseResult visit() {
-    final AnalysisContextCollection collection = AnalysisContextCollection(
-      includedPaths: includedPaths,
-    );
-    final _RootBuilder rootBuilder = _RootBuilder();
+    final DefaultVisitor rootBuilder = DefaultVisitor();
 
-    for (final AnalysisContext context in collection.contexts) {
-      for (final String path in context.contextRoot.analyzedFiles()) {
-        final AnalysisSession session = context.currentSession;
-        final ParsedUnitResult result =
-            session.getParsedUnit(path) as ParsedUnitResult;
-        if (result.errors.isEmpty) {
-          final dart_ast.CompilationUnit unit = result.unit;
-          unit.accept(rootBuilder);
-        } else {
-          for (final AnalysisError error in result.errors) {
-            stderr.writeln(error.toString());
-          }
-        }
-      }
-    }
+    visitWith(visitor: rootBuilder);
 
     final parseResult = ParseResult()
       ..classMap = rootBuilder.classMap
@@ -574,5 +557,27 @@ class CodeVistor {
           rootBuilder.genericTypeAliasParametersMap;
 
     return parseResult;
+  }
+
+  void visitWith({required dart_ast_visitor.RecursiveAstVisitor visitor}) {
+    final AnalysisContextCollection collection = AnalysisContextCollection(
+      includedPaths: includedPaths,
+    );
+
+    for (final AnalysisContext context in collection.contexts) {
+      for (final String path in context.contextRoot.analyzedFiles()) {
+        final AnalysisSession session = context.currentSession;
+        final ParsedUnitResult result =
+            session.getParsedUnit(path) as ParsedUnitResult;
+        if (result.errors.isEmpty) {
+          final dart_ast.CompilationUnit unit = result.unit;
+          unit.accept(visitor);
+        } else {
+          for (final AnalysisError error in result.errors) {
+            stderr.writeln(error.toString());
+          }
+        }
+      }
+    }
   }
 }
