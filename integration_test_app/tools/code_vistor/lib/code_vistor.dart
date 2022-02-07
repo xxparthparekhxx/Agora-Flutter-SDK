@@ -141,6 +141,7 @@ class Method extends BaseNode {
   late FunctionBody body;
   List<Parameter> parameters = [];
   late Type returnType;
+  late String source;
 }
 
 class Field extends BaseNode {
@@ -472,7 +473,7 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
       () => Clazz()..name = classNode.name.name,
     );
 
-    Method method = Method()..name = node.name.name;
+    Method method = Method()..name = node.name.name..source = node.toString();
     clazz.methods.add(method);
 
     method.comment = _generateComment(node);

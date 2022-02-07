@@ -47,6 +47,7 @@ abstract class RtcEngine {
   /// **return** A pointer to the RtcChannel instance, if the method call succeeds.
   /// If the call fails, returns NULL.
   ///
+  @deprecated
   static Future<RtcEngine> create(String appId) {
     return RtcEngineImpl.createWithContext(RtcEngineContext(appId));
   }
