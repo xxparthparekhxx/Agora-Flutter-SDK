@@ -1,0 +1,31 @@
+{
+  "name": "agora_rtc_engine",
+  "version": "4.1.0-alpha.2",
+  "summary": "A new flutter plugin project.",
+  "description": "Flutter plugin for Agora Video SDK.",
+  "homepage": "https://github.com/AgoraIO/Flutter-SDK",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "Agora": "developer@agora.io"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": [
+    "Classes/**/*.{h,mm}",
+    "Classes/File.swift"
+  ],
+  "dependencies": {
+    "FlutterMacOS": [
+
+    ],
+    "AgoraIrisRTC_macOS": [
+      "3.5.2"
+    ]
+  },
+  "platforms": {
+    "osx": "10.11"
+  }
+}

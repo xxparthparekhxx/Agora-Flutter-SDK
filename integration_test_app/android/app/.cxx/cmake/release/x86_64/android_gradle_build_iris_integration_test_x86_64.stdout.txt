@@ -1,0 +1,530 @@
+ninja: Entering directory `/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/android/app/.cxx/cmake/release/x86_64'
+[1/5] Building CXX object CMakeFiles/iris_integration_test.dir/src/iris_rtc_engine_integration_test_delegate.cc.o
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10716:28: warning: 'VOICE_CHANGER_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceChanger(VOICE_CHANGER_PRESET voiceChanger) {
+                           ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1114:6: note: 'VOICE_CHANGER_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VOICE_CHANGER_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10731:33: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceReverbPreset(AUDIO_REVERB_PRESET reverbPreset) {
+                                ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10741:32: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    } else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00300000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00300002)
+                               ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10741:82: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    } else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00300000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00300002)
+                                                                                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10743:30: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00400000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00400002)
+                             ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10743:80: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00400000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00400002)
+                                                                               ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:9:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:476:5: warning: expression result unused [-Wunused-value]
+    (RTMP_STREAM_PUBLISH_STATE) state;
+    ^                           ~~~~~
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:477:5: warning: expression result unused [-Wunused-value]
+    (RTMP_STREAM_PUBLISH_ERROR) errCode;
+    ^                           ~~~~~~~
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:491:5: warning: expression result unused [-Wunused-value]
+    (RTMP_STREAMING_EVENT) eventCode;
+    ^                      ~~~~~~~~~
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:9:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:181:23: warning: 'VIDEO_PROFILE_TYPE' is deprecated [-Wdeprecated-declarations]
+  int setVideoProfile(VIDEO_PROFILE_TYPE profile,
+                      ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:550:6: note: 'VIDEO_PROFILE_TYPE' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VIDEO_PROFILE_TYPE {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:9:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:313:28: warning: 'VOICE_CHANGER_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceChanger(VOICE_CHANGER_PRESET voiceChanger) override {
+                           ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1114:6: note: 'VOICE_CHANGER_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VOICE_CHANGER_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h:9:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:316:33: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceReverbPreset(AUDIO_REVERB_PRESET reverbPreset) override {
+                                ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+12 warnings generated.
+[2/5] Building CXX object CMakeFiles/iris_integration_test.dir/src/rtc_event_handler_test.cc.o
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10716:28: warning: 'VOICE_CHANGER_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceChanger(VOICE_CHANGER_PRESET voiceChanger) {
+                           ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1114:6: note: 'VOICE_CHANGER_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VOICE_CHANGER_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10731:33: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceReverbPreset(AUDIO_REVERB_PRESET reverbPreset) {
+                                ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10741:32: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    } else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00300000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00300002)
+                               ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10741:82: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    } else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00300000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00300002)
+                                                                                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10743:30: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00400000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00400002)
+                             ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10743:80: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00400000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00400002)
+                                                                               ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:476:5: warning: expression result unused [-Wunused-value]
+    (RTMP_STREAM_PUBLISH_STATE) state;
+    ^                           ~~~~~
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:477:5: warning: expression result unused [-Wunused-value]
+    (RTMP_STREAM_PUBLISH_ERROR) errCode;
+    ^                           ~~~~~~~
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:491:5: warning: expression result unused [-Wunused-value]
+    (RTMP_STREAMING_EVENT) eventCode;
+    ^                      ~~~~~~~~~
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:181:23: warning: 'VIDEO_PROFILE_TYPE' is deprecated [-Wdeprecated-declarations]
+  int setVideoProfile(VIDEO_PROFILE_TYPE profile,
+                      ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:550:6: note: 'VIDEO_PROFILE_TYPE' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VIDEO_PROFILE_TYPE {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:313:28: warning: 'VOICE_CHANGER_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceChanger(VOICE_CHANGER_PRESET voiceChanger) override {
+                           ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1114:6: note: 'VOICE_CHANGER_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VOICE_CHANGER_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:6:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:316:33: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceReverbPreset(AUDIO_REVERB_PRESET reverbPreset) override {
+                                ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:263:18: warning: 'onFirstRemoteAudioDecoded' is deprecated [-Wdeprecated-declarations]
+        handler->onFirstRemoteAudioDecoded(123, 123);
+                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:4814:66: note: 'onFirstRemoteAudioDecoded' has been explicitly marked deprecated here
+  virtual void onFirstRemoteAudioDecoded(uid_t uid, int elapsed) AGORA_DEPRECATED_ATTRIBUTE {
+                                                                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:326:18: warning: 'onFirstLocalAudioFrame' is deprecated [-Wdeprecated-declarations]
+        handler->onFirstLocalAudioFrame(123);
+                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:5053:52: note: 'onFirstLocalAudioFrame' has been explicitly marked deprecated here
+  virtual void onFirstLocalAudioFrame(int elapsed) AGORA_DEPRECATED_ATTRIBUTE { (void)elapsed; }
+                                                   ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:334:18: warning: 'onFirstRemoteAudioFrame' is deprecated [-Wdeprecated-declarations]
+        handler->onFirstRemoteAudioFrame(123, 123);
+                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:5078:64: note: 'onFirstRemoteAudioFrame' has been explicitly marked deprecated here
+  virtual void onFirstRemoteAudioFrame(uid_t uid, int elapsed) AGORA_DEPRECATED_ATTRIBUTE {
+                                                               ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:350:18: warning: 'onStreamPublished' is deprecated [-Wdeprecated-declarations]
+        handler->onStreamPublished("123", 123);
+                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:5130:62: note: 'onStreamPublished' has been explicitly marked deprecated here
+  virtual void onStreamPublished(const char* url, int error) AGORA_DEPRECATED_ATTRIBUTE {
+                                                             ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:354:18: warning: 'onStreamUnpublished' is deprecated [-Wdeprecated-declarations]
+        handler->onStreamUnpublished("123");
+                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:5142:53: note: 'onStreamUnpublished' has been explicitly marked deprecated here
+  virtual void onStreamUnpublished(const char* url) AGORA_DEPRECATED_ATTRIBUTE { (void)url; }
+                                                    ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:378:18: warning: 'onRemoteAudioTransportStats' is deprecated [-Wdeprecated-declarations]
+        handler->onRemoteAudioTransportStats(123, 123, 123, 123);
+                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:5232:125: note: 'onRemoteAudioTransportStats' has been explicitly marked deprecated here
+  virtual void onRemoteAudioTransportStats(uid_t uid, unsigned short delay, unsigned short lost, unsigned short rxKBitRate) AGORA_DEPRECATED_ATTRIBUTE {
+                                                                                                                            ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:382:18: warning: 'onMicrophoneEnabled' is deprecated [-Wdeprecated-declarations]
+        handler->onMicrophoneEnabled(true);
+                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:5282:50: note: 'onMicrophoneEnabled' has been explicitly marked deprecated here
+  virtual void onMicrophoneEnabled(bool enabled) AGORA_DEPRECATED_ATTRIBUTE { (void)enabled; }
+                                                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc:428:18: warning: 'onRemoteVideoTransportStats' is deprecated [-Wdeprecated-declarations]
+        handler->onRemoteVideoTransportStats(123, 123, 123, 123);
+                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:5257:125: note: 'onRemoteVideoTransportStats' has been explicitly marked deprecated here
+  virtual void onRemoteVideoTransportStats(uid_t uid, unsigned short delay, unsigned short lost, unsigned short rxKBitRate) AGORA_DEPRECATED_ATTRIBUTE {
+                                                                                                                            ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+20 warnings generated.
+[3/5] Building CXX object CMakeFiles/iris_integration_test.dir/src/iris_rtc_engine_integration_test_helplers.cc.o
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10716:28: warning: 'VOICE_CHANGER_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceChanger(VOICE_CHANGER_PRESET voiceChanger) {
+                           ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1114:6: note: 'VOICE_CHANGER_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VOICE_CHANGER_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10731:33: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceReverbPreset(AUDIO_REVERB_PRESET reverbPreset) {
+                                ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10741:32: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    } else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00300000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00300002)
+                               ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10741:82: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    } else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00300000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00300002)
+                                                                                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10743:30: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00400000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00400002)
+                             ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:9:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10743:80: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00400000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00400002)
+                                                                               ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:4:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine2.h:8:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:476:5: warning: expression result unused [-Wunused-value]
+    (RTMP_STREAM_PUBLISH_STATE) state;
+    ^                           ~~~~~
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:477:5: warning: expression result unused [-Wunused-value]
+    (RTMP_STREAM_PUBLISH_ERROR) errCode;
+    ^                           ~~~~~~~
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcChannel.h:491:5: warning: expression result unused [-Wunused-value]
+    (RTMP_STREAMING_EVENT) eventCode;
+    ^                      ~~~~~~~~~
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:181:23: warning: 'VIDEO_PROFILE_TYPE' is deprecated [-Wdeprecated-declarations]
+  int setVideoProfile(VIDEO_PROFILE_TYPE profile,
+                      ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:550:6: note: 'VIDEO_PROFILE_TYPE' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VIDEO_PROFILE_TYPE {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:313:28: warning: 'VOICE_CHANGER_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceChanger(VOICE_CHANGER_PRESET voiceChanger) override {
+                           ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1114:6: note: 'VOICE_CHANGER_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VOICE_CHANGER_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc:3:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h:316:33: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceReverbPreset(AUDIO_REVERB_PRESET reverbPreset) override {
+                                ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+12 warnings generated.
+[4/5] Building CXX object CMakeFiles/iris_integration_test.dir/src/iris_rtc_engine_call_api_recorder.cc.o
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10716:28: warning: 'VOICE_CHANGER_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceChanger(VOICE_CHANGER_PRESET voiceChanger) {
+                           ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1114:6: note: 'VOICE_CHANGER_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE VOICE_CHANGER_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10731:33: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+  int setLocalVoiceReverbPreset(AUDIO_REVERB_PRESET reverbPreset) {
+                                ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10741:32: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    } else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00300000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00300002)
+                               ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10741:82: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    } else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00300000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00300002)
+                                                                                 ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10743:30: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00400000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00400002)
+                             ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.cc:1:
+In file included from /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h:4:
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:10743:80: warning: 'AUDIO_REVERB_PRESET' is deprecated [-Wdeprecated-declarations]
+    else if (reverbPreset > (AUDIO_REVERB_PRESET)0x00400000 && reverbPreset < (AUDIO_REVERB_PRESET)0x00400002)
+                                                                               ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/IAgoraRtcEngine.h:1198:6: note: 'AUDIO_REVERB_PRESET' has been explicitly marked deprecated here
+enum AGORA_DEPRECATED_ATTRIBUTE AUDIO_REVERB_PRESET {
+     ^
+/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include/AgoraBase.h:50:51: note: expanded from macro 'AGORA_DEPRECATED_ATTRIBUTE'
+#define AGORA_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+                                                  ^
+6 warnings generated.
+[5/5] Linking CXX shared library /Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/build/app/intermediates/cmake/release/obj/x86_64/libiris_integration_test.so

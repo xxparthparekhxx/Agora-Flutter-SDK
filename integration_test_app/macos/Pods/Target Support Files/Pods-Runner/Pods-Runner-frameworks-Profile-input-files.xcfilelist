@@ -1,0 +1,16 @@
+${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraAIDenoiseExtension.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraCIExtension.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraCore.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraDav1dExtension.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraFDExtension.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraJNDExtension.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraRtcKit.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraRtcWrapper.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraSoundTouch.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/AgoraVideoSegmentationExtension.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/Agorafdkaac.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/Agoraffmpeg.framework
+${PODS_ROOT}/AgoraIrisRTC_macOS/av1.framework
+${BUILT_PRODUCTS_DIR}/agora_rtc_engine/agora_rtc_engine.framework
+${PODS_ROOT}/../Runner/iris_integration_test.framework

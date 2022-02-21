@@ -1,0 +1,85 @@
+{
+  "stringTable": {
+    "0": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/android/app/.cxx/cmake/debug/x86_64",
+    "1": "--target=x86_64-none-linux-android21 --gcc-toolchain=/Users/fenglang/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/fenglang/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Diris_integration_test_EXPORTS -I/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src -I/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/agora/rtc/include -I/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/third_party/iris -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O0 -fno-limit-debug-info -fPIC -std=gnu++11"
+  },
+  "buildFiles": [
+    "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/CMakeLists.txt",
+    "/Users/fenglang/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake",
+    "/Users/fenglang/Library/Android/sdk/ndk/21.1.6352462/build/cmake/platforms.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/fenglang/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/android/app/.cxx/cmake/debug/x86_64\" clean"
+  ],
+  "buildTargetsCommand": "/Users/fenglang/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/android/app/.cxx/cmake/debug/x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "iris_integration_test-Debug-x86_64": {
+      "buildCommand": "/Users/fenglang/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/android/app/.cxx/cmake/debug/x86_64\" iris_integration_test",
+      "buildType": "debug",
+      "toolchain": "2011273611",
+      "abi": "x86_64",
+      "artifactName": "iris_integration_test",
+      "files": [
+        {
+          "src": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.cc",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.cc",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.cc",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.cc",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [
+        {
+          "header": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/fake_rtc_engine_internal.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_call_api_recorder.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_delegate.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/iris_rtc_engine_integration_test_helplers.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "header": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/src/rtc_event_handler_test.h",
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "output": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/build/app/intermediates/cmake/debug/obj/x86_64/libiris_integration_test.so",
+      "runtimeFiles": [
+        "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/android/libs/x86_64/libAgoraRtcWrapper.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "2011273611": {
+      "cppCompilerExecutable": "/Users/fenglang/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cc"
+  ]
+}

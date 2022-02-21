@@ -1,0 +1,6 @@
+# ninja log v5
+2	1137	1645178404	CMakeFiles/iris_integration_test.dir/src/iris_rtc_engine_integration_test_delegate.cc.o	c5dd05a5a1173db7
+5	1204	1645178404	CMakeFiles/iris_integration_test.dir/src/rtc_event_handler_test.cc.o	e2b46e260695dda6
+3	1263	1645178404	CMakeFiles/iris_integration_test.dir/src/iris_rtc_engine_integration_test_helplers.cc.o	5b332fbd6c5b3ed2
+0	2081	1645178405	CMakeFiles/iris_integration_test.dir/src/iris_rtc_engine_call_api_recorder.cc.o	ece6bdd5825f007d
+2081	2197	1645178405	/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/build/app/intermediates/cmake/release/obj/x86_64/libiris_integration_test.so	f3d3c9b4e3db2884

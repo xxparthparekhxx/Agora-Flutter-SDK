@@ -1,0 +1,20 @@
+{
+  "name": "iris_integration_test",
+  "version": "3.3.1",
+  "summary": "A new flutter plugin project.",
+  "description": "project.description",
+  "homepage": "https://github.com/AgoraIO/Flutter-SDK",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "Agora": "developer@agora.io"
+  },
+  "source": {
+    "path": "."
+  },
+  "vendored_frameworks": "iris_integration_test.framework",
+  "platforms": {
+    "osx": "9.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "buildFiles": [
+    "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/iris_integration_test/CMakeLists.txt",
+    "/Users/fenglang/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake",
+    "/Users/fenglang/Library/Android/sdk/ndk/21.1.6352462/build/cmake/platforms.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/fenglang/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/android/app/.cxx/cmake/debug/armeabi-v7a\" clean"
+  ],
+  "buildTargetsCommand": "/Users/fenglang/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/android/app/.cxx/cmake/debug/armeabi-v7a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "iris_integration_test-Debug-armeabi-v7a": {
+      "artifactName": "iris_integration_test",
+      "buildCommand": "/Users/fenglang/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/android/app/.cxx/cmake/debug/armeabi-v7a\" iris_integration_test",
+      "abi": "armeabi-v7a",
+      "output": "/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/build/app/intermediates/cmake/debug/obj/armeabi-v7a/libiris_integration_test.so",
+      "runtimeFiles": [
+        "/Users/fenglang/codes/aw/Agora-Flutter-SDK/android/libs/armeabi-v7a/libAgoraRtcWrapper.so"
+      ]
+    }
+  }
+}

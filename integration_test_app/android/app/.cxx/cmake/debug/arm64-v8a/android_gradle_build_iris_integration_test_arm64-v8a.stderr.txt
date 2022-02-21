@@ -1,0 +1,1 @@
+ninja: error: '/Users/fenglang/codes/aw/Agora-Flutter-SDK/android/libs/arm64-v8a/libAgoraRtcWrapper.so', needed by '/Users/fenglang/codes/aw/Agora-Flutter-SDK/integration_test_app/build/app/intermediates/cmake/debug/obj/arm64-v8a/libiris_integration_test.so', missing and no known rule to make it
