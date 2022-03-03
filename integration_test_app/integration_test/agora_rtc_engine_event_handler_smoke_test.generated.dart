@@ -2323,4 +2323,162 @@ void rtcEngineEventHandlerSomkeTestCases() {
       fakeIrisEngine.dispose();
     },
   );
+
+  testWidgets(
+    'onScreenCaptureInfoUpdated',
+    (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
+      bool screenCaptureInfoUpdatedCalled = false;
+      rtcEngine.setEventHandler(RtcEngineEventHandler(
+        screenCaptureInfoUpdated: (info) {
+          screenCaptureInfoUpdatedCalled = true;
+        },
+      ));
+
+      fakeIrisEngine.fireRtcEngineEvent('onScreenCaptureInfoUpdated');
+// Wait for the `EventChannel` event be sent from Android/iOS side
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(screenCaptureInfoUpdatedCalled, isTrue);
+
+      rtcEngine.destroy();
+      fakeIrisEngine.dispose();
+    },
+    skip: !(Platform.isWindows),
+  );
+
+  testWidgets(
+    'onClientRoleChangeFailed',
+    (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
+      bool clientRoleChangeFailedCalled = false;
+      rtcEngine.setEventHandler(RtcEngineEventHandler(
+        clientRoleChangeFailed: (reason, currentRole) {
+          clientRoleChangeFailedCalled = true;
+        },
+      ));
+
+      fakeIrisEngine.fireRtcEngineEvent('onClientRoleChangeFailed');
+// Wait for the `EventChannel` event be sent from Android/iOS side
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(clientRoleChangeFailedCalled, isTrue);
+
+      rtcEngine.destroy();
+      fakeIrisEngine.dispose();
+    },
+  );
+
+  testWidgets(
+    'onWlAccMessage',
+    (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
+      bool wlAccMessageCalled = false;
+      rtcEngine.setEventHandler(RtcEngineEventHandler(
+        wlAccMessage: (reason, action, wlAccMsg) {
+          wlAccMessageCalled = true;
+        },
+      ));
+
+      fakeIrisEngine.fireRtcEngineEvent('onWlAccMessage');
+// Wait for the `EventChannel` event be sent from Android/iOS side
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(wlAccMessageCalled, isTrue);
+
+      rtcEngine.destroy();
+      fakeIrisEngine.dispose();
+    },
+  );
+
+  testWidgets(
+    'onWlAccStats',
+    (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
+      bool wlAccStatsCalled = false;
+      rtcEngine.setEventHandler(RtcEngineEventHandler(
+        wlAccStats: (currentStats, averageStats) {
+          wlAccStatsCalled = true;
+        },
+      ));
+
+      fakeIrisEngine.fireRtcEngineEvent('onWlAccStats');
+// Wait for the `EventChannel` event be sent from Android/iOS side
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(wlAccStatsCalled, isTrue);
+
+      rtcEngine.destroy();
+      fakeIrisEngine.dispose();
+    },
+  );
+
+  testWidgets(
+    'onProxyConnected',
+    (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
+      bool proxyConnectedCalled = false;
+      rtcEngine.setEventHandler(RtcEngineEventHandler(
+        proxyConnected: (channel, uid, proxyType, localProxyIp, elapsed) {
+          proxyConnectedCalled = true;
+        },
+      ));
+
+      fakeIrisEngine.fireRtcEngineEvent('onProxyConnected');
+// Wait for the `EventChannel` event be sent from Android/iOS side
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(proxyConnectedCalled, isTrue);
+
+      rtcEngine.destroy();
+      fakeIrisEngine.dispose();
+    },
+  );
+
+  testWidgets(
+    'onAudioDeviceTestVolumeIndication',
+    (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
+      bool audioDeviceTestVolumeIndicationCalled = false;
+      rtcEngine.setEventHandler(RtcEngineEventHandler(
+        audioDeviceTestVolumeIndication: (volumeType, volume) {
+          audioDeviceTestVolumeIndicationCalled = true;
+        },
+      ));
+
+      fakeIrisEngine.fireRtcEngineEvent('onAudioDeviceTestVolumeIndication');
+// Wait for the `EventChannel` event be sent from Android/iOS side
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(audioDeviceTestVolumeIndicationCalled, isTrue);
+
+      rtcEngine.destroy();
+      fakeIrisEngine.dispose();
+    },
+  );
 }
+

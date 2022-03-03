@@ -29,6 +29,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onChannelError', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -53,6 +54,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onJoinChannelSuccess', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -77,6 +79,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRejoinChannelSuccess', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -101,6 +104,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onLeaveChannel', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -125,6 +129,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onClientRoleChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -149,6 +154,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onUserJoined', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -173,6 +179,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onUserOffline', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -197,6 +204,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onConnectionStateChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -221,6 +229,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onConnectionLost', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -245,6 +254,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onTokenPrivilegeWillExpire', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -269,6 +279,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRequestToken', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -293,6 +304,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onActiveSpeaker', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -317,6 +329,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onVideoSizeChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -341,6 +354,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRemoteVideoStateChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -365,6 +379,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRemoteAudioStateChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -389,6 +404,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onLocalPublishFallbackToAudioOnly', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -413,6 +429,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRemoteSubscribeFallbackToAudioOnly',
       (WidgetTester tester) async {
     app.main();
@@ -438,6 +455,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRtcStats', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -462,6 +480,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onNetworkQuality', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -486,6 +505,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRemoteVideoStats', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -510,6 +530,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRemoteAudioStats', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -534,6 +555,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRtmpStreamingStateChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -558,6 +580,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onTranscodingUpdated', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -582,6 +605,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onStreamInjectedStatus', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -606,6 +630,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onStreamMessage', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -630,6 +655,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onStreamMessageError', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -654,6 +680,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onChannelMediaRelayStateChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -678,6 +705,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onChannelMediaRelayEvent', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -702,6 +730,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onAudioPublishStateChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -727,6 +756,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onVideoPublishStateChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -752,6 +782,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onAudioSubscribeStateChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -777,6 +808,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onVideoSubscribeStateChanged', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -802,6 +834,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onRtmpStreamingEvent', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -826,6 +859,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
   testWidgets('onUserSuperResolutionEnabled', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle();
@@ -850,4 +884,30 @@ void rtcChannelEventHandlerSomkeTestCases() {
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
+
+  testWidgets('onClientRoleChangeFailed', (WidgetTester tester) async {
+    app.main();
+    await tester.pumpAndSettle();
+
+    FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
+    await fakeIrisEngine.initialize();
+    final rtcEngine = await RtcEngine.create('123');
+    final rtcChannel = await RtcChannel.create('testapi');
+    bool clientRoleChangeFailedCalled = false;
+    rtcChannel.setEventHandler(RtcChannelEventHandler(
+      clientRoleChangeFailed: (reason, currentRole) {
+        clientRoleChangeFailedCalled = true;
+      },
+    ));
+
+    fakeIrisEngine.fireRtcChannelEvent('onClientRoleChangeFailed');
+// Wait for the `EventChannel` event be sent from Android/iOS side
+    await tester.pump(const Duration(milliseconds: 500));
+    expect(clientRoleChangeFailedCalled, isTrue);
+
+    await rtcChannel.destroy();
+    await rtcEngine.destroy();
+    fakeIrisEngine.dispose();
+  });
 }
+

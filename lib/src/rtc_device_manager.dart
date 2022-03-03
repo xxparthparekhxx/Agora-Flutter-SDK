@@ -1,62 +1,16 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
-import 'package:flutter/services.dart';
-
-enum _ApiTypeAudioDeviceManager {
-  kADMEnumeratePlaybackDevices,
-  kADMSetPlaybackDevice,
-  kADMGetPlaybackDevice,
-  kADMGetPlaybackDeviceInfo,
-  kADMSetPlaybackDeviceVolume,
-  kADMGetPlaybackDeviceVolume,
-  kADMSetPlaybackDeviceMute,
-  kADMGetPlaybackDeviceMute,
-  kADMStartPlaybackDeviceTest,
-  kADMStopPlaybackDeviceTest,
-  kADMEnumerateRecordingDevices,
-  kADMSetRecordingDevice,
-  kADMGetRecordingDevice,
-  kADMGetRecordingDeviceInfo,
-  kADMSetRecordingDeviceVolume,
-  kADMGetRecordingDeviceVolume,
-  kADMSetRecordingDeviceMute,
-  kADMGetRecordingDeviceMute,
-  kADMStartRecordingDeviceTest,
-  kADMStopRecordingDeviceTest,
-  kADMStartAudioDeviceLoopbackTest,
-  kADMStopAudioDeviceLoopbackTest,
-}
-
-enum _ApiTypeVideoDeviceManager {
-  kVDMEnumerateVideoDevices,
-  kVDMSetDevice,
-  kVDMGetDevice,
-  // ignore: unused_field
-  kVDMStartDeviceTest,
-  // ignore: unused_field
-  kVDMStopDeviceTest,
-}
+import 'package:agora_rtc_engine/src/impl/rtc_device_manager_impl.dart';
 
 ///
 /// The RTC device manager class, which manages the audio and video devices in the system.
 ///
 ///
-class RtcDeviceManager {
-  static const MethodChannel _audioMethodChannel =
-      MethodChannel('agora_rtc_audio_device_manager');
-  static const MethodChannel _videoMethodChannel =
-      MethodChannel('agora_rtc_video_device_manager');
-
-  Future<T?> _invokeAudioMethod<T>(String method,
-      [Map<String, dynamic>? arguments]) {
-    return _audioMethodChannel.invokeMethod(method, arguments);
-  }
-
-  Future<T?> _invokeVideoMethod<T>(String method,
-      [Map<String, dynamic>? arguments]) {
-    return _videoMethodChannel.invokeMethod(method, arguments);
+abstract class RtcDeviceManager {
+  /// Constructs the [RtcDeviceManager].
+  factory RtcDeviceManager() {
+    return RtcDeviceManagerImpl();
   }
 
   ///
@@ -67,15 +21,7 @@ class RtcDeviceManager {
   /// the device ID and device name of all the audio playback devices.
   /// Failure: null.
   ///
-  Future<List<MediaDeviceInfo>> enumerateAudioPlaybackDevices() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMEnumeratePlaybackDevices.index,
-      'params': jsonEncode({}),
-    }).then((value) => List<MediaDeviceInfo>.of(
-            List<Map<String, dynamic>>.from(jsonDecode(value)).map((e) {
-          return MediaDeviceInfo.fromJson(e);
-        })));
-  }
+  Future<List<MediaDeviceInfo>> enumerateAudioPlaybackDevices();
 
   ///
   /// Sets the audio playback device.
@@ -84,14 +30,7 @@ class RtcDeviceManager {
   /// Param [deviceId] The ID of the audio playback device. You can get the device ID by calling enumerateAudioPlaybackDevices. Plugging or unplugging the audio device does not change the device ID.
   ///
   ///
-  Future<void> setAudioPlaybackDevice(String deviceId) {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMSetPlaybackDevice.index,
-      'params': jsonEncode({
-        'deviceId': deviceId,
-      }),
-    });
-  }
+  Future<void> setAudioPlaybackDevice(String deviceId);
 
   ///
   /// Retrieves the audio playback device associated with the device ID.
@@ -99,12 +38,7 @@ class RtcDeviceManager {
   ///
   /// **return** The current audio playback device.
   ///
-  Future<String?> getAudioPlaybackDevice() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMGetPlaybackDevice.index,
-      'params': jsonEncode({}),
-    });
-  }
+  Future<String?> getAudioPlaybackDevice();
 
   ///
   /// Retrieves the audio playback device information associated with the device ID and device name.
@@ -112,12 +46,7 @@ class RtcDeviceManager {
   ///
   /// **return** A MediaDeviceInfo class, which includes the device ID and the device name.
   ///
-  Future<MediaDeviceInfo?> getAudioPlaybackDeviceInfo() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMGetPlaybackDeviceInfo.index,
-      'params': jsonEncode({}),
-    }).then((value) => MediaDeviceInfo.fromJson(jsonDecode(value)));
-  }
+  Future<MediaDeviceInfo?> getAudioPlaybackDeviceInfo();
 
   ///
   /// Sets the volume of the audio playback device.
@@ -125,14 +54,7 @@ class RtcDeviceManager {
   ///
   /// Param [volume] The volume of the audio playback device. The value ranges between 0 (lowest volume) and 255 (highest volume).
   ///
-  Future<void> setAudioPlaybackDeviceVolume(int volume) {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMSetPlaybackDeviceVolume.index,
-      'params': jsonEncode({
-        'volume': volume,
-      }),
-    });
-  }
+  Future<void> setAudioPlaybackDeviceVolume(int volume);
 
   ///
   /// Retrieves the volume of the audio playback device.
@@ -140,12 +62,7 @@ class RtcDeviceManager {
   ///
   /// **return** The volume of the audio playback device. The value ranges between 0 (lowest volume) and 255 (highest volume).
   ///
-  Future<int?> getAudioPlaybackDeviceVolume() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMGetPlaybackDeviceVolume.index,
-      'params': jsonEncode({}),
-    }).then((value) => int.tryParse(value));
-  }
+  Future<int?> getAudioPlaybackDeviceVolume();
 
   ///
   /// Mutes the audio playback device.
@@ -156,14 +73,7 @@ class RtcDeviceManager {
   /// false: Unmute the audio playback device.
   ///
   ///
-  Future<void> setAudioPlaybackDeviceMute(bool mute) {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMSetPlaybackDeviceMute.index,
-      'params': jsonEncode({
-        'mute': mute,
-      }),
-    });
-  }
+  Future<void> setAudioPlaybackDeviceMute(bool mute);
 
   ///
   /// Retrieves whether the audio playback device is muted.
@@ -172,12 +82,7 @@ class RtcDeviceManager {
   /// **return** true: The audio playback device is muted.
   /// false: The audio playback device is unmuted.
   ///
-  Future<bool?> getAudioPlaybackDeviceMute() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMGetPlaybackDeviceMute.index,
-      'params': jsonEncode({}),
-    }).then((value) => value == 'true');
-  }
+  Future<bool?> getAudioPlaybackDeviceMute();
 
   ///
   /// Starts the audio playback device test.
@@ -190,26 +95,14 @@ class RtcDeviceManager {
   /// Supported file sample rates: 8000, 16000, 32000, 44100, and 48000 Hz.
   ///
   ///
-  Future<void> startAudioPlaybackDeviceTest(String testAudioFilePath) {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMStartPlaybackDeviceTest.index,
-      'params': jsonEncode({
-        'testAudioFilePath': testAudioFilePath,
-      }),
-    });
-  }
+  Future<void> startAudioPlaybackDeviceTest(String testAudioFilePath);
 
   ///
   /// Stops the audio playback device test.
   /// This method stops the audio playback device test. You must call this method to stop the test after calling the startAudioPlaybackDeviceTest method.
   /// Ensure that you call this method before joining a channel.
   ///
-  Future<void> stopAudioPlaybackDeviceTest() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMStopPlaybackDeviceTest.index,
-      'params': jsonEncode({}),
-    });
-  }
+  Future<void> stopAudioPlaybackDeviceTest();
 
   ///
   /// Enumerates the audio capture devices.
@@ -218,15 +111,7 @@ class RtcDeviceManager {
   /// **return** Success: Returns a MediaDeviceInfo list that contains the device ID and device name of all the audio recording devices.
   /// Failure: null.
   ///
-  Future<List<MediaDeviceInfo>> enumerateAudioRecordingDevices() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMEnumerateRecordingDevices.index,
-      'params': jsonEncode({}),
-    }).then((value) => List<MediaDeviceInfo>.of(
-            List<Map<String, dynamic>>.from(jsonDecode(value)).map((e) {
-          return MediaDeviceInfo.fromJson(e);
-        })));
-  }
+  Future<List<MediaDeviceInfo>> enumerateAudioRecordingDevices();
 
   ///
   /// Sets the audio capture device.
@@ -235,14 +120,7 @@ class RtcDeviceManager {
   /// Param [deviceId] The ID of the audio capture device. You can get the device ID by calling enumerateAudioRecordingDevices. Plugging or unplugging the audio device does not change the device ID.
   ///
   ///
-  Future<void> setAudioRecordingDevice(String deviceId) {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMSetRecordingDevice.index,
-      'params': jsonEncode({
-        'deviceId': deviceId,
-      }),
-    });
-  }
+  Future<void> setAudioRecordingDevice(String deviceId);
 
   ///
   /// Gets the current audio recording device.
@@ -250,12 +128,7 @@ class RtcDeviceManager {
   ///
   /// **return** The current audio recording device.
   ///
-  Future<String?> getAudioRecordingDevice() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMGetRecordingDevice.index,
-      'params': jsonEncode({}),
-    });
-  }
+  Future<String?> getAudioRecordingDevice();
 
   ///
   /// Retrieves the audio capture device information associated with the device ID and device name.
@@ -263,13 +136,7 @@ class RtcDeviceManager {
   ///
   /// **return** A MediaDeviceInfo class that contains the device ID and device name of all the audio recording devices.
   ///
-  Future<MediaDeviceInfo?> getAudioRecordingDeviceInfo() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMGetRecordingDeviceInfo.index,
-      'params': jsonEncode({}),
-    }).then((value) =>
-        value != null ? MediaDeviceInfo.fromJson(jsonDecode(value)) : null);
-  }
+  Future<MediaDeviceInfo?> getAudioRecordingDeviceInfo();
 
   ///
   /// Sets the volume of the audio capture device.
@@ -277,14 +144,7 @@ class RtcDeviceManager {
   ///
   /// Param [volume] The volume of the audio recording device. The value ranges between 0 (lowest volume) and 255 (highest volume).
   ///
-  Future<void> setAudioRecordingDeviceVolume(int volume) {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMSetRecordingDeviceVolume.index,
-      'params': jsonEncode({
-        'volume': volume,
-      }),
-    });
-  }
+  Future<void> setAudioRecordingDeviceVolume(int volume);
 
   ///
   /// Retrieves the volume of the audio recording device.
@@ -292,12 +152,7 @@ class RtcDeviceManager {
   ///
   /// **return** The volume of the audio recording device. The value ranges between 0 (lowest volume) and 255 (highest volume).
   ///
-  Future<int?> getAudioRecordingDeviceVolume() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMGetRecordingDeviceVolume.index,
-      'params': jsonEncode({}),
-    }).then((value) => int.tryParse(value));
-  }
+  Future<int?> getAudioRecordingDeviceVolume();
 
   ///
   /// Sets the mute status of the audio capture device.
@@ -308,14 +163,7 @@ class RtcDeviceManager {
   /// false: Unmute the audio capture device.
   ///
   ///
-  Future<void> setAudioRecordingDeviceMute(bool mute) {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMSetRecordingDeviceMute.index,
-      'params': jsonEncode({
-        'mute': mute,
-      }),
-    });
-  }
+  Future<void> setAudioRecordingDeviceMute(bool mute);
 
   ///
   /// Gets the microphone's mute status.
@@ -324,12 +172,7 @@ class RtcDeviceManager {
   /// **return** true: The microphone is muted.
   /// false: The microphone is unmuted.
   ///
-  Future<bool?> getAudioRecordingDeviceMute() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMGetRecordingDeviceMute.index,
-      'params': jsonEncode({}),
-    }).then((value) => value == 'true');
-  }
+  Future<bool?> getAudioRecordingDeviceMute();
 
   ///
   /// Starts the audio capture device test.
@@ -338,26 +181,14 @@ class RtcDeviceManager {
   ///
   /// Param [indicationInterval] The time interval (ms) at which the SDK triggers the audioVolumeIndication callback. Agora recommends a setting greater than 200 ms. This value must not be less than 10 ms; otherwise, you can not receive the audioVolumeIndication callback.
   ///
-  Future<void> startAudioRecordingDeviceTest(int indicationInterval) {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMStartRecordingDeviceTest.index,
-      'params': jsonEncode({
-        'indicationInterval': indicationInterval,
-      }),
-    });
-  }
+  Future<void> startAudioRecordingDeviceTest(int indicationInterval);
 
   ///
   /// Stops the audio capture device test.
   /// This method stops the audio capture device test. You must call this method to stop the test after calling the startAudioRecordingDeviceTest method.
   /// Ensure that you call this method before joining a channel.
   ///
-  Future<void> stopAudioRecordingDeviceTest() {
-    return _invokeAudioMethod('callApi', {
-      'apiType': _ApiTypeAudioDeviceManager.kADMStopRecordingDeviceTest.index,
-      'params': jsonEncode({}),
-    });
-  }
+  Future<void> stopAudioRecordingDeviceTest();
 
   ///
   /// Starts an audio device loopback test.
@@ -368,28 +199,14 @@ class RtcDeviceManager {
   ///
   /// Param [indicationInterval] The time interval (ms) at which the SDK triggers the audioVolumeIndication callback. Agora recommends a setting greater than 200 ms. This value must not be less than 10 ms; otherwise, you can not receive the audioVolumeIndication callback.
   ///
-  Future<void> startAudioDeviceLoopbackTest(int indicationInterval) {
-    return _invokeAudioMethod('callApi', {
-      'apiType':
-          _ApiTypeAudioDeviceManager.kADMStartAudioDeviceLoopbackTest.index,
-      'params': jsonEncode({
-        'indicationInterval': indicationInterval,
-      }),
-    });
-  }
+  Future<void> startAudioDeviceLoopbackTest(int indicationInterval);
 
   ///
   /// Stops the audio device loopback test.
   /// Ensure that you call this method before joining a channel.
   /// Ensure that you call this method to stop the loopback test after calling the startAudioDeviceLoopbackTest method.
   ///
-  Future<void> stopAudioDeviceLoopbackTest() {
-    return _invokeAudioMethod('callApi', {
-      'apiType':
-          _ApiTypeAudioDeviceManager.kADMStopAudioDeviceLoopbackTest.index,
-      'params': jsonEncode({}),
-    });
-  }
+  Future<void> stopAudioDeviceLoopbackTest();
 
   ///
   /// Enumerates the video devices.
@@ -398,15 +215,7 @@ class RtcDeviceManager {
   /// **return** Success: Returns a MediaDeviceInfo that contains all the video devices.
   /// Failure: null.
   ///
-  Future<List<MediaDeviceInfo>> enumerateVideoDevices() {
-    return _invokeVideoMethod('callApi', {
-      'apiType': _ApiTypeVideoDeviceManager.kVDMEnumerateVideoDevices.index,
-      'params': jsonEncode({}),
-    }).then((value) => List<MediaDeviceInfo>.of(
-            List<Map<String, dynamic>>.from(jsonDecode(value)).map((e) {
-          return MediaDeviceInfo.fromJson(e);
-        })));
-  }
+  Future<List<MediaDeviceInfo>> enumerateVideoDevices();
 
   ///
   /// Specifies the video capture device with the device ID.
@@ -415,14 +224,7 @@ class RtcDeviceManager {
   /// Param [deviceId] The device ID. You can get the device ID by calling enumerateVideoDevices.
   ///
   ///
-  Future<void> setVideoDevice(String deviceId) {
-    return _invokeVideoMethod('callApi', {
-      'apiType': _ApiTypeVideoDeviceManager.kVDMSetDevice.index,
-      'params': jsonEncode({
-        'deviceId': deviceId,
-      }),
-    });
-  }
+  Future<void> setVideoDevice(String deviceId);
 
   ///
   /// Retrieves the current video capture device.
@@ -430,10 +232,9 @@ class RtcDeviceManager {
   ///
   /// **return** The video capture device.
   ///
-  Future<String?> getVideoDevice() {
-    return _invokeVideoMethod('callApi', {
-      'apiType': _ApiTypeVideoDeviceManager.kVDMGetDevice.index,
-      'params': jsonEncode({}),
-    });
-  }
+  Future<String?> getVideoDevice();
+
+  Future<void> followSystemPlaybackDevice(bool enable);
+
+  Future<void> followSystemRecordingDevice(bool enable);
 }

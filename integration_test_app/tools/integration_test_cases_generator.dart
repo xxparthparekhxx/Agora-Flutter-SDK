@@ -13,6 +13,7 @@ import 'package:analyzer/error/error.dart' show AnalysisError;
 import 'package:file/file.dart' as file;
 import 'package:file/local.dart';
 import 'package:path/path.dart' as path;
+import 'package:dart_style/dart_style.dart';
 
 class CallApiInvoke {
   late String apiType;
@@ -806,7 +807,7 @@ abstract class DefaultGenerator implements Generator {
       testCases.join('\n'),
     );
 
-    return output;
+    return DartFormatter().format(output);
   }
 }
 
@@ -912,9 +913,9 @@ void rtcEngineEventHandlerSomkeTestCases() {
 ''';
 
     final output = testCasesContentTemplate.replaceAll(
-        '{{TEST_CASES_CONTENT}}', testCases.join(""));
+        '{{TEST_CASES_CONTENT}}', testCases.join("\n"));
 
-    sink.writeln(output);
+    sink.writeln(DartFormatter().format(output));
   }
 
   @override
@@ -1020,9 +1021,9 @@ void rtcChannelEventHandlerSomkeTestCases() {
 ''';
 
     final output = testCasesContentTemplate.replaceAll(
-        '{{TEST_CASES_CONTENT}}', testCases.join(""));
+        '{{TEST_CASES_CONTENT}}', testCases.join("\n"));
 
-    sink.writeln(output);
+    sink.writeln(DartFormatter().format(output));
   }
 
   @override
@@ -1297,7 +1298,9 @@ void main(List<String> args) {
     path.join(srcDir, 'enums.dart'),
     path.join(srcDir, 'classes.dart'),
     path.join(srcDir, 'rtc_device_manager.dart'),
-    path.join(srcDir, 'events.dart'),
+    path.join(srcDir, 'rtc_channel_event_handler.dart'),
+    path.join(srcDir, 'rtc_engine_event_handler.dart'),
+    path.join(srcDir, 'event_types.dart'),
   ];
   final AnalysisContextCollection collection = AnalysisContextCollection(
     includedPaths: includedPaths,

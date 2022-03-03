@@ -2488,6 +2488,35 @@ enum RtmpStreamingErrorCode {
   ///
   FormatNotSupported,
 
+  /// 11: The user role is not host, so the user cannot use the CDN live streaming function.
+  /// Check your application code logic.
+  ///
+  /// @since v3.6.0
+  @JsonValue(11)
+  NotBroadcaster,
+
+  /// 13: The `updateRtmpTranscoding` or `setLiveTranscoding` method is called to update the transcoding configuration in a scenario where there is streaming without transcoding.
+  /// Check your application code logic.
+  ///
+  /// @since v3.6.0
+  ///
+  @JsonValue(13)
+  TranscodingNoMixStream,
+
+  /// 14: Errors occurred in the host's network.
+  ///
+  /// @since v3.6.0
+  @JsonValue(14)
+  NetDown,
+
+  /// 15: Your App ID does not have permission to use the CDN live streaming function.
+  /// Refer to [Prerequisites](https://docs.agora.io/en/Interactive%20Broadcast/cdn_streaming_windows?platform=Windows#prerequisites) to
+  /// enable the CDN live streaming permission.
+  ///
+  /// @since v3.6.0
+  @JsonValue(15)
+  InvalidAppid,
+
   @JsonValue(100)
   UnPublishOK,
 }
@@ -3213,8 +3242,26 @@ enum RtmpStreamingEvent {
   ///
   FailedLoadImage,
 
+  /// 2: The streaming URL is already being used for CDN live streaming. If you want to start new streaming, use a new streaming URL.
+  ///
+  /// @since v3.4.5
+  ///
   @JsonValue(2)
   UrlAlreadyInUse,
+
+  /// 3: The feature is not supported.
+  ///
+  /// @since v3.6.0
+  ///
+  @JsonValue(3)
+  AdvancedFeatureNotSupport,
+
+  /// 4: Reserved.
+  ///
+  /// @since v3.6.0
+  ///
+  @JsonValue(4)
+  RequestTooOften,
 }
 
 ///
@@ -4063,34 +4110,37 @@ enum RecorderState {
 }
 
 /* enum-RecorderError */
-enum RecorderError {
+enum RecorderErrorCode {
   @JsonValue(0)
-  RECORDER_ERROR_NONE,
+  None,
 
   @JsonValue(1)
-  RECORDER_ERROR_WRITE_FAILED,
+  WriteFailed,
 
   @JsonValue(2)
-  RECORDER_ERROR_NO_STREAM,
+  NoStream,
 
   @JsonValue(3)
-  RECORDER_ERROR_OVER_MAX_DURATION,
+  OverMaxDuration,
 
   @JsonValue(4)
-  RECORDER_ERROR_CONFIG_CHANGED,
+  ConfigChanged,
 
   @JsonValue(5)
-  RECORDER_ERROR_CUSTOM_STREAM_DETECTED,
+  CustomStreamDetected,
 }
 
 /* enum-AgoraMediaRecorderContainerFormat */
-enum AgoraMediaRecorderContainerFormat {
+enum MediaRecorderContainerFormat {
   @JsonValue(1)
   MP4,
+
+  @JsonValue(2)
+  FLV,
 }
 
 /* enum-AgoraMediaRecorderStreamType */
-enum AgoraMediaRecorderStreamType {
+enum MediaRecorderStreamType {
   @JsonValue(1)
   Audio,
 
@@ -4099,4 +4149,189 @@ enum AgoraMediaRecorderStreamType {
 
   @JsonValue(3)
   Both,
+}
+
+/// The local  proxy mode type.
+enum LocalProxyMode {
+  /// 0: Connect local proxy with high priority, if not connected to local proxy, fallback to sdrtn.
+  @JsonValue(0)
+  ConnectivityFirst,
+
+  /// 1: Only connect local proxy
+  @JsonValue(1)
+  LocalOnly,
+}
+
+/// The low-light enhancement mode.
+enum LowLightEnhanceMode {
+  /// 0: (Default) Automatic mode. The SDK automatically enables or disables the
+  /// low-light enhancement feature according to the ambient light to compensate
+  /// for the lighting level or prevent overexposure, as necessary.
+  @JsonValue(0)
+  Auto,
+
+  /// Manual mode. Users need to enable or disable the low-light enhancement
+  /// feature manually.
+  @JsonValue(1)
+  Manual,
+}
+
+/// The low-light enhancement level.
+enum LowLightEnhanceLevel {
+  /// 0: (Default) Promotes video quality during low-light enhancement. It processes
+  /// the brightness, details, and noise of the video image. The performance consumption
+  /// is moderate, the processing speed is moderate, and the overall video quality is optimal.
+  @JsonValue(0)
+  HighQuality,
+
+  /// Promotes performance during low-light enhancement. It processes the brightness
+  /// and details of the video image. The processing speed is faster.
+  @JsonValue(1)
+  Fast
+}
+
+/// The video noise reduction mode.
+enum VideoDenoiserMode {
+  /// 0: (Default) Automatic mode. The SDK automatically enables or disables the video noise reduction feature according to the ambient light.
+  @JsonValue(0)
+  Auto,
+
+  /// Manual mode. Users need to enable or disable the video noise reduction feature manually.
+  @JsonValue(1)
+  Manual,
+}
+
+/// The video noise reduction level.
+enum VideoDenoiserLevel {
+  /// 0: (Default) Promotes video quality during video noise reduction. `HIGH_QUALITY`
+  /// balances performance consumption and video noise reduction quality.
+  /// The performance consumption is moderate, the video noise reduction speed is
+  /// moderate, and the overall video quality is optimal.
+  @JsonValue(0)
+  HighQuality,
+
+  /// Promotes reducing performance consumption during video noise reduction.
+  /// `FAST` prioritizes reducing performance consumption over video noise reduction quality.
+  /// The performance consumption is lower, and the video noise reduction speed is
+  /// faster. To avoid a noticeable shadowing effect (shadows trailing behind moving
+  /// objects) in the processed video, Agora recommends that you use `FAST` when the camera is fixed.
+
+  @JsonValue(1)
+  Fast,
+
+  /// Enhanced video noise reduction. `STRENGTH` prioritizes video noise reduction
+  /// quality over reducing performance consumption. The performance consumption is higher,
+  /// the video noise reduction speed is slower, and the video noise reduction quality is better.
+  /// If `HIGH_QUALITY` is not enough for your video noise reduction needs, you can use `STRENGTH`.
+  @JsonValue(2)
+  Strength,
+}
+
+/// The error code of the window blocking during screen sharing.
+///
+/// @since v3.6.1
+enum ExcludeWindowError {
+  /// -1: Fails to block the window during screen sharing. The user's graphics
+  /// card does not support window blocking.
+  @JsonValue(-1)
+  Fail,
+
+  /// 0: Reserved.
+  @JsonValue(0)
+  None,
+}
+
+/// The reason for failure of changing role.
+///
+/// @since v3.6.1
+enum ClientRoleChangeFailedReason {
+  /// 1: Too many broadcasters in the channel.
+  @JsonValue(1)
+  TooManyBroadcasters,
+
+  /// 2: Change operation not authorized.
+  @JsonValue(2)
+  NotAuthorized,
+
+  /// 3: Change operation timer out.
+  @JsonValue(3)
+  RequestTimeOut,
+
+  /// 4: Change operation is interrupted since we lost connection with agora service.
+  @JsonValue(4)
+  ConnectionFailed,
+}
+
+/// The reason of notifying the user of a message.
+enum WlaccMessageReason {
+  /// WIFI signal is weak.
+  @JsonValue(0)
+  WeakSignal,
+
+  /// Channel congestion.
+  @JsonValue(1)
+  ChannelCongestion,
+}
+
+/// Suggest an action for the user.
+enum WlaccSuggestAction {
+  /// Please get close to AP.
+  @JsonValue(0)
+  CloseToWifi,
+
+  /// The user is advised to connect to the prompted SSID.
+  @JsonValue(1)
+  ConnectSsid,
+
+  /// The user is advised to check whether the AP supports 5G band and enable 5G
+  /// band (the aciton link is attached), or purchases an AP that supports 5G.
+  /// AP does not support 5G band.
+  @JsonValue(2)
+  Check5g,
+
+  /// The user is advised to change the SSID of the 2.4G or 5G band (the aciton link is attached).
+  /// The SSID of the 2.4G band AP is the same as that of the 5G band.
+  @JsonValue(3)
+  ModifySsid,
+}
+
+///  The proxy type.
+///
+/// @since v3.6.2
+enum ProxyType {
+  /// 0: Reserved for future use.
+  @JsonValue(0)
+  None,
+
+  /// 1: The cloud proxy for the UDP protocol, that is, the Force UDP cloud proxy mode.
+  /// In this mode, the SDK always transmits data over UDP.
+  @JsonValue(1)
+  UDP,
+
+  /// 2: The cloud proxy for the TCP (encryption) protocol, that is, the Force TCP
+  /// cloud proxy mode. In this mode, the SDK always transmits data over TLS 443.
+  @JsonValue(2)
+  TCP,
+
+  /// 3: Reserved for future use.
+  @JsonValue(3)
+  Local,
+
+  /// 4: The automatic mode. In this mode, the SDK attempts a direct connection to SD-RTN™
+  /// and automatically switches to TLS 443 if the attempt fails.
+  @JsonValue(4)
+  TCPProxyAutoFallbackType,
+}
+
+/// The volume type.
+///
+/// @since v3.6.2
+enum AudioDeviceTestVolumeType {
+  /// 0: The volume of the audio capturing device.
+  @JsonValue(0)
+  AudioTestRecordingVolume,
+
+  /// 1: The volume of the audio playback device.
+  @JsonValue(1)
+  AudioTestPlaybackVolume,
 }

@@ -43,6 +43,10 @@ android {
 
   sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
+
+    if (isDev(project)) {
+      main.jniLibs.srcDirs += 'libs'
+    }
   }
 
   lintOptions {
@@ -51,6 +55,16 @@ android {
 }
 
 dependencies {
-  api 'com.github.agorabuilder:iris-rtc:3.5.2'
+  if (isDev(project)) {
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+  } else {
+    api 'com.github.agorabuilder:iris-rtc:3.5.2'
+  }
+
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${safeExtGet('kotlin_version', "$agora_rtc_engine_kt_version")}"
+}
+
+static boolean isDev(Project project) {
+  def devFile = project.file('.plugin_dev')
+  return devFile.exists()
 }
