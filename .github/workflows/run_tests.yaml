@@ -2,7 +2,7 @@ name: Run tests
 
 on:
   workflow_run:
-    workflows: [Flutter static analysis check]
+    workflows: [Static analysis]
     types:
       - completed
 
