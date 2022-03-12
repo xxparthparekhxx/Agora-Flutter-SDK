@@ -1,8 +1,9 @@
-name: Run tests
+name: Run_Tests
 
 on:
   workflow_run:
-    workflows: [Static analysis]
+    workflows: 
+      - Static_Analysis
     types:
       - completed
 
