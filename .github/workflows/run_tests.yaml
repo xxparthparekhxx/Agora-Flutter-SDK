@@ -9,7 +9,7 @@ on:
 jobs:
   integration_test_android:
     name: Run Flutter Android Integration Tests
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: macos-11
     timeout-minutes: 60
     env:
@@ -32,7 +32,7 @@ jobs:
 
   integration_test_ios:
     name: Run Flutter iOS Integration Tests
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: macos-11
     timeout-minutes: 60
     env:
@@ -49,7 +49,7 @@ jobs:
 
   integration_test_macos:
     name: Run Flutter macOS Integration Tests
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: macos-11
     timeout-minutes: 60
     env:
@@ -64,7 +64,7 @@ jobs:
 
   integration_test_windows:
     name: Run Flutter Windows Integration Tests
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: windows-2019
     timeout-minutes: 60
     env:
@@ -79,7 +79,7 @@ jobs:
 
   unittest_android:
     name: Run Android Unit Test
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -95,7 +95,7 @@ jobs:
 
   unittest_ios:
     name: Run iOS Unit Test
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: macos-11
     timeout-minutes: 60
     steps:
@@ -108,7 +108,7 @@ jobs:
   
   build_android:
     name: Build Android
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -125,7 +125,7 @@ jobs:
 
   build_ios:
     name: Build iOS
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: macos-11
     timeout-minutes: 60
     steps:
