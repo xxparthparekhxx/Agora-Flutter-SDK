@@ -56,7 +56,7 @@ android {
 
 dependencies {
   if (isDev(project)) {
-    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    api fileTree(dir: "libs", include: ["*.jar", "*.aar"])
   } else {
     api 'com.github.agorabuilder:iris-rtc:3.5.2'
   }

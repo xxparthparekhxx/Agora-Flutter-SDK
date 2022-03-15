@@ -15,9 +15,8 @@ using namespace agora::iris::rtc;
 void CallRtcEngineEvents(IrisRtcEnginePtr engine_ptr, const char *event_name)
 {
     IrisRtcEngine *irisRtcEngine = reinterpret_cast<IrisRtcEngine *>(engine_ptr);
-    IrisRtcEngineIntegrationTestDelegate *delegate = reinterpret_cast<IrisRtcEngineIntegrationTestDelegate *>(irisRtcEngine->GetDelegate());
-    FakeRtcEngine *fakeRtcEngine = reinterpret_cast<FakeRtcEngine *>(delegate->fakeRtcEngine_);
-    agora::rtc::IRtcEngineEventHandler *handler = fakeRtcEngine->event_handler_;
+    agora::iris::IrisEventHandler* irisEventHandler = irisRtcEngine->GetEventHandler();
+    agora::rtc::IRtcEngineEventHandler *handler = reinterpret_cast<agora::rtc::IRtcEngineEventHandler *>(irisEventHandler);
 
     if (event_name == nullptr || strcmp(event_name, "onWarning") == 0)
     {
@@ -481,11 +480,12 @@ void CallRtcEngineEvents(IrisRtcEnginePtr engine_ptr, const char *event_name)
 void CallRtcChannelEvents(IrisRtcEnginePtr engine_ptr, const char *event_name)
 {
     IrisRtcEngine *irisRtcEngine = reinterpret_cast<IrisRtcEngine *>(engine_ptr);
-    IrisRtcEngineIntegrationTestDelegate *delegate = reinterpret_cast<IrisRtcEngineIntegrationTestDelegate *>(irisRtcEngine->GetDelegate());
-    FakeRtcEngine *fakeRtcEngine = reinterpret_cast<FakeRtcEngine *>(delegate->fakeRtcEngine_);
-    agora::rtc::IChannelEventHandler *handler = fakeRtcEngine->channel_->channel_event_handler_;
 
-    IChannel *rtcChannel = fakeRtcEngine->channel_;
+    agora::iris::IrisEventHandler* irisEventHandler = irisRtcEngine->channel()->GetEventHandler();
+    agora::rtc::IChannelEventHandler *handler = reinterpret_cast<agora::rtc::IChannelEventHandler *>(irisEventHandler);
+
+    IChannel *rtcChannel = new FakeRtcChannel();
+    
     if (event_name == nullptr || strcmp(event_name, "onChannelWarning") == 0)
     {
         handler->onChannelWarning(rtcChannel, 8, "123");
@@ -668,4 +668,6 @@ void CallRtcChannelEvents(IrisRtcEnginePtr engine_ptr, const char *event_name)
                 CLIENT_ROLE_CHANGE_FAILED_REASON::CLIENT_ROLE_CHANGE_FAILED_BY_TOO_MANY_BROADCASTERS,
                 CLIENT_ROLE_TYPE::CLIENT_ROLE_BROADCASTER);
     }
+
+    delete rtcChannel;
 }
