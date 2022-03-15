@@ -318,7 +318,8 @@ class RtcEngineEventHandler {
   ///
   /// Param [state] The state of the local audio. For details, see AudioLocalState.
   ///
-  /// Param [error] Local audio state error codes. For details, see AudioLocalError.
+  /// Param [error] Local audio state error codes. For details, see
+  /// .
   ///
   LocalAudioStateCallback? localAudioStateChanged;
 
@@ -329,16 +330,11 @@ class RtcEngineEventHandler {
   /// Param [info] The information of an audio file. See AudioFileInfo.
   ///
   /// Param [error] The information acquisition state. See AudioFileInfoError.
+  ///
   @Deprecated('Use requestAudioFileInfo instead')
   RequestAudioFileInfoCallback? requestAudioFileInfoCallback;
 
-  ///
-  /// Reports the information of an audio file.
-  /// After successfully calling getAudioFileInfo, the SDK triggers this callback to report the information of the audio file, such as the file path and duration.
-  ///
-  /// Param [info] The information of an audio file. See AudioFileInfo.
-  ///
-  /// Param [error] The information acquisition state. See AudioFileInfoError.
+/* doc_missing: callback-engine-requestAudioFileInfo */
   RequestAudioFileInfoCallback? requestAudioFileInfo;
 
   ///
@@ -357,15 +353,16 @@ class RtcEngineEventHandler {
   FallbackCallback? localPublishFallbackToAudioOnly;
 
   ///
-  /// Occurs when the remote media stream falls back to audio-only stream due to poor network conditions or switches back to the video stream after the network conditions improve.
-  /// If you call setRemoteSubscribeFallbackOption and set option as AudioOnly, the SDK triggers this callback when the remote media stream falls back to audio-only mode due to poor downlink conditions, or when the remote media stream switches back to the video after the downlink network condition improves.
-  /// Once the remote media stream switches to the low stream due to poor network conditions, you can monitor the stream switch between a high and low stream in the RemoteVideoStats callback.
+  /// Occurs when the remote media stream falls back to the audio-only stream due to poor network conditions or switches back to the video stream after the network conditions improve.
+  /// If you call
+  /// and set option as AudioOnly, the SDK triggers this callback when the remote media stream falls back to audio-only mode due to poor uplink conditions, or when the remote media stream switches back to the video after the downlink network condition improves.
+  /// Once the remote media stream switches to the low-quality stream due to poor network conditions, you can monitor the stream switch between a high-quality and low-quality stream in the remoteVideoStats callback.
   ///
-  /// Param [uid] The ID of the remote user.
+  /// Param [uid] The user ID of the remote user.
   ///
   /// Param [isFallbackOrRecover]
-  ///  true: The remotely subscribed media stream falls back to audio-only due to poor network conditions.
-  ///  false: The remotely subscribed media stream switches back to the video stream after the network conditions improved.
+  /// true: The remotely subscribed media stream falls back to audio-only due to poor network conditions.
+  /// false: The remotely subscribed media stream switches back to the video stream after the network conditions improved.
   ///
   ///
   ///
@@ -446,7 +443,6 @@ class RtcEngineEventHandler {
   /// Bad (4): Users cannot communicate smoothly.
   /// VBad (5): The quality is so bad that users can barely communicate.
   /// Down (6): The network is down, and users cannot communicate at all.
-  ///
   /// See
   /// NetworkQuality.
   ///
@@ -478,7 +474,6 @@ class RtcEngineEventHandler {
   /// Down (6): The network is down, and users cannot communicate at all.
   ///
   ///
-  ///
   /// Param [rxQuality] Downlink network quality rating of the user in terms of packet loss rate,
   /// average RTT, and jitter of the downlink network.
   /// Unknown (0): The quality is unknown.
@@ -488,7 +483,6 @@ class RtcEngineEventHandler {
   /// Bad (4): Users cannot communicate smoothly.
   /// VBad (5): The quality is so bad that users can barely communicate.
   /// Down (6): The network is down, and users cannot communicate at all.
-  ///
   ///
   ///
   NetworkQualityWithUidCallback? networkQuality;
@@ -562,25 +556,28 @@ class RtcEngineEventHandler {
   /// Occurs when the playback of the local audio effect file finishes.
   /// This callback occurs when the local audio effect file finishes playing.
   ///
-  /// Param [soundId] The ID of the audio effect. Each audio effect has a unique ID.
+  /// Param [soundId] The audio effect ID. The ID of each audio effect file is unique.
   ///
   SoundIdCallback? audioEffectFinished;
 
   ///
   /// Occurs when the state of the RTMP or RTMPS streaming changes.
-  /// The SDK triggers this callback to report the result of the local user calling the addPublishStreamUrl or removePublishStreamUrl method. When the RTMP/RTMPS streaming status changes, the SDK triggers this callback and report the URL address and the current status of the streaming. This callback indicates the state of the RTMP or RTMPS streaming. When exceptions occur, you can troubleshoot issues by referring to the detailed error descriptions in the error code parameter.
+  /// When the CDN live streaming state changes, the SDK triggers this callback to report the current state and the reason why the state has changed. When exceptions occur, you can troubleshoot issues by referring to the detailed error descriptions in the error code parameter.
   ///
   /// Param [url] The CDN streaming URL.
   ///
-  /// Param [state] The RTMP or RTMPS streaming state, see RtmpStreamingState. When the streaming status is Failure(4), you can view the error information in the errorCode parameter.
+  /// Param [state] The RTMP or RTMPS streaming state, see
+  /// . When the streaming status is Failure(4), you can view the error information in the errorCode parameter.
   ///
-  /// Param [errCode] The detailed error information for streaming, see RtmpStreamingErrorCode.
+  /// Param [errCode] The detailed error information for streaming, see
+  /// .
   ///
   RtmpStreamingStateCallback? rtmpStreamingStateChanged;
 
   ///
   /// Occurs when the publisher's transcoding is updated.
-  /// When the LiveTranscoding class in the setLiveTranscoding method updates, the SDK triggers the transcodingUpdated callback to report the update information.
+  /// When the LiveTranscoding class in the
+  /// method updates, the SDK triggers the transcodingUpdated callback to report the update information.
   /// If you call the setLiveTranscoding
   /// method to set the LiveTranscoding class for the first time, the
   /// SDK does not trigger this callback.
@@ -935,7 +932,6 @@ class RtcEngineEventHandler {
   /// Down (6): The network is down, and users cannot communicate at all.
   ///
   ///
-  ///
   /// Param [delay] The network delay (ms) from the sender to the receiver, including the delay
   /// caused by audio sampling pre-processing, network transmission, and network
   /// jitter buffering.
@@ -1071,7 +1067,8 @@ class RtcEngineEventHandler {
   ///
   /// Param [url] The RTMP or RTMPS streaming URL.
   ///
-  /// Param [eventCode] The event code of the streaming. For details, see RtmpStreamingEvent.
+  /// Param [eventCode] The event code of the streaming. For details, see
+  /// .
   ///
   RtmpStreamingEventCallback? rtmpStreamingEvent;
 
@@ -1109,10 +1106,11 @@ class RtcEngineEventHandler {
   ///
   UploadLogResultCallback? uploadLogResult;
 
-  /* callback-engine-airPlayIsConnected */
+/* doc_missing: callback-engine-airPlayIsConnected */
   @Deprecated('Use airPlayConnected instead')
   EmptyCallback? airPlayIsConnected;
 
+/* doc_missing: callback-engine-airPlayConnected */
   EmptyCallback? airPlayConnected;
 
   ///
@@ -1211,16 +1209,22 @@ class RtcEngineEventHandler {
   ///
   SnapshotTakenCallback? snapshotTaken;
 
+/* doc_missing: callback-engine-screenCaptureInfoUpdated */
   OnScreenCaptureInfoUpdated? screenCaptureInfoUpdated;
 
+/* doc_missing: callback-engine-clientRoleChangeFailed */
   OnClientRoleChangeFailed? clientRoleChangeFailed;
 
+/* doc_missing: callback-engine-wlAccMessage */
   OnWlAccMessage? wlAccMessage;
 
+/* doc_missing: callback-engine-wlAccStats */
   OnWlAccStats? wlAccStats;
 
+/* doc_missing: callback-engine-proxyConnected */
   OnProxyConnected? proxyConnected;
 
+/* doc_missing: callback-engine-audioDeviceTestVolumeIndication */
   OnAudioDeviceTestVolumeIndication? audioDeviceTestVolumeIndication;
 
   /// @nodoc
