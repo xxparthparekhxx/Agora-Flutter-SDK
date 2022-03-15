@@ -427,7 +427,7 @@ class RtcChannelEventHandler {
   ///
   UserSuperResolutionEnabledCallback? userSuperResolutionEnabled;
 
-/* doc_missing: callback-channel-clientRoleChangeFailed */
+/* TODO(doc): callback-channel-clientRoleChangeFailed */
   OnClientRoleChangeFailed? clientRoleChangeFailed;
 
   /// Constructs the [RtcChannelEventHandler].

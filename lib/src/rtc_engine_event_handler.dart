@@ -334,7 +334,7 @@ class RtcEngineEventHandler {
   @Deprecated('Use requestAudioFileInfo instead')
   RequestAudioFileInfoCallback? requestAudioFileInfoCallback;
 
-/* doc_missing: callback-engine-requestAudioFileInfo */
+/* TODO(doc): callback-engine-requestAudioFileInfo */
   RequestAudioFileInfoCallback? requestAudioFileInfo;
 
   ///
@@ -1106,11 +1106,11 @@ class RtcEngineEventHandler {
   ///
   UploadLogResultCallback? uploadLogResult;
 
-/* doc_missing: callback-engine-airPlayIsConnected */
+/* TODO(doc): callback-engine-airPlayIsConnected */
   @Deprecated('Use airPlayConnected instead')
   EmptyCallback? airPlayIsConnected;
 
-/* doc_missing: callback-engine-airPlayConnected */
+/* TODO(doc): callback-engine-airPlayConnected */
   EmptyCallback? airPlayConnected;
 
   ///
@@ -1209,22 +1209,22 @@ class RtcEngineEventHandler {
   ///
   SnapshotTakenCallback? snapshotTaken;
 
-/* doc_missing: callback-engine-screenCaptureInfoUpdated */
+/* TODO(doc): callback-engine-screenCaptureInfoUpdated */
   OnScreenCaptureInfoUpdated? screenCaptureInfoUpdated;
 
-/* doc_missing: callback-engine-clientRoleChangeFailed */
+/* TODO(doc): callback-engine-clientRoleChangeFailed */
   OnClientRoleChangeFailed? clientRoleChangeFailed;
 
-/* doc_missing: callback-engine-wlAccMessage */
+/* TODO(doc): callback-engine-wlAccMessage */
   OnWlAccMessage? wlAccMessage;
 
-/* doc_missing: callback-engine-wlAccStats */
+/* TODO(doc): callback-engine-wlAccStats */
   OnWlAccStats? wlAccStats;
 
-/* doc_missing: callback-engine-proxyConnected */
+/* TODO(doc): callback-engine-proxyConnected */
   OnProxyConnected? proxyConnected;
 
-/* doc_missing: callback-engine-audioDeviceTestVolumeIndication */
+/* TODO(doc): callback-engine-audioDeviceTestVolumeIndication */
   OnAudioDeviceTestVolumeIndication? audioDeviceTestVolumeIndication;
 
   /// @nodoc

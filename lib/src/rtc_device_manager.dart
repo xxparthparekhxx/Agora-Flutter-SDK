@@ -199,18 +199,18 @@ abstract class RtcDeviceManager {
   ///
   Future<void> stopAudioDeviceLoopbackTest();
 
-  /* doc_missing: api-audio-enumerateVideoDevices */
+  /* TODO(doc): api-audio-enumerateVideoDevices */
   Future<List<MediaDeviceInfo>> enumerateVideoDevices();
 
-  /* doc_missing: api-audio-setVideoDevice */
+  /* TODO(doc): api-audio-setVideoDevice */
   Future<void> setVideoDevice(String deviceId);
 
-  /* doc_missing: api-audio-getVideoDevice */
+  /* TODO(doc): api-audio-getVideoDevice */
   Future<String?> getVideoDevice();
 
-  /* doc_missing: api-audio-followSystemPlaybackDevice */
+  /* TODO(doc): api-audio-followSystemPlaybackDevice */
   Future<void> followSystemPlaybackDevice(bool enable);
 
-  /* doc_missing: api-audio-followSystemRecordingDevice */
+  /* TODO(doc): api-audio-followSystemRecordingDevice */
   Future<void> followSystemRecordingDevice(bool enable);
 }

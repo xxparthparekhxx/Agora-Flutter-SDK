@@ -21,7 +21,7 @@ import 'rtc_channel_event_handler.dart';
 abstract class RtcChannel {
   String get channelId;
 
-  /* doc_missing: api-channel-create */
+  /* TODO(doc): api-channel-create */
   static Future<RtcChannel> create(String channelId) {
     return RtcChannelImpl.create(channelId);
   }
@@ -807,18 +807,18 @@ abstract class RtcChannel {
   ///
   Future<void> sendStreamMessage(int streamId, Uint8List message);
 
-  /* doc_missing: api-channel-setAVSyncSource */
+  /* TODO(doc): api-channel-setAVSyncSource */
   Future<void> setAVSyncSource(String channelId, int uid);
 
-  /* doc_missing: api-channel-startRtmpStreamWithoutTranscoding */
+  /* TODO(doc): api-channel-startRtmpStreamWithoutTranscoding */
   Future<void> startRtmpStreamWithoutTranscoding(String url);
 
-  /* doc_missing: api-channel-startRtmpStreamWithTranscoding */
+  /* TODO(doc): api-channel-startRtmpStreamWithTranscoding */
   Future<void> startRtmpStreamWithTranscoding(LiveTranscoding transcoding);
 
-  /* doc_missing: api-channel-updateRtmpTranscoding */
+  /* TODO(doc): api-channel-updateRtmpTranscoding */
   Future<void> updateRtmpTranscoding(LiveTranscoding transcoding);
 
-  /* doc_missing: api-channel-stopRtmpStream */
+  /* TODO(doc): api-channel-stopRtmpStream */
   Future<void> stopRtmpStream(String url);
 }

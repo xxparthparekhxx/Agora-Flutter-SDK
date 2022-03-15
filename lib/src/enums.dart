@@ -1497,7 +1497,7 @@ enum EncryptionMode {
   AES256GCM2,
 }
 
-/* doc_missing: enum-ErrorCode */
+/* TODO(doc): enum-ErrorCode */
 enum ErrorCode {
   @JsonValue(0)
   NoError,
@@ -2364,7 +2364,7 @@ enum VideoFrameRate {
   Fps60,
 }
 
-/* doc_missing: enum-BitRate */
+/* TODO(doc): enum-BitRate */
 enum BitRate {
   @JsonValue(0)
   Standard,
@@ -2604,7 +2604,7 @@ enum VideoStreamType {
   Low,
 }
 
-/* doc_missing: enum-WarningCode */
+/* TODO(doc): enum-WarningCode */
 enum WarningCode {
   @JsonValue(8)
   InvalidView,
@@ -2704,7 +2704,7 @@ enum WarningCode {
   SuperResolutionDeviceNotSupported,
 }
 
-/* doc_missing: enum-AudioChannel */
+/* TODO(doc): enum-AudioChannel */
 enum AudioChannel {
   @JsonValue(0)
   Channel0,
@@ -3589,7 +3589,7 @@ enum MediaDeviceStateType {
   MediaDeviceStateUnrecommended,
 }
 
-/* doc_missing: enum-RecorderState */
+/* TODO(doc): enum-RecorderState */
 enum RecorderState {
   @JsonValue(-1)
   Error,
@@ -3601,7 +3601,7 @@ enum RecorderState {
   Stop,
 }
 
-/* doc_missing: enum-RecorderErrorCode */
+/* TODO(doc): enum-RecorderErrorCode */
 enum RecorderErrorCode {
   @JsonValue(0)
   None,
@@ -3622,7 +3622,7 @@ enum RecorderErrorCode {
   CustomStreamDetected,
 }
 
-/* doc_missing: enum-MediaRecorderContainerFormat */
+/* TODO(doc): enum-MediaRecorderContainerFormat */
 enum MediaRecorderContainerFormat {
   @JsonValue(1)
   MP4,
@@ -3631,7 +3631,7 @@ enum MediaRecorderContainerFormat {
   FLV,
 }
 
-/* doc_missing: enum-MediaRecorderStreamType */
+/* TODO(doc): enum-MediaRecorderStreamType */
 enum MediaRecorderStreamType {
   @JsonValue(1)
   Audio,
@@ -3643,7 +3643,7 @@ enum MediaRecorderStreamType {
   Both,
 }
 
-/* doc_missing: enum-LocalProxyMode */
+/* TODO(doc): enum-LocalProxyMode */
 enum LocalProxyMode {
   @JsonValue(0)
   ConnectivityFirst,
@@ -3652,7 +3652,7 @@ enum LocalProxyMode {
   LocalOnly,
 }
 
-/* doc_missing: enum-LowLightEnhanceMode */
+/* TODO(doc): enum-LowLightEnhanceMode */
 enum LowLightEnhanceMode {
   @JsonValue(0)
   Auto,
@@ -3661,7 +3661,7 @@ enum LowLightEnhanceMode {
   Manual,
 }
 
-/* doc_missing: enum-LowLightEnhanceLevel */
+/* TODO(doc): enum-LowLightEnhanceLevel */
 enum LowLightEnhanceLevel {
   @JsonValue(0)
   HighQuality,
@@ -3670,7 +3670,7 @@ enum LowLightEnhanceLevel {
   Fast
 }
 
-/* doc_missing: enum-VideoDenoiserMode */
+/* TODO(doc): enum-VideoDenoiserMode */
 enum VideoDenoiserMode {
   @JsonValue(0)
   Auto,
@@ -3679,7 +3679,7 @@ enum VideoDenoiserMode {
   Manual,
 }
 
-/* doc_missing: enum-VideoDenoiserLevel */
+/* TODO(doc): enum-VideoDenoiserLevel */
 enum VideoDenoiserLevel {
   @JsonValue(0)
   HighQuality,
@@ -3691,7 +3691,7 @@ enum VideoDenoiserLevel {
   Strength,
 }
 
-/* doc_missing: enum-ExcludeWindowError */
+/* TODO(doc): enum-ExcludeWindowError */
 enum ExcludeWindowError {
   @JsonValue(-1)
   Fail,
@@ -3700,7 +3700,7 @@ enum ExcludeWindowError {
   None,
 }
 
-/* doc_missing: enum-ClientRoleChangeFailedReason */
+/* TODO(doc): enum-ClientRoleChangeFailedReason */
 enum ClientRoleChangeFailedReason {
   @JsonValue(1)
   TooManyBroadcasters,
@@ -3715,7 +3715,7 @@ enum ClientRoleChangeFailedReason {
   ConnectionFailed,
 }
 
-/* doc_missing: enum-WlaccMessageReason */
+/* TODO(doc): enum-WlaccMessageReason */
 enum WlaccMessageReason {
   @JsonValue(0)
   WeakSignal,
@@ -3724,7 +3724,7 @@ enum WlaccMessageReason {
   ChannelCongestion,
 }
 
-/* doc_missing: enum-WlaccSuggestAction */
+/* TODO(doc): enum-WlaccSuggestAction */
 enum WlaccSuggestAction {
   @JsonValue(0)
   CloseToWifi,
@@ -3739,7 +3739,7 @@ enum WlaccSuggestAction {
   ModifySsid,
 }
 
-/* doc_missing: enum-ProxyType */
+/* TODO(doc): enum-ProxyType */
 enum ProxyType {
   @JsonValue(0)
   None,
@@ -3757,7 +3757,7 @@ enum ProxyType {
   TCPProxyAutoFallbackType,
 }
 
-/* doc_missing: enum-AudioDeviceTestVolumeType */
+/* TODO(doc): enum-AudioDeviceTestVolumeType */
 enum AudioDeviceTestVolumeType {
   @JsonValue(0)
   AudioTestRecordingVolume,

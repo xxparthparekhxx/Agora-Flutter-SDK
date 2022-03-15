@@ -116,7 +116,7 @@ class VideoEncoderConfiguration {
   @JsonKey(includeIfNull: false)
   VideoOutputOrientationMode? orientationMode;
 
-/* doc_missing: property-VideoEncoderConfiguration-degradationPrefer */
+/* TODO(doc): property-VideoEncoderConfiguration-degradationPrefer */
   @JsonKey(includeIfNull: false)
   DegradationPreference? degradationPrefer;
 
@@ -158,15 +158,15 @@ class BeautyOptions {
   @JsonKey(includeIfNull: false)
   LighteningContrastLevel? lighteningContrastLevel;
 
-/* doc_missing: property-BeautyOptions-lighteningLevel */
+/* TODO(doc): property-BeautyOptions-lighteningLevel */
   @JsonKey(includeIfNull: false)
   double? lighteningLevel;
 
-/* doc_missing: property-BeautyOptions-smoothnessLevel */
+/* TODO(doc): property-BeautyOptions-smoothnessLevel */
   @JsonKey(includeIfNull: false)
   double? smoothnessLevel;
 
-/* doc_missing: property-BeautyOptions-rednessLevel */
+/* TODO(doc): property-BeautyOptions-rednessLevel */
   @JsonKey(includeIfNull: false)
   double? rednessLevel;
 
@@ -376,7 +376,7 @@ class LiveTranscoding {
   @JsonKey(includeIfNull: false)
   int? videoBitrate;
 
-/* doc_missing: property-LiveTranscoding-videoFramerate */
+/* TODO(doc): property-LiveTranscoding-videoFramerate */
   @JsonKey(includeIfNull: false)
   VideoFrameRate? videoFramerate;
 
@@ -407,11 +407,11 @@ class LiveTranscoding {
   @JsonKey(includeIfNull: false)
   int? videoGop;
 
-/* doc_missing: property-LiveTranscoding-watermark */
+/* TODO(doc): property-LiveTranscoding-watermark */
   @JsonKey(includeIfNull: false)
   List<AgoraImage>? watermark;
 
-/* doc_missing: property-LiveTranscoding-backgroundImage */
+/* TODO(doc): property-LiveTranscoding-backgroundImage */
   @JsonKey(includeIfNull: false)
   List<AgoraImage>? backgroundImage;
 
@@ -471,7 +471,7 @@ class LiveTranscoding {
   @JsonKey(includeIfNull: false)
   VideoCodecTypeForStream? videoCodecType;
 
-/* doc_missing: property-LiveTranscoding-userConfigExtraInfo */
+/* TODO(doc): property-LiveTranscoding-userConfigExtraInfo */
   @JsonKey(includeIfNull: false)
   String? userConfigExtraInfo;
 
@@ -1053,7 +1053,7 @@ class RtcStats {
   ///
   int rxVideoKBitRate;
 
-/* doc_missing: property-RtcStats-userCount */
+/* TODO(doc): property-RtcStats-userCount */
   int userCount;
 
   ///
@@ -1178,7 +1178,7 @@ class AudioVolumeInfo {
   ///
   int vad;
 
-/* doc_missing: property-AudioVolumeInfo-channelId */
+/* TODO(doc): property-AudioVolumeInfo-channelId */
   String channelId;
 
   /// Constructs the [AudioVolumeInfo].
@@ -1468,10 +1468,10 @@ class LocalVideoStats {
   ///
   int txPacketLossRate;
 
-/* doc_missing: property-LocalVideoStats-captureFrameRate */
+/* TODO(doc): property-LocalVideoStats-captureFrameRate */
   int captureFrameRate;
 
-/* doc_missing: property-LocalVideoStats-captureBrightnessLevel */
+/* TODO(doc): property-LocalVideoStats-captureBrightnessLevel */
   CaptureBrightnessLevelType captureBrightnessLevel;
 
   /// Constructs the [LocalVideoStats].
@@ -1573,10 +1573,10 @@ class RemoteAudioStats {
   ///
   int publishDuration;
 
-/* doc_missing: property-RemoteAudioStats-qoeQuality */
+/* TODO(doc): property-RemoteAudioStats-qoeQuality */
   ExperienceQualityType qoeQuality;
 
-/* doc_missing: property-RemoteAudioStats-qualityChangedReason */
+/* TODO(doc): property-RemoteAudioStats-qualityChangedReason */
   ExperiencePoorReason qualityChangedReason;
 
   ///
@@ -1985,7 +1985,7 @@ class RhythmPlayerConfig {
   @JsonKey(includeIfNull: false)
   int? beatsPerMinute;
 
-/* doc_missing: property-RhythmPlayerConfig-publish */
+/* TODO(doc): property-RhythmPlayerConfig-publish */
   @JsonKey(includeIfNull: false)
   bool? publish;
 
@@ -2109,7 +2109,7 @@ class VirtualBackgroundSource {
   @JsonKey(includeIfNull: false)
   String? source;
 
-/* doc_missing: property-VirtualBackgroundSource-blurDegree */
+/* TODO(doc): property-VirtualBackgroundSource-blurDegree */
   @JsonKey(name: 'blur_degree')
   VirtualBackgroundBlurDegree blurDegree;
 
@@ -2161,22 +2161,22 @@ class AudioFileInfo {
   Map<String, dynamic> toJson() => _$AudioFileInfoToJson(this);
 }
 
-/* doc_missing: class-EchoTestConfiguration */
+/* TODO(doc): class-EchoTestConfiguration */
 @JsonSerializable(explicitToJson: true)
 class EchoTestConfiguration {
-/* doc_missing: property-EchoTestConfiguration-enableAudio */
+/* TODO(doc): property-EchoTestConfiguration-enableAudio */
   @JsonKey(includeIfNull: false)
   bool? enableAudio;
 
-/* doc_missing: property-EchoTestConfiguration-enableVideo */
+/* TODO(doc): property-EchoTestConfiguration-enableVideo */
   @JsonKey(includeIfNull: false)
   bool? enableVideo;
 
-/* doc_missing: property-EchoTestConfiguration-token */
+/* TODO(doc): property-EchoTestConfiguration-token */
   @JsonKey(includeIfNull: false)
   String? token;
 
-/* doc_missing: property-EchoTestConfiguration-channelId */
+/* TODO(doc): property-EchoTestConfiguration-channelId */
   @JsonKey(includeIfNull: false)
   String? channelId;
 
@@ -2258,15 +2258,15 @@ class ScreenCaptureParameters {
   @JsonKey(includeIfNull: false)
   int? bitrate;
 
-/* doc_missing: property-ScreenCaptureParameters-captureMouseCursor */
+/* TODO(doc): property-ScreenCaptureParameters-captureMouseCursor */
   @JsonKey(includeIfNull: false)
   bool? captureMouseCursor;
 
-/* doc_missing: property-ScreenCaptureParameters-windowFocus */
+/* TODO(doc): property-ScreenCaptureParameters-windowFocus */
   @JsonKey(includeIfNull: false)
   bool? windowFocus;
 
-/* doc_missing: property-ScreenCaptureParameters-excludeWindowList */
+/* TODO(doc): property-ScreenCaptureParameters-excludeWindowList */
   @JsonKey(includeIfNull: false)
   List<int>? excludeWindowList;
 
@@ -2325,22 +2325,22 @@ class Metadata {
   Map<String, dynamic> toJson() => _$MetadataToJson(this);
 }
 
-/* doc_missing: class-MediaRecorderConfiguration */
+/* TODO(doc): class-MediaRecorderConfiguration */
 @JsonSerializable(explicitToJson: true)
 class MediaRecorderConfiguration {
-/* doc_missing: property-MediaRecorderConfiguration-storagePath */
+/* TODO(doc): property-MediaRecorderConfiguration-storagePath */
   final String? storagePath;
 
-/* doc_missing: property-MediaRecorderConfiguration-containerFormat */
+/* TODO(doc): property-MediaRecorderConfiguration-containerFormat */
   final MediaRecorderContainerFormat containerFormat;
 
-/* doc_missing: property-MediaRecorderConfiguration-streamType */
+/* TODO(doc): property-MediaRecorderConfiguration-streamType */
   final MediaRecorderStreamType streamType;
 
-/* doc_missing: property-MediaRecorderConfiguration-maxDurationMs */
+/* TODO(doc): property-MediaRecorderConfiguration-maxDurationMs */
   final int maxDurationMs;
 
-/* doc_missing: property-MediaRecorderConfiguration-recorderInfoUpdateInterval */
+/* TODO(doc): property-MediaRecorderConfiguration-recorderInfoUpdateInterval */
   final int recorderInfoUpdateInterval;
 
   /// Constructs the [MediaRecorderConfiguration].
@@ -2360,16 +2360,16 @@ class MediaRecorderConfiguration {
   Map<String, dynamic> toJson() => _$MediaRecorderConfigurationToJson(this);
 }
 
-/* doc_missing: class-RecorderInfo */
+/* TODO(doc): class-RecorderInfo */
 @JsonSerializable(explicitToJson: true)
 class RecorderInfo {
-/* doc_missing: property-RecorderInfo-fileName */
+/* TODO(doc): property-RecorderInfo-fileName */
   final String fileName;
 
-/* doc_missing: property-RecorderInfo-durationMs */
+/* TODO(doc): property-RecorderInfo-durationMs */
   final int durationMs;
 
-/* doc_missing: property-RecorderInfo-fileSize */
+/* TODO(doc): property-RecorderInfo-fileSize */
   final int fileSize;
 
   /// Constructs the [RecorderInfo].
@@ -2383,19 +2383,19 @@ class RecorderInfo {
   Map<String, dynamic> toJson() => _$RecorderInfoToJson(this);
 }
 
-/* doc_missing: class-LocalAccessPointConfiguration */
+/* TODO(doc): class-LocalAccessPointConfiguration */
 @JsonSerializable(explicitToJson: true)
 class LocalAccessPointConfiguration {
-/* doc_missing: property-LocalAccessPointConfiguration-ipList */
+/* TODO(doc): property-LocalAccessPointConfiguration-ipList */
   final List<String>? ipList;
 
-/* doc_missing: property-LocalAccessPointConfiguration-domainList */
+/* TODO(doc): property-LocalAccessPointConfiguration-domainList */
   final List<String>? domainList;
 
-/* doc_missing: property-LocalAccessPointConfiguration-verifyDomainName */
+/* TODO(doc): property-LocalAccessPointConfiguration-verifyDomainName */
   final String? verifyDomainName;
 
-/* doc_missing: property-LocalAccessPointConfiguration-mode */
+/* TODO(doc): property-LocalAccessPointConfiguration-mode */
   final LocalProxyMode mode;
 
   /// @nodoc
@@ -2414,13 +2414,13 @@ class LocalAccessPointConfiguration {
   Map<String, dynamic> toJson() => _$LocalAccessPointConfigurationToJson(this);
 }
 
-/* doc_missing: class-LowLightEnhanceOptions */
+/* TODO(doc): class-LowLightEnhanceOptions */
 @JsonSerializable(explicitToJson: true)
 class LowLightEnhanceOptions {
-/* doc_missing: property-LowLightEnhanceOptions-mode */
+/* TODO(doc): property-LowLightEnhanceOptions-mode */
   final LowLightEnhanceMode mode;
 
-/* doc_missing: property-LowLightEnhanceOptions-level */
+/* TODO(doc): property-LowLightEnhanceOptions-level */
   final LowLightEnhanceLevel level;
 
   /// @nodoc
@@ -2436,13 +2436,13 @@ class LowLightEnhanceOptions {
   Map<String, dynamic> toJson() => _$LowLightEnhanceOptionsToJson(this);
 }
 
-/* doc_missing: class-VideoDenoiserOptions */
+/* TODO(doc): class-VideoDenoiserOptions */
 @JsonSerializable(explicitToJson: true)
 class VideoDenoiserOptions {
-/* doc_missing: property-VideoDenoiserOptions-mode */
+/* TODO(doc): property-VideoDenoiserOptions-mode */
   final VideoDenoiserMode mode;
 
-/* doc_missing: property-VideoDenoiserOptions-level */
+/* TODO(doc): property-VideoDenoiserOptions-level */
   final VideoDenoiserLevel level;
 
   /// @nodoc
@@ -2458,13 +2458,13 @@ class VideoDenoiserOptions {
   Map<String, dynamic> toJson() => _$VideoDenoiserOptionsToJson(this);
 }
 
-/* doc_missing: class-ColorEnhanceOptions */
+/* TODO(doc): class-ColorEnhanceOptions */
 @JsonSerializable(explicitToJson: true)
 class ColorEnhanceOptions {
-/* doc_missing: property-ColorEnhanceOptions-strengthLevel */
+/* TODO(doc): property-ColorEnhanceOptions-strengthLevel */
   final double strengthLevel;
 
-/* doc_missing: property-ColorEnhanceOptions-skinProtectLevel */
+/* TODO(doc): property-ColorEnhanceOptions-skinProtectLevel */
   final double skinProtectLevel;
 
   /// @nodoc
@@ -2479,13 +2479,13 @@ class ColorEnhanceOptions {
   Map<String, dynamic> toJson() => _$ColorEnhanceOptionsToJson(this);
 }
 
-/* doc_missing: class-ScreenCaptureInfo */
+/* TODO(doc): class-ScreenCaptureInfo */
 @JsonSerializable(explicitToJson: true)
 class ScreenCaptureInfo {
-/* doc_missing: property-ScreenCaptureInfo-graphicsCardType */
+/* TODO(doc): property-ScreenCaptureInfo-graphicsCardType */
   final String graphicsCardType;
 
-/* doc_missing: property-ScreenCaptureInfo-errCode */
+/* TODO(doc): property-ScreenCaptureInfo-errCode */
   final ExcludeWindowError errCode;
 
   /// @nodoc
@@ -2499,16 +2499,16 @@ class ScreenCaptureInfo {
   Map<String, dynamic> toJson() => _$ScreenCaptureInfoToJson(this);
 }
 
-/* doc_missing: class-WlAccStats */
+/* TODO(doc): class-WlAccStats */
 @JsonSerializable(explicitToJson: true)
 class WlAccStats {
-/* doc_missing: property-WlAccStats-e2eDelayPercent */
+/* TODO(doc): property-WlAccStats-e2eDelayPercent */
   final int e2eDelayPercent;
 
-/* doc_missing: property-WlAccStats-frozenRatioPercent */
+/* TODO(doc): property-WlAccStats-frozenRatioPercent */
   final int frozenRatioPercent;
 
-/* doc_missing: property-WlAccStats-lossRatePercent */
+/* TODO(doc): property-WlAccStats-lossRatePercent */
   final int lossRatePercent;
 
   /// @nodoc
@@ -2522,3 +2522,7 @@ class WlAccStats {
   /// @nodoc
   Map<String, dynamic> toJson() => _$WlAccStatsToJson(this);
 }
+
+///
+///
+///

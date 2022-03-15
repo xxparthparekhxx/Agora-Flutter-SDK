@@ -346,7 +346,7 @@ abstract class RtcEngine {
   @Deprecated('')
   Future<void> setLogFileSize(int fileSizeInKBytes);
 
-  /* doc_missing: api-engine-setParameters */
+  /* TODO(doc): api-engine-setParameters */
   Future<void> setParameters(String parameters);
 
   ///
@@ -418,7 +418,7 @@ abstract class RtcEngine {
   ///
   Future<String?> uploadLogFile();
 
-  /* doc_missing: api-engine-setLocalAccessPoint */
+  /* TODO(doc): api-engine-setLocalAccessPoint */
   Future<void> setLocalAccessPoint(LocalAccessPointConfiguration config);
 
   ///
@@ -2606,29 +2606,29 @@ abstract class RtcEngine {
   Future<void> startScreenCapture(int windowId,
       [int captureFreq, Rect? rect, int bitrate]);
 
-  /* doc_missing: api-engine-setAVSyncSource */
+  /* TODO(doc): api-engine-setAVSyncSource */
   Future<void> setAVSyncSource(String channelId, int uid);
 
-  /* doc_missing: api-engine-startRtmpStreamWithoutTranscoding */
+  /* TODO(doc): api-engine-startRtmpStreamWithoutTranscoding */
   Future<void> startRtmpStreamWithoutTranscoding(String url);
 
-  /* doc_missing: api-engine-updateRtmpTranscoding */
+  /* TODO(doc): api-engine-updateRtmpTranscoding */
   Future<void> updateRtmpTranscoding(LiveTranscoding transcoding);
 
-  /* doc_missing: api-engine-stopRtmpStream */
+  /* TODO(doc): api-engine-stopRtmpStream */
   Future<void> stopRtmpStream(String url);
 
-  /* doc_missing: api-engine-setLowlightEnhanceOptions */
+  /* TODO(doc): api-engine-setLowlightEnhanceOptions */
   Future<void> setLowlightEnhanceOptions(
       bool enabled, LowLightEnhanceOptions option);
 
-  /* doc_missing: api-engine-setVideoDenoiserOptions */
+  /* TODO(doc): api-engine-setVideoDenoiserOptions */
   Future<void> setVideoDenoiserOptions(
       bool enabled, VideoDenoiserOptions option);
 
-  /* doc_missing: api-engine-setColorEnhanceOptions */
+  /* TODO(doc): api-engine-setColorEnhanceOptions */
   Future<void> setColorEnhanceOptions(bool enabled, ColorEnhanceOptions option);
 
-  /* doc_missing: api-engine-enableWirelessAccelerate */
+  /* TODO(doc): api-engine-enableWirelessAccelerate */
   Future<void> enableWirelessAccelerate(bool enabled);
 }
