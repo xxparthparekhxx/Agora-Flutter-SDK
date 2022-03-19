@@ -10,7 +10,7 @@ ABIS="arm64-v8a armeabi-v7a x86_64"
 for ABI in ${ABIS};
 do
     echo "Copying $IRIS_PROJECT_PATH/build/android/$ABI/output/rtc/$BUILD_TYPE/libAgoraRtcWrapper.so to $AGORA_FLUTTER_PROJECT_PATH/android/libs/$ABI/libAgoraRtcWrapper.so"
-    bash $IRIS_PROJECT_PATH/rtc/ci/build-android.sh build $ABI Debug
+    bash $IRIS_PROJECT_PATH/rtc/ci/build-android.sh build $ABI $BUILD_TYPE
     mkdir -p "$AGORA_FLUTTER_PROJECT_PATH/android/libs/$ABI/" && \
     cp -r "$IRIS_PROJECT_PATH/build/android/$ABI/output/rtc/$BUILD_TYPE/libAgoraRtcWrapper.so" \
           "$AGORA_FLUTTER_PROJECT_PATH/android/libs/$ABI/libAgoraRtcWrapper.so" 

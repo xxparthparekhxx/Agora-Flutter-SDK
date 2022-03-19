@@ -8,6 +8,9 @@
 #include "iris_rtc_engine.h"
 #include "iris_rtc_engine_integration_test_delegate.h"
 #include <string>
+#if defined(__ANDROID__)
+#include "android/log.h"
+#endif
 
 using namespace agora::rtc;
 using namespace agora::iris::rtc;
@@ -15,8 +18,17 @@ using namespace agora::iris::rtc;
 void CallRtcEngineEvents(IrisRtcEnginePtr engine_ptr, const char *event_name)
 {
     IrisRtcEngine *irisRtcEngine = reinterpret_cast<IrisRtcEngine *>(engine_ptr);
-    agora::iris::IrisEventHandler* irisEventHandler = irisRtcEngine->GetEventHandler();
-    agora::rtc::IRtcEngineEventHandler *handler = reinterpret_cast<agora::rtc::IRtcEngineEventHandler *>(irisEventHandler);
+    void *irisEventHandler = irisRtcEngine->GetEventHandler();
+    #if defined(__ANDROID__)
+ __android_log_print(android_LogPriority::ANDROID_LOG_ERROR, "CallRtcEngineEvents",
+                     "irisEventHandler ptr: %ld", (intptr_t) irisEventHandler);
+#endif
+    agora::rtc::IRtcEngineEventHandler *handler = (agora::rtc::IRtcEngineEventHandler *)irisEventHandler;
+
+#if defined(__ANDROID__)
+ __android_log_print(android_LogPriority::ANDROID_LOG_ERROR, "CallRtcEngineEvents",
+                     "handler ptr: %ld, engine ptr: %ld", (intptr_t) handler, (intptr_t) irisRtcEngine);
+#endif
 
     if (event_name == nullptr || strcmp(event_name, "onWarning") == 0)
     {

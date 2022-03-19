@@ -52,6 +52,7 @@ android {
         ndk {
             // Filter for architectures supported by Flutter.
             abiFilters 'x86_64', 'arm64-v8a'
+            debugSymbolLevel 'FULL'
         }
     }
 
