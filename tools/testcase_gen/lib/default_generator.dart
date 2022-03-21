@@ -43,10 +43,10 @@ abstract class DefaultGenerator implements Generator {
     Parameter parameter,
     StringBuffer initializerBuilder,
   ) {
-    final bool isEnum = parseResult.enumMap.containsKey(parameter.type);
+    final bool isEnum = parseResult.hasEnum(parameter.type);
 
     if (isEnum) {
-      final enumz = parseResult.enumMap[parameter.type]!;
+      final enumz = parseResult.getEnum(parameter.type)[0];
 
       initializerBuilder.writeln(
           'const ${_getParamType(parameter)} ${_concatParamName(rootParameter?.name, parameter.name)} = ${enumz.enumConstants[0].name};');
@@ -54,7 +54,7 @@ abstract class DefaultGenerator implements Generator {
       return;
     }
 
-    final parameterClass = parseResult.classMap[parameter.type]!;
+    final parameterClass = parseResult.getClazz(parameter.type)[0];
     final initBlockParameterListBuilder = StringBuffer();
     final initBlockBuilder = StringBuffer();
     final constructor = parameterClass.constructors[0];

@@ -99,7 +99,7 @@ class RtcEngineSubProcessSmokeTestGenerator extends DefaultGenerator {
 
   @override
   void generate(StringSink sink, ParseResult parseResult) {
-    final clazz = parseResult.classMap['RtcEngine'];
+    final clazz = parseResult.getClazz('RtcEngine')[0];
     if (clazz == null) return;
 
     const testCaseTemplate = '''
@@ -155,7 +155,7 @@ void rtcEngineSubProcessSmokeTestCases() {
 
   @override
   IOSink? shouldGenerate(ParseResult parseResult) {
-    if (parseResult.classMap.containsKey('RtcEngine')) {
+    if (parseResult.hasClass('RtcEngine')) {
       return openSink(path.join(
           path.current,
           'integration_test_app',

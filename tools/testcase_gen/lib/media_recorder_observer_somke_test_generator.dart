@@ -10,7 +10,7 @@ class MediaRecorderObserverSomkeTestGenerator implements Generator {
 
   @override
   void generate(StringSink sink, ParseResult parseResult) {
-    final clazz = parseResult.classMap['MediaRecorderObserver'];
+    final clazz = parseResult.getClazz('MediaRecorderObserver')[0];
 
     if (clazz == null) return;
 

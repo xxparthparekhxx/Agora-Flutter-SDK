@@ -10,6 +10,7 @@ import 'package:analyzer/dart/ast/ast.dart' as dart_ast;
 import 'package:analyzer/dart/ast/visitor.dart' as dart_ast_visitor;
 import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/error/error.dart' show AnalysisError;
+import 'package:collection/collection.dart';
 
 class CallApiInvoke {
   late String apiType;
@@ -126,6 +127,7 @@ class SimpleComment {
 class BaseNode {
   late SimpleComment comment;
   late String source;
+  late Uri uri;
 }
 
 class Method extends BaseNode {
@@ -172,9 +174,9 @@ class Enumz extends BaseNode {
 }
 
 class ParseResult {
-  late Map<String, Clazz> classMap;
-  late Map<String, Enumz> enumMap;
-  late Map<String, Extensionz> extensionMap;
+  late List<Clazz> classes;
+  late List<Enumz> enums;
+  late List<Extensionz> extensions;
 
   // TODO(littlegnal): Optimize this later.
   // late Map<String, List<String>> classFieldsMap;
@@ -182,7 +184,85 @@ class ParseResult {
   late Map<String, List<String>> genericTypeAliasParametersMap;
 }
 
-class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
+extension ParseResultExt on ParseResult {
+  bool hasEnum(String type) {
+    return enums.any((e) => e.name == type);
+  }
+
+  List<Enumz> getEnum(String type, {String? package}) {
+    List<Enumz> foundEnums = [];
+    for (final enumz in enums) {
+      if (package == null) {
+        if (enumz.name == type) {
+          foundEnums.add(enumz);
+        }
+      } else {
+        if (enumz.name == type &&
+            enumz.uri.pathSegments.last.replaceAll('.dart', '') == package) {
+          foundEnums.add(enumz);
+        }
+      }
+    }
+
+    return foundEnums;
+  }
+
+  bool hasClass(String type) {
+    return classes.any((e) => e.name == type);
+  }
+
+  List<Clazz> getClazz(String type, {String? package}) {
+    List<Clazz> foundClasses = [];
+    for (final clazz in classes) {
+      if (package == null) {
+        if (clazz.name == type) {
+          foundClasses.add(clazz);
+        }
+      } else {
+        if (clazz.name == type &&
+            clazz.uri.pathSegments.last.replaceAll('.dart', '') == package) {
+          foundClasses.add(clazz);
+        }
+      }
+    }
+
+    return foundClasses;
+  }
+
+  bool hasExtension(String type) {
+    return extensions.any((e) => e.name == type);
+  }
+
+  List<Extensionz> getExtension(String type, {String? package}) {
+    List<Extensionz> foundExtensions = [];
+    for (final extension in extensions) {
+      if (package == null) {
+        if (extension.name == type) {
+          foundExtensions.add(extension);
+        }
+      } else {
+        if (extension.name == type &&
+            extension.uri.pathSegments.last.replaceAll('.dart', '') ==
+                package) {
+          foundExtensions.add(extension);
+        }
+      }
+    }
+
+    return foundExtensions;
+  }
+}
+
+abstract class DefaultVisitor<R>
+    extends dart_ast_visitor.RecursiveAstVisitor<R> {
+  /// Called before visiting any node.
+  void preVisit(Uri uri) {}
+
+  /// Called after visiting nodes completed.
+  void postVisit(Uri uri) {}
+}
+
+class DefaultVisitorImpl extends DefaultVisitor<Object?> {
   final classFieldsMap = <String, List<String>>{};
   final fieldsTypeMap = <String, String>{};
   final genericTypeAliasParametersMap = <String, List<String>>{};
@@ -190,6 +270,18 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
   final classMap = <String, Clazz>{};
   final enumMap = <String, Enumz>{};
   final extensionMap = <String, Extensionz>{};
+
+  Uri? _currentVisitUri = null;
+
+  @override
+  void preVisit(Uri uri) {
+    _currentVisitUri = uri;
+  }
+
+  @override
+  void postVisit(Uri uri) {
+    _currentVisitUri = null;
+  }
 
   @override
   Object? visitFieldDeclaration(dart_ast.FieldDeclaration node) {
@@ -206,15 +298,8 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
       Field field = Field()
         ..name = fieldName
         ..comment = _generateComment(node)
-        ..source = node.toString();
-
-      // if (node.parent is dart_ast.ClassDeclaration) {
-      //   final fieldList = classFieldsMap.putIfAbsent(
-      //       (node.parent as dart_ast.ClassDeclaration).name.name,
-      //       () => <String>[]);
-      //   fieldList.add(fieldName);
-      // }
-      // fieldsTypeMap[fieldName] = type.name.name;
+        ..source = node.toString()
+        ..uri = _currentVisitUri!;
 
       Type t = Type()..type = type.name.name;
       field.type = t;
@@ -227,9 +312,6 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
   @override
   Object? visitConstructorDeclaration(ConstructorDeclaration node) {
-    stdout.writeln(
-        'root visitConstructorDeclaration: node.name: ${node.name}, type: ${node.runtimeType} , ${node.initializers}, ${node.parent}');
-
     final clazz = _getClazz(node);
     if (clazz == null) return null;
 
@@ -248,8 +330,6 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
   @override
   Object? visitEnumDeclaration(EnumDeclaration node) {
-    stdout.writeln(
-        'root visitEnumDeclaration: node.name: ${node.name}, type: ${node.runtimeType} constants: ${node.constants}, ${node.metadata}');
     for (final c in node.constants) {
       for (final m in c.metadata) {
         // stdout.writeln('m: ${m.arguments?.arguments}, ${m.name}');
@@ -263,6 +343,7 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
     final enumz = enumMap.putIfAbsent(node.name.name, () => Enumz());
     enumz.name = node.name.name;
     enumz.comment = _generateComment(node);
+    enumz.uri = _currentVisitUri!;
 
     for (final constant in node.constants) {
       EnumConstant enumConstant = EnumConstant()
@@ -312,15 +393,18 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
   Clazz? _getClazz(AstNode node) {
     final classNode = node.parent;
-    if (classNode == null || classNode is! dart_ast.ClassDeclaration) {
+    if (_currentVisitUri == null ||
+        classNode == null ||
+        classNode is! dart_ast.ClassDeclaration) {
       return null;
     }
 
     Clazz clazz = classMap.putIfAbsent(
-      classNode.name.name,
+      '${_currentVisitUri.toString()}#${classNode.name.name}',
       () => Clazz()
         ..name = classNode.name.name
-        ..comment = _generateComment(node as AnnotatedNode),
+        ..comment = _generateComment(node as AnnotatedNode)
+        ..uri = _currentVisitUri!,
     );
 
     return clazz;
@@ -473,15 +557,9 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
   @override
   Object? visitMethodDeclaration(MethodDeclaration node) {
-    final classNode = node.parent;
-    if (classNode == null || classNode is! dart_ast.ClassDeclaration) {
-      return null;
-    }
+    final clazz = _getClazz(node);
+    if (clazz == null) return null;
 
-    Clazz clazz = classMap.putIfAbsent(
-      classNode.name.name,
-      () => Clazz()..name = classNode.name.name,
-    );
     clazz.methods.add(_createMethod(node));
 
     return null;
@@ -490,7 +568,8 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
   Method _createMethod(MethodDeclaration node) {
     Method method = Method()
       ..name = node.name.name
-      ..source = node.toString();
+      ..source = node.toString()
+      ..uri = _currentVisitUri!;
 
     method.comment = _generateComment(node);
 
@@ -536,9 +615,6 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
   @override
   Object? visitGenericTypeAlias(dart_ast.GenericTypeAlias node) {
-    stdout.writeln(
-        'root visitGenericTypeAlias: node.name: ${node.name}, node.functionType?.parameters: ${node.functionType?.parameters.parameters}');
-
     final parametersList = node.functionType?.parameters.parameters
             .map((e) {
               if (e is SimpleFormalParameter) {
@@ -550,8 +626,6 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
             .toList() ??
         [];
 
-    stdout.writeln(parametersList);
-
     genericTypeAliasParametersMap[node.name.name] = parametersList;
 
     return null;
@@ -559,11 +633,10 @@ class DefaultVisitor extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
   @override
   Object? visitExtensionDeclaration(dart_ast.ExtensionDeclaration node) {
-    stdout.writeln(
-        'root visitExtensionDeclaration: node.name: ${node.name}, node.members: ${node.members.map((e) => e.runtimeType.toString()).toList()}');
-
     extensionMap.putIfAbsent(node.name?.name ?? '', () {
-      Extensionz extensionz = Extensionz()..name = node.name?.name ?? '';
+      Extensionz extensionz = Extensionz()
+        ..name = node.name?.name ?? ''
+        ..uri = _currentVisitUri!;
       if (node.extendedType is dart_ast.NamedType) {
         extensionz.extendedType =
             (node.extendedType as dart_ast.NamedType).name.name;
@@ -587,21 +660,21 @@ class Paraphrase {
   final List<String> includedPaths;
 
   ParseResult visit() {
-    final DefaultVisitor rootBuilder = DefaultVisitor();
+    final DefaultVisitorImpl rootBuilder = DefaultVisitorImpl();
 
     visitWith(visitor: rootBuilder);
 
     final parseResult = ParseResult()
-      ..classMap = rootBuilder.classMap
-      ..enumMap = rootBuilder.enumMap
-      ..extensionMap = rootBuilder.extensionMap
+      ..classes = rootBuilder.classMap.values.toList()
+      ..enums = rootBuilder.enumMap.values.toList()
+      ..extensions = rootBuilder.extensionMap.values.toList()
       ..genericTypeAliasParametersMap =
           rootBuilder.genericTypeAliasParametersMap;
 
     return parseResult;
   }
 
-  void visitWith({required dart_ast_visitor.RecursiveAstVisitor visitor}) {
+  void visitWith({required DefaultVisitor visitor}) {
     final AnalysisContextCollection collection = AnalysisContextCollection(
       includedPaths: includedPaths,
     );
@@ -613,7 +686,9 @@ class Paraphrase {
             session.getParsedUnit(path) as ParsedUnitResult;
         if (result.errors.isEmpty) {
           final dart_ast.CompilationUnit unit = result.unit;
+          visitor.preVisit(result.uri);
           unit.accept(visitor);
+          visitor.postVisit(result.uri);
         } else {
           for (final AnalysisError error in result.errors) {
             stderr.writeln(error.toString());

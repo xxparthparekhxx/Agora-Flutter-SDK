@@ -20,7 +20,7 @@ class RtcChannelEventHandlerSomkeTestGenerator implements Generator {
 
   @override
   void generate(StringSink sink, ParseResult parseResult) {
-    final clazz = parseResult.classMap['RtcChannelEventHandler'];
+    final clazz = parseResult.getClazz('RtcChannelEventHandler')[0];
 
     if (clazz == null) return;
 
@@ -109,7 +109,7 @@ void rtcChannelEventHandlerSomkeTestCases() {
 
   @override
   IOSink? shouldGenerate(ParseResult parseResult) {
-    if (parseResult.classMap.containsKey('RtcChannelEventHandler')) {
+    if (parseResult.hasClass('RtcChannelEventHandler')) {
       return openSink(path.join(
           path.current,
           'integration_test_app',

@@ -27,7 +27,7 @@ class RtcEngineEventHandlerSomkeTestGenerator implements Generator {
 
   @override
   void generate(StringSink sink, ParseResult parseResult) {
-    final clazz = parseResult.classMap['RtcEngineEventHandler'];
+    final clazz = parseResult.getClazz('RtcEngineEventHandler')[0];
     stdout.writeln('clazz: $clazz');
     if (clazz == null) return;
 
@@ -123,7 +123,7 @@ void rtcEngineEventHandlerSomkeTestCases() {
 
   @override
   IOSink? shouldGenerate(ParseResult parseResult) {
-    if (parseResult.classMap.containsKey('RtcEngineEventHandler')) {
+    if (parseResult.hasClass('RtcEngineEventHandler')) {
       return openSink(path.join(
           path.current,
           'integration_test_app',

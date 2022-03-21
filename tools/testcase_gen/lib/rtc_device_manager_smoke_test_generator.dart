@@ -14,7 +14,7 @@ class RtcDeviceManagerSmokeTestGenerator extends DefaultGenerator {
 
   @override
   void generate(StringSink sink, ParseResult parseResult) {
-    final clazz = parseResult.classMap['RtcDeviceManager'];
+    final clazz = parseResult.getClazz('RtcDeviceManager')[0];
     if (clazz == null) return;
 
     const testCaseTemplate = '''
@@ -73,7 +73,7 @@ void rtcDeviceManagerSmokeTestCases() {
 
   @override
   IOSink? shouldGenerate(ParseResult parseResult) {
-    if (parseResult.classMap.containsKey('RtcDeviceManager')) {
+    if (parseResult.hasClass('RtcDeviceManager')) {
       return openSink(path.join(
           path.current,
           'integration_test_app',
