@@ -5,9 +5,24 @@ import 'package:flutter/services.dart';
 import 'enums.dart';
 import 'rtc_render_view.dart';
 
-/// SurfaceView.
+///
+/// SurfaceView class for rendering local video. Extends from the
+///
+/// rtc_render_view: RtcSurfaceView
+///
+///
+/// class.
+/// This class has the following corresponding classes:
+///
+///
+///
+/// Android: SurfaceView (https://developer.android.com/reference/android/view/SurfaceView).
+/// iOS: UIView (https://developer.apple.com/documentation/uikit/uiview)
+///
+/// Applies to the macOS and Windows platforms only.
+///
 class SurfaceView extends RtcSurfaceView {
-  /// Constructs a [SurfaceView]
+  /// Constructs the [SurfaceView].
   const SurfaceView({
     Key? key,
     String? channelId,
@@ -29,7 +44,32 @@ class SurfaceView extends RtcSurfaceView {
           gestureRecognizers: gestureRecognizers,
         );
 
-  /// TODO(doc)
+  ///
+  /// Construction method of the SurfaceView class for rendering local screen shared video.
+  ///
+  ///
+  /// Param [gestureRecognizers] The Gesture object.
+  ///
+  /// Param [onPlatformViewCreated] This event is triggered when a platform view is created.
+  ///
+  /// Param [mirrorMode] The mirror mode of the view. See
+  ///
+  ///
+  /// VideoMirrorMode
+  ///
+  ///
+  /// .
+  ///
+  /// Param [renderMode] The rendering mode of the video. See
+  ///
+  ///
+  /// VideoRenderMode
+  ///
+  ///
+  /// .
+  ///
+  /// Param [key] Specifiers of Widget, Element, and SemanticsNode. For details, see Flutter's official documentation for a description of the key object.
+  ///
   const SurfaceView.screenShare({
     Key? key,
     VideoRenderMode renderMode = VideoRenderMode.Hidden,
@@ -47,9 +87,23 @@ class SurfaceView extends RtcSurfaceView {
         );
 }
 
-/// TextureView.
+///
+/// TextureView class for rendering local video. Extends from the
+///
+/// rtc_render_view: RtcTextureView
+///
+///
+/// class.
+/// This class has the following corresponding classes:
+///
+///
+///
+/// Android: TextureView (https://developer.android.com/reference/android/view/TextureView)
+/// or FlutterTexture (https://api.flutter.dev/objcdoc/Protocols/FlutterTexture.html)。
+/// iOS/macOS/Windows: FlutterTexture (https://api.flutter.dev/objcdoc/Protocols/FlutterTexture.html)。
+///
 class TextureView extends RtcTextureView {
-  /// Constructs a [TextureView]
+  /// Constructs the [TextureView].
   const TextureView({
     Key? key,
     String? channelId,
@@ -69,7 +123,34 @@ class TextureView extends RtcTextureView {
           useFlutterTexture: useFlutterTexture,
         );
 
-  /// TODO(doc)
+  ///
+  /// Constructor of the TextureView class for rendering local screen sharing video.
+  ///
+  ///
+  /// Param [useFlutterTexture] Whether to render the video using FlutterTexture.
+  ///
+  /// Param [gestureRecognizers] The Gesture object.
+  ///
+  /// Param [onPlatformViewCreated] This event is triggered when a platform view is created.
+  ///
+  /// Param [mirrorMode] The mirror mode of the view. See
+  ///
+  ///
+  /// VideoMirrorMode
+  ///
+  ///
+  /// .
+  ///
+  /// Param [renderMode] The rendering mode of the video. See
+  ///
+  ///
+  /// VideoRenderMode
+  ///
+  ///
+  /// .
+  ///
+  /// Param [key] Specifiers of Widget, Element, and SemanticsNode. For details, see Flutter's official documentation for a description of the key object.
+  ///
   const TextureView.screenShare({
     Key? key,
     VideoRenderMode renderMode = VideoRenderMode.Hidden,

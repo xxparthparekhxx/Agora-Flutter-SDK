@@ -5,9 +5,23 @@ import 'package:flutter/services.dart';
 import 'enums.dart';
 import 'rtc_render_view.dart';
 
-/// SurfaceView.
+///
+/// SurfaceView class for rendering remote video. Extends from the
+///
+/// rtc_render_view: RtcSurfaceView
+///
+///
+/// class.
+/// This class has the following corresponding classes:
+///
+///
+///
+/// Android: SurfaceView (https://developer.android.com/reference/android/view/SurfaceView).
+/// iOS: UIView (https://developer.apple.com/documentation/uikit/uiview)
+///
+/// Applies to the macOS and Windows platforms only.
+///
 class SurfaceView extends RtcSurfaceView {
-  /// Constructs a [SurfaceView]
   const SurfaceView({
     Key? key,
     required int uid,
@@ -32,9 +46,22 @@ class SurfaceView extends RtcSurfaceView {
         );
 }
 
-/// TextureView.
+///
+/// TextureView class for rendering local video. Extends from the
+///
+/// rtc_render_view: RtcTextureView
+///
+///
+/// class.
+/// This class has the following corresponding classes:
+///
+///
+///
+/// Android: TextureView (https://developer.android.com/reference/android/view/TextureView)
+/// or FlutterTexture (https://api.flutter.dev/objcdoc/Protocols/FlutterTexture.html)。
+/// iOS/macOS/Windows: FlutterTexture (https://api.flutter.dev/objcdoc/Protocols/FlutterTexture.html)。
+///
 class TextureView extends RtcTextureView {
-  /// Constructs a [TextureView]
   const TextureView({
     Key? key,
     required int uid,
