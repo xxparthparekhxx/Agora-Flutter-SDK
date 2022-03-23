@@ -53,8 +53,8 @@ VideoEncoderConfiguration _$VideoEncoderConfigurationFromJson(
       minBitrate: json['minBitrate'] as int?,
       orientationMode: $enumDecodeNullable(
           _$VideoOutputOrientationModeEnumMap, json['orientationMode']),
-      degradationPrefer: $enumDecodeNullable(
-          _$DegradationPreferenceEnumMap, json['degradationPrefer']),
+      degradationPreference: $enumDecodeNullable(
+          _$DegradationPreferenceEnumMap, json['degradationPreference']),
       mirrorMode:
           $enumDecodeNullable(_$VideoMirrorModeEnumMap, json['mirrorMode']),
     );
@@ -76,8 +76,8 @@ Map<String, dynamic> _$VideoEncoderConfigurationToJson(
   writeNotNull('minBitrate', instance.minBitrate);
   writeNotNull('orientationMode',
       _$VideoOutputOrientationModeEnumMap[instance.orientationMode]);
-  writeNotNull('degradationPrefer',
-      _$DegradationPreferenceEnumMap[instance.degradationPrefer]);
+  writeNotNull('degradationPreference',
+      _$DegradationPreferenceEnumMap[instance.degradationPreference]);
   writeNotNull('mirrorMode', _$VideoMirrorModeEnumMap[instance.mirrorMode]);
   return val;
 }

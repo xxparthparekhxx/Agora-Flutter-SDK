@@ -126,7 +126,7 @@ class VideoEncoderConfiguration {
 
 /* TODO(doc): property-VideoEncoderConfiguration-degradationPrefer */
   @JsonKey(includeIfNull: false)
-  DegradationPreference? degradationPrefer;
+  DegradationPreference? degradationPreference;
 
   ///
   /// By default, the video is not mirrored.
@@ -142,7 +142,7 @@ class VideoEncoderConfiguration {
     this.bitrate,
     this.minBitrate,
     this.orientationMode,
-    this.degradationPrefer,
+    this.degradationPreference,
     this.mirrorMode,
   });
 

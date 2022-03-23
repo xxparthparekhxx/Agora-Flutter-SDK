@@ -123,7 +123,7 @@ class _SetVideoEncoderConfigurationState
       bitrate: 0,
       minBitrate: 1,
       orientationMode: VideoOutputOrientationMode.Adaptative,
-      degradationPrefer: DegradationPreference.MaintainFramerate,
+      degradationPreference: DegradationPreference.MaintainFramerate,
       mirrorMode: VideoMirrorMode.Auto,
     );
     await _engine.setVideoEncoderConfiguration(config);
