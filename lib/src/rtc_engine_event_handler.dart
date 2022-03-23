@@ -1146,10 +1146,10 @@ class RtcEngineEventHandler {
 /* TODO(doc): callback-engine-clientRoleChangeFailed */
   OnClientRoleChangeFailed? clientRoleChangeFailed;
 
-/* TODO(doc): callback-engine-wlAccMessage */
+  /// @nodoc
   OnWlAccMessage? wlAccMessage;
 
-/* TODO(doc): callback-engine-wlAccStats */
+  /// @nodoc
   OnWlAccStats? wlAccStats;
 
   ///

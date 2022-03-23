@@ -624,7 +624,7 @@ abstract class RtcChannel {
   ///
   Future<void> sendStreamMessage(int streamId, Uint8List message);
 
-  /* TODO(doc): api-channel-setAVSyncSource */
+  /// @nodoc
   Future<void> setAVSyncSource(String channelId, int uid);
 
   ///

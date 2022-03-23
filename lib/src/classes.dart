@@ -2452,16 +2452,16 @@ class ScreenCaptureInfo {
   Map<String, dynamic> toJson() => _$ScreenCaptureInfoToJson(this);
 }
 
-/* TODO(doc): class-WlAccStats */
+/// @nodoc
 @JsonSerializable(explicitToJson: true)
 class WlAccStats {
-/* TODO(doc): property-WlAccStats-e2eDelayPercent */
+  /// @nodoc
   final int e2eDelayPercent;
 
-/* TODO(doc): property-WlAccStats-frozenRatioPercent */
+  /// @nodoc
   final int frozenRatioPercent;
 
-/* TODO(doc): property-WlAccStats-lossRatePercent */
+  /// @nodoc
   final int lossRatePercent;
 
   /// @nodoc

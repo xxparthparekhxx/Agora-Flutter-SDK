@@ -3798,7 +3798,7 @@ enum ClientRoleChangeFailedReason {
   ConnectionFailed,
 }
 
-/* TODO(doc): enum-WlaccMessageReason */
+/// @nodoc
 enum WlaccMessageReason {
   @JsonValue(0)
   WeakSignal,
@@ -3807,7 +3807,7 @@ enum WlaccMessageReason {
   ChannelCongestion,
 }
 
-/* TODO(doc): enum-WlaccSuggestAction */
+/// @nodoc
 enum WlaccSuggestAction {
   @JsonValue(0)
   CloseToWifi,
