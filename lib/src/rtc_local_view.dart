@@ -6,22 +6,13 @@ import 'enums.dart';
 import 'rtc_render_view.dart';
 
 ///
-/// SurfaceView class for rendering local video. Extends from the
-///
-/// rtc_render_view: RtcSurfaceView
-///
-///
-/// class.
+/// SurfaceView class for rendering local video. Extends from theRtcSurfaceView class.
 /// This class has the following corresponding classes:
-///
-///
-///
-/// Android: SurfaceView (https://developer.android.com/reference/android/view/SurfaceView).
-/// iOS: UIView (https://developer.apple.com/documentation/uikit/uiview)
-///
-/// Applies to the macOS and Windows platforms only.
+///  Android: SurfaceView (https://developer.android.com/reference/android/view/SurfaceView).
+///  iOS: UIView (https://developer.apple.com/documentation/uikit/uiview)Applies to the macOS and Windows platforms only.
 ///
 class SurfaceView extends RtcSurfaceView {
+  /// Constructs the [SurfaceView].
   /// Constructs the [SurfaceView].
   const SurfaceView({
     Key? key,
@@ -44,6 +35,7 @@ class SurfaceView extends RtcSurfaceView {
           gestureRecognizers: gestureRecognizers,
         );
 
+  /// Constructs the [SurfaceView].
   ///
   /// Construction method of the SurfaceView class for rendering local screen shared video.
   ///
@@ -52,21 +44,9 @@ class SurfaceView extends RtcSurfaceView {
   ///
   /// Param [onPlatformViewCreated] This event is triggered when a platform view is created.
   ///
-  /// Param [mirrorMode] The mirror mode of the view. See
+  /// Param [mirrorMode] The mirror mode of the view. See VideoMirrorMode .
   ///
-  ///
-  /// VideoMirrorMode
-  ///
-  ///
-  /// .
-  ///
-  /// Param [renderMode] The rendering mode of the video. See
-  ///
-  ///
-  /// VideoRenderMode
-  ///
-  ///
-  /// .
+  /// Param [renderMode] The rendering mode of the video. See VideoRenderMode .
   ///
   /// Param [key] Specifiers of Widget, Element, and SemanticsNode. For details, see Flutter's official documentation for a description of the key object.
   ///
@@ -88,21 +68,14 @@ class SurfaceView extends RtcSurfaceView {
 }
 
 ///
-/// TextureView class for rendering local video. Extends from the
-///
-/// rtc_render_view: RtcTextureView
-///
-///
-/// class.
+/// TextureView class for rendering local video. Extends from theRtcTextureView class.
 /// This class has the following corresponding classes:
-///
-///
-///
-/// Android: TextureView (https://developer.android.com/reference/android/view/TextureView)
+///  Android: TextureView (https://developer.android.com/reference/android/view/TextureView)
 /// or FlutterTexture (https://api.flutter.dev/objcdoc/Protocols/FlutterTexture.html)。
-/// iOS/macOS/Windows: FlutterTexture (https://api.flutter.dev/objcdoc/Protocols/FlutterTexture.html)。
+///  iOS/macOS/Windows: FlutterTexture (https://api.flutter.dev/objcdoc/Protocols/FlutterTexture.html)。
 ///
 class TextureView extends RtcTextureView {
+  /// Constructs the [TextureView].
   /// Constructs the [TextureView].
   const TextureView({
     Key? key,
@@ -123,6 +96,7 @@ class TextureView extends RtcTextureView {
           useFlutterTexture: useFlutterTexture,
         );
 
+  /// Constructs the [TextureView].
   ///
   /// Constructor of the TextureView class for rendering local screen sharing video.
   ///
@@ -133,21 +107,9 @@ class TextureView extends RtcTextureView {
   ///
   /// Param [onPlatformViewCreated] This event is triggered when a platform view is created.
   ///
-  /// Param [mirrorMode] The mirror mode of the view. See
+  /// Param [mirrorMode] The mirror mode of the view. See VideoMirrorMode .
   ///
-  ///
-  /// VideoMirrorMode
-  ///
-  ///
-  /// .
-  ///
-  /// Param [renderMode] The rendering mode of the video. See
-  ///
-  ///
-  /// VideoRenderMode
-  ///
-  ///
-  /// .
+  /// Param [renderMode] The rendering mode of the video. See VideoRenderMode .
   ///
   /// Param [key] Specifiers of Widget, Element, and SemanticsNode. For details, see Flutter's official documentation for a description of the key object.
   ///
