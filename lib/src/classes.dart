@@ -2306,23 +2306,22 @@ class RecorderInfo {
   Map<String, dynamic> toJson() => _$RecorderInfoToJson(this);
 }
 
-/* TODO(doc): class-LocalAccessPointConfiguration */
+/// @nodoc
 @JsonSerializable(explicitToJson: true)
 class LocalAccessPointConfiguration {
-/* TODO(doc): property-LocalAccessPointConfiguration-ipList */
+  /// @nodoc
   final List<String>? ipList;
 
-/* TODO(doc): property-LocalAccessPointConfiguration-domainList */
+  /// @nodoc
   final List<String>? domainList;
 
-/* TODO(doc): property-LocalAccessPointConfiguration-verifyDomainName */
+  /// @nodoc
   final String? verifyDomainName;
 
-/* TODO(doc): property-LocalAccessPointConfiguration-mode */
+  /// @nodoc
   final LocalProxyMode mode;
 
   /// @nodoc
-  /// Constructs the [LocalAccessPointConfiguration].
   const LocalAccessPointConfiguration({
     this.ipList,
     this.domainList,
@@ -2355,7 +2354,6 @@ class LowLightEnhanceOptions {
   final LowLightEnhanceLevel level;
 
   /// @nodoc
-  /// Constructs the [LowLightEnhanceOptions].
   const LowLightEnhanceOptions(
       {this.mode = LowLightEnhanceMode.Auto,
       this.level = LowLightEnhanceLevel.HighQuality});
@@ -2385,7 +2383,6 @@ class VideoDenoiserOptions {
   final VideoDenoiserLevel level;
 
   /// @nodoc
-  /// Constructs the [VideoDenoiserOptions].
   const VideoDenoiserOptions(
       {this.mode = VideoDenoiserMode.Auto,
       this.level = VideoDenoiserLevel.HighQuality});
@@ -2415,7 +2412,6 @@ class ColorEnhanceOptions {
   final double skinProtectLevel;
 
   /// @nodoc
-  /// Constructs the [ColorEnhanceOptions].
   const ColorEnhanceOptions(
       {this.strengthLevel = 0.0, this.skinProtectLevel = 1.0});
 
@@ -2446,7 +2442,6 @@ class ScreenCaptureInfo {
   final ExcludeWindowError errCode;
 
   /// @nodoc
-  /// Constructs the [ScreenCaptureInfo].
   const ScreenCaptureInfo(this.graphicsCardType, this.errCode);
 
   /// @nodoc
@@ -2470,7 +2465,6 @@ class WlAccStats {
   final int lossRatePercent;
 
   /// @nodoc
-  /// Constructs the [WlAccStats].
   const WlAccStats(
       this.e2eDelayPercent, this.frozenRatioPercent, this.lossRatePercent);
 

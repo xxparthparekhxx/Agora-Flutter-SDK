@@ -379,7 +379,7 @@ abstract class RtcEngine {
   ///
   Future<String?> uploadLogFile();
 
-  /* TODO(doc): api-engine-setLocalAccessPoint */
+  /// @nodoc
   Future<void> setLocalAccessPoint(LocalAccessPointConfiguration config);
 
   ///
@@ -2225,7 +2225,7 @@ abstract class RtcEngine {
   Future<void> startScreenCapture(int windowId,
       [int captureFreq, Rect? rect, int bitrate]);
 
-  /* TODO(doc): api-engine-setAVSyncSource */
+  /// @nodoc
   Future<void> setAVSyncSource(String channelId, int uid);
 
   ///
@@ -2304,6 +2304,6 @@ abstract class RtcEngine {
   ///
   Future<void> setColorEnhanceOptions(bool enabled, ColorEnhanceOptions option);
 
-  /* TODO(doc): api-engine-enableWirelessAccelerate */
+  /// @nodoc
   Future<void> enableWirelessAccelerate(bool enabled);
 }
