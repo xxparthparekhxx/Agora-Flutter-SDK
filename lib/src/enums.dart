@@ -1538,7 +1538,9 @@ enum EncryptionMode {
   AES256GCM2,
 }
 
-/* TODO(doc): enum-ErrorCode */
+/// 
+/// Error codes. See https://docs.agora.io/en/Interactive%20Broadcast/error_rtc .
+///
 enum ErrorCode {
   @JsonValue(0)
   NoError,
@@ -2656,7 +2658,9 @@ enum VideoStreamType {
   Low,
 }
 
-/* TODO(doc): enum-WarningCode */
+/// 
+/// Warning codes. See https://docs.agora.io/en/Interactive%20Broadcast/error_rtc .
+///
 enum WarningCode {
   @JsonValue(8)
   InvalidView,
