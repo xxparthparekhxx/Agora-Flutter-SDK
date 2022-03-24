@@ -215,7 +215,7 @@ enum AudioLocalState {
 }
 
 ///
-/// The information acquisition state. This enum is reported inrequestAudioFileInfoCallback .
+/// The information acquisition state. This enum is reported in requestAudioFileInfo .
 ///
 ///
 enum AudioFileInfoError {
@@ -265,7 +265,7 @@ enum AudioMixingErrorType {
 }
 
 ///
-/// The reason why the playback state of the music file changes. Reported in theaudioMixingStateChanged callback.
+/// The reason why the playback state of the music file changes. Reported in the audioMixingStateChanged callback.
 ///
 ///
 enum AudioMixingReason {
@@ -387,7 +387,7 @@ enum AudioMixingStateCode {
 }
 
 ///
-/// The channel mode. Set insetAudioMixingDualMonoMode .
+/// The channel mode. Set in setAudioMixingDualMonoMode .
 ///
 ///
 enum AudioMixingDualMonoMode {
@@ -536,7 +536,7 @@ enum AudioRecordingQuality {
 }
 
 ///
-/// Recording content. Set instartAudioRecordingWithConfig .
+/// Recording content. Set in startAudioRecordingWithConfig .
 ///
 ///
 enum AudioRecordingPosition {
@@ -872,7 +872,7 @@ enum AudioScenario {
   IOT,
 
   ///
-  /// 8: Meeting scenario that mainly contains the human voice.
+  ///  8: Meeting scenario that mainly contains the human voice.
   ///
   ///
   @JsonValue(8)
@@ -1023,7 +1023,7 @@ enum CameraCaptureOutputPreference {
   Preview,
 
   ///
-  /// 3: Allows you to customize the width and height of the video image captured by the local camera.
+  ///  3: Allows you to customize the width and height of the video image captured by the local camera.
   ///
   ///
   @JsonValue(3)
@@ -1472,7 +1472,7 @@ enum DegradationPreference {
   MaintainFramerate,
 
   ///
-  /// 2: Reduces the video frame rate and video quality simultaneously during video encoding under limited bandwidth. MaintainBalanced has a lower reduction than MaintainQuality and MaintainFramerate, and this preference is suitable for scenarios where both smoothness and video quality are a priority.
+  ///  2: Reduces the video frame rate and video quality simultaneously during video encoding under limited bandwidth. MaintainBalanced has a lower reduction than MaintainQuality and MaintainFramerate, and this preference is suitable for scenarios where both smoothness and video quality are a priority.
   ///  The resolution of the video sent may change, so remote users need to handle this issue. See videoSizeChanged .
   ///
   ///
@@ -1956,7 +1956,7 @@ enum LocalVideoStreamError {
   CaptureMultipleForegroundApps,
 
   ///
-  /// Since
+  ///  Since
   ///  v3.4.0 8: Fails to find a local video capture device.
   ///
   ///
@@ -1964,13 +1964,13 @@ enum LocalVideoStreamError {
   DeviceNotFound,
 
   ///
-  /// startScreenCaptureByWindowId 11: When calling to share the window, the shared window is in a minimized state.
+  ///  startScreenCaptureByWindowId 11: When calling to share the window, the shared window is in a minimized state.
   ///
   @JsonValue(11)
   ScreenCaptureWindowMinmized,
 
   ///
-  /// Since
+  ///  Since
   ///  v3.2.0 12: The error code indicates that a window shared by the window ID has been closed, or a full-screen window shared by the window ID has exited full-screen mode. After exiting full-screen mode, remote users cannot see the shared window. To prevent remote users from seeing a black screen, Agora recommends that you immediately stop screen sharing.
   ///  Common scenarios for reporting this error code:
   ///  When the local user closes the shared window, the SDK reports this error code.
@@ -2419,11 +2419,13 @@ enum VideoFrameRate {
   Fps60,
 }
 
-/* TODO(doc): enum-BitRate */
+/// @nodoc
 enum BitRate {
+  /// @nodoc
   @JsonValue(0)
   Standard,
 
+  /// @nodoc
   @JsonValue(-1)
   Compatible,
 }
@@ -2458,7 +2460,7 @@ enum VideoMirrorMode {
 ///
 enum VideoOutputOrientationMode {
   ///
-  /// 0: (Default) The output video always follows the orientation of the captured video. The receiver takes the rotational information passed on from the video encoder. This mode applies to scenarios where video orientation can be adjusted on the receiver.If the captured video is in landscape mode, the output video is in landscape mode.
+  /// 0: (Default) The output video always follows the orientation of the captured video. The receiver takes the rotational information passed on from the video encoder. This mode applies to scenarios where video orientation can be adjusted on the receiver. If the captured video is in landscape mode, the output video is in landscape mode.
   ///  If the captured video is in portrait mode, the output video is in portrait mode.
   ///
   @JsonValue(0)
@@ -2622,7 +2624,7 @@ enum VideoRenderMode {
   Fit,
 
   ///
-  /// Deprecated:
+  ///  Deprecated:
   ///  3: This mode is deprecated.
   ///
   @Deprecated('')
@@ -2754,23 +2756,29 @@ enum WarningCode {
   SuperResolutionDeviceNotSupported,
 }
 
-/* TODO(doc): enum-AudioChannel */
+/// @nodoc
 enum AudioChannel {
+  /// @nodoc
   @JsonValue(0)
   Channel0,
 
+  /// @nodoc
   @JsonValue(1)
   Channel1,
 
+  /// @nodoc
   @JsonValue(2)
   Channel2,
 
+  /// @nodoc
   @JsonValue(3)
   Channel3,
 
+  /// @nodoc
   @JsonValue(4)
   Channel4,
 
+  /// @nodoc
   @JsonValue(5)
   Channel5,
 }
@@ -2868,7 +2876,7 @@ enum StreamSubscribeState {
   /// Calls muteLocalAudioStream (true) or muteLocalVideoStream (true) to stop sending local media stream.
   /// Calls disableAudio or disableVideo to disable the local audio or video module.
   ///  Calls enableLocalAudio (false) or enableLocalVideo (false) to disable the local audio or video capture.
-  ///  The role of the remote user is audience.The local user calls the following methods to stop receiving remote streams:
+  ///  The role of the remote user is audience. The local user calls the following methods to stop receiving remote streams:
   ///  Calls muteRemoteAudioStream (true), muteAllRemoteAudioStreams (true) or setDefaultMuteAllRemoteAudioStreams (true) to stop receiving the remote audio streams.
   ///  Calls muteRemoteVideoStream (true), muteAllRemoteVideoStreams (true) or setDefaultMuteAllRemoteVideoStreams (true) to stop receiving the remote video streams.
   ///
@@ -2948,7 +2956,7 @@ enum AudioSessionOperationRestriction {
 
 ///
 /// Preset voice effects.
-/// For better voice effects, Agora recommends setting the profile parameter of setAudioProfile to MusicHighQuality or MusicHighQualityStereo before using the following presets:RoomAcousticsKTV
+/// For better voice effects, Agora recommends setting the profile parameter of setAudioProfile to MusicHighQuality or MusicHighQualityStereo before using the following presets: RoomAcousticsKTV
 ///  RoomAcousticsVocalConcert
 ///  RoomAcousticsStudio
 ///  RoomAcousticsPhonograph
@@ -3137,7 +3145,7 @@ enum VoiceBeautifierPreset {
   ChatBeautifierVitality,
 
   ///
-  /// Singing beautifier effect.If you call setVoiceBeautifierPreset (SingingBeautifier), you can beautify a male-sounding voice and add a reverberation effect that sounds like singing in a small room. Agora recommends using this enumerator to process a male-sounding voice; otherwise, you might experience vocal distortion.
+  ///  Singing beautifier effect. If you call setVoiceBeautifierPreset (SingingBeautifier), you can beautify a male-sounding voice and add a reverberation effect that sounds like singing in a small room. Agora recommends using this enumerator to process a male-sounding voice; otherwise, you might experience vocal distortion.
   ///  If you call setVoiceBeautifierParameters (SingingBeautifier, param1, param2), you can beautify a male- or female-sounding voice and add a reverberation effect.
   ///
   @JsonValue(0x01020100)
@@ -3448,14 +3456,17 @@ enum VoiceConversionPreset {
   Bass,
 }
 
-/* TODO(doc): enum-VirtualBackgroundSourceType */
+/// @nodoc
 enum VirtualBackgroundSourceType {
+  /// @nodoc
   @JsonValue(1)
   Color,
 
+  /// @nodoc
   @JsonValue(2)
   Img,
 
+  /// @nodoc
   @JsonValue(3)
   Blur,
 }
@@ -3624,65 +3635,123 @@ enum MediaDeviceStateType {
   MediaDeviceStateUnrecommended,
 }
 
-/* TODO(doc): enum-RecorderState */
+///
+/// The current recording state.
+///
+///
 enum RecorderState {
+  ///
+  /// -1: An error occurs during the recording. See RecorderErrorCode for the reason.
+  ///
   @JsonValue(-1)
   Error,
 
+  ///
+  /// 2: The audio and video recording starts.
+  ///
   @JsonValue(2)
   Start,
 
+  ///
+  /// 3: The audio and video recording stops.
+  ///
   @JsonValue(3)
   Stop,
 }
 
-/* TODO(doc): enum-RecorderErrorCode */
+///
+/// The reason for the state change.
+///
+///
 enum RecorderErrorCode {
+  ///
+  /// 0: No error occurs.
+  ///
   @JsonValue(0)
   None,
 
+  ///
+  /// 1: The SDK fails to write the recorded data to a file.
+  ///
   @JsonValue(1)
   WriteFailed,
 
+  ///
+  /// 2: The SDK does not detect audio and video streams to be recorded,
+  ///  or audio and video streams are interrupted for more than five seconds during recording.
+  ///
   @JsonValue(2)
   NoStream,
 
+  ///
+  /// 3: The recording duration exceeds the upper limit.
+  ///
   @JsonValue(3)
   OverMaxDuration,
 
+  ///
+  /// 4: The recording configuration changes.
+  ///
   @JsonValue(4)
   ConfigChanged,
 
+  ///
+  /// 5: The SDK detects audio and video streams from users using versions of the SDK earlier than v3.0.0 in the
+  ///  COMMUNICATION channel profile.
+  ///
   @JsonValue(5)
   CustomStreamDetected,
 }
 
-/* TODO(doc): enum-MediaRecorderContainerFormat */
+///
+/// The format of the recording file.
+///
+///
 enum MediaRecorderContainerFormat {
+  ///
+  /// 1: (Default) MP4.
+  ///
   @JsonValue(1)
   MP4,
 
+  ///
+  /// Reserved parameter.
+  ///
   @JsonValue(2)
   FLV,
 }
 
-/* TODO(doc): enum-MediaRecorderStreamType */
+///
+/// The recording content.
+///
+///
 enum MediaRecorderStreamType {
+  ///
+  /// Only audio.
+  ///
   @JsonValue(1)
   Audio,
 
+  ///
+  /// only video.
+  ///
   @JsonValue(2)
   Video,
 
+  ///
+  /// (Default) Audio and video.
+  ///
   @JsonValue(3)
   Both,
 }
 
-/* TODO(doc): enum-LocalProxyMode */
+/// @nodoc
 enum LocalProxyMode {
+  /// @nodoc
   @JsonValue(0)
   ConnectivityFirst,
 
+  /// @nodoc
   @JsonValue(1)
   LocalOnly,
 }
@@ -3747,19 +3816,19 @@ enum VideoDenoiserMode {
 ///
 enum VideoDenoiserLevel {
   ///
-  /// 0: (Default) Promotes video quality during video noise reduction. HIGH_QUALITY balances performance consumption and video noise reduction quality. The performance consumption is moderate, the video noise reduction speed is moderate, and the overall video quality is optimal.
+  /// 0: (Default) Promotes video quality during video noise reduction. HighQuality balances performance consumption and video noise reduction quality. The performance consumption is moderate, the video noise reduction speed is moderate, and the overall video quality is optimal.
   ///
   @JsonValue(0)
   HighQuality,
 
   ///
-  /// Promotes reducing performance consumption during video noise reduction. FAST prioritizes reducing performance consumption over video noise reduction quality. The performance consumption is lower, and the video noise reduction speed is faster. To avoid a noticeable shadowing effect (shadows trailing behind moving objects) in the processed video, Agora recommends that you use FAST when the camera is fixed.
+  /// Promotes reducing performance consumption during video noise reduction. Fast prioritizes reducing performance consumption over video noise reduction quality. The performance consumption is lower, and the video noise reduction speed is faster. To avoid a noticeable shadowing effect (shadows trailing behind moving objects) in the processed video, Agora recommends that you use Fast when the camera is fixed.
   ///
   @JsonValue(1)
   Fast,
 
   ///
-  /// Enhanced video noise reduction. STRENGTH prioritizes video noise reduction quality over reducing performance consumption. The performance consumption is higher, the video noise reduction speed is slower, and the video noise reduction quality is better. If HIGH_QUALITY is not enough for your video noise reduction needs, you can use STRENGTH.
+  /// Enhanced video noise reduction. Strength prioritizes video noise reduction quality over reducing performance consumption. The performance consumption is higher, the video noise reduction speed is slower, and the video noise reduction quality is better. If Strength is not enough for your video noise reduction needs, you can use Strength.
   ///
   @JsonValue(2)
   Strength,
@@ -3783,41 +3852,51 @@ enum ExcludeWindowError {
   None,
 }
 
-/* TODO(doc): enum-ClientRoleChangeFailedReason */
+/// @nodoc
 enum ClientRoleChangeFailedReason {
+  /// @nodoc
   @JsonValue(1)
   TooManyBroadcasters,
 
+  /// @nodoc
   @JsonValue(2)
   NotAuthorized,
 
+  /// @nodoc
   @JsonValue(3)
   RequestTimeOut,
 
+  /// @nodoc
   @JsonValue(4)
   ConnectionFailed,
 }
 
 /// @nodoc
 enum WlaccMessageReason {
+  /// @nodoc
   @JsonValue(0)
   WeakSignal,
 
+  /// @nodoc
   @JsonValue(1)
   ChannelCongestion,
 }
 
 /// @nodoc
 enum WlaccSuggestAction {
+  /// @nodoc
   @JsonValue(0)
   CloseToWifi,
 
+  /// @nodoc
   @JsonValue(1)
   ConnectSsid,
 
+  /// @nodoc
   @JsonValue(2)
   Check5g,
 
+  /// @nodoc
   @JsonValue(3)
   ModifySsid,
 }

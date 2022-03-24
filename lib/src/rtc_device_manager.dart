@@ -214,9 +214,24 @@ abstract class RtcDeviceManager {
   /* TODO(doc): api-audio-getVideoDevice */
   Future<String?> getVideoDevice();
 
-  /* TODO(doc): api-audio-followSystemPlaybackDevice */
+  ///
+  /// Sets the audio playback device used by the SDK to follow the system default audio playback device.
+  ///
+  ///
+  /// Param [enable] Whether to follow the system default audio playback device:
+  ///  true: Follow. The SDK immediately switches the audio playback device when the system default audio playback device changes.
+  ///  false: Do not follow. The SDK switches the audio playback device to the system default audio playback device only when the currently used audio playback device is disconnected.
+  ///
+  ///
   Future<void> followSystemPlaybackDevice(bool enable);
 
-  /* TODO(doc): api-audio-followSystemRecordingDevice */
+  ///
+  /// Sets the audio recording device used by the SDK to follow the system default audio recording device.
+  ///
+  ///
+  /// Param [enable] Whether to follow the system default audio recording device: true: Follow. The SDK immediately switches the audio recording device when the system default audio recording device changes.
+  ///  false: Do not follow. The SDK switches the audio recording device to the system default audio recording device only when the currently used audio recording device is disconnected.
+  ///
+  ///
   Future<void> followSystemRecordingDevice(bool enable);
 }

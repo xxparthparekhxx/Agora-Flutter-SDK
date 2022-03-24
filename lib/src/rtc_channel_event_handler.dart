@@ -1,12 +1,12 @@
 import 'package:agora_rtc_engine/src/event_types.dart';
 
 ///
-/// The SDK uses RtcChannelEventHandler to sendRtcChannel event notifications to your app.
+/// The SDK uses RtcChannelEventHandler to send RtcChannel event notifications to your app.
 ///
 ///
 class RtcChannelEventHandler {
   ///
-  /// Reports the warning code ofRtcChannel .
+  /// Reports the warning code of RtcChannel .
   ///
   ///
   /// Param [warn] Warning codes.
@@ -16,7 +16,7 @@ class RtcChannelEventHandler {
   WarningCallback? warning;
 
   ///
-  /// The error codeRtcChannel reported.
+  /// The error code RtcChannel reported.
   ///
   ///
   /// Param [err] The error code.
@@ -67,7 +67,7 @@ class RtcChannelEventHandler {
   ///
   /// Occurs when a remote user (COMMUNICATION)/ host (LIVE_BROADCASTING) joins the channel.
   /// In a communication channel, this callback indicates that a remote user joins the channel. The SDK also triggers this callback to report the existing users in the channel when a user joins the channel.
-  ///  In a live-broadcast channel, this callback indicates that a host joins the channel. The SDK also triggers this callback to report the existing hosts in the channel when a host joins the channel. Agora recommends limiting the number of hosts to 17.The SDK triggers this callback under one of the following circumstances:
+  ///  In a live-broadcast channel, this callback indicates that a host joins the channel. The SDK also triggers this callback to report the existing hosts in the channel when a host joins the channel. Agora recommends limiting the number of hosts to 17. The SDK triggers this callback under one of the following circumstances:
   ///  A remote user/host joins the channel by calling the joinChannel method.
   ///  A remote user switches the user role to the host after joining the channel.
   ///  A remote user/host rejoins the channel after a network interruption.
@@ -352,7 +352,7 @@ class RtcChannelEventHandler {
   MediaRelayEventCallback? channelMediaRelayEvent;
 
   ///
-  /// Occurs when the local user receivesMetadata .
+  /// Occurs when the local user receives Metadata .
   ///
   ///
   /// Param [buffer] The recevied metadata.
@@ -415,6 +415,8 @@ class RtcChannelEventHandler {
   /// Param [oldState] The previous subscribing status, see StreamSubscribeState
   ///  for details.
   ///
+  /// Param [uid] The ID of the remote user.
+  ///
   StreamSubscribeStateCallback? videoSubscribeStateChanged;
 
   ///
@@ -442,7 +444,7 @@ class RtcChannelEventHandler {
   ///
   UserSuperResolutionEnabledCallback? userSuperResolutionEnabled;
 
-/* TODO(doc): callback-channel-clientRoleChangeFailed */
+  /// @nodoc
   OnClientRoleChangeFailed? clientRoleChangeFailed;
 
   /// Constructs the [RtcChannelEventHandler].

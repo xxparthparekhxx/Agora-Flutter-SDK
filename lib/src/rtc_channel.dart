@@ -8,7 +8,7 @@ import 'enums.dart';
 import 'rtc_channel_event_handler.dart';
 
 ///
-/// To provide the RtcChannelProvides methods that enable real-time communications in an channel.
+/// Provides methods that enable real-time communications in an channel.
 /// Call create to create an RtcChannel object.
 ///
 abstract class RtcChannel {
@@ -27,13 +27,13 @@ abstract class RtcChannel {
   }
 
   ///
-  /// Releases theRtcChannel instance.
+  /// Releases the RtcChannel instance.
   ///
   ///
   Future<void> destroy();
 
   ///
-  /// Destroys all RtcChannel instance.
+  /// Destroys all RtcChannel instances.
   ///
   ///
   static void destroyAll() {
@@ -41,7 +41,7 @@ abstract class RtcChannel {
   }
 
   ///
-  /// Sets the event handler for theRtcChannel object.
+  /// Sets the event handler for the RtcChannel object.
   /// After setting the channel event handler, you can listen for channel events and receive the statistics of the corresponding RtcChannel object.
   ///
   /// Param [handler] The event handler for the RtcChannel object.
@@ -95,7 +95,7 @@ abstract class RtcChannel {
   /// Param [options] The channel media options.
   ///
   ///
-  /// Param [userAccount] The user account. This parameter is used to identify the user in the channel for real-time audio and video engagement. You need to set and manage user accounts yourself and ensure that each user account in the same channel is unique. The maximum length of this parameter is 255 bytes. Ensure that you set this parameter and do not set it as null. Supported characters are (89 in total):The 26 lowercase English letters: a to z.
+  /// Param [userAccount] The user account. This parameter is used to identify the user in the channel for real-time audio and video engagement. You need to set and manage user accounts yourself and ensure that each user account in the same channel is unique. The maximum length of this parameter is 255 bytes. Ensure that you set this parameter and do not set it as null. Supported characters are (89 in total): The 26 lowercase English letters: a to z.
   ///  The 26 uppercase English letters: A to Z.
   ///  All numeric characters: 0 to 9.
   ///  Space
@@ -182,7 +182,7 @@ abstract class RtcChannel {
   /// Stops or resumes publishing the local audio stream.
   ///
   ///
-  /// Param [mute] Whether to stop publishing the local audio stream.true: Stop publishing the local audio stream.
+  /// Param [mute] Whether to stop publishing the local audio stream. true: Stop publishing the local audio stream.
   ///  false: (Default) Resumes publishing the local audio stream.
   ///
   Future<void> muteLocalAudioStream(bool mute);
@@ -194,7 +194,7 @@ abstract class RtcChannel {
   ///
   /// Param [userId] The user ID of the specified user.
   ///
-  /// Param [muted] Whether to stop subscribing to the audio stream of the specified user.true: Stop subscribing to the audio stream of the specified user.
+  /// Param [muted] Whether to stop subscribing to the audio stream of the specified user. true: Stop subscribing to the audio stream of the specified user.
   ///  false: (Default) Subscribe to the audio stream of the specified user.
   ///
   Future<void> muteRemoteAudioStream(int userId, bool muted);
@@ -213,7 +213,7 @@ abstract class RtcChannel {
   /// Stops or resumes subscribing to the audio streams of all remote users by default.
   /// Call this method after joining a channel. After successfully calling this method, the local user stops or resumes subscribing to the audio streams of all subsequent users. Deprecated:
   ///  This method is deprecated.
-  ///  If you need to resume subscribing to the audio streams of remote users in the channel after calling this method, do the following:If you need to resume subscribing to the audio stream of a specified user, call muteRemoteAudioStream (false), and specify the user ID.
+  ///  If you need to resume subscribing to the audio streams of remote users in the channel after calling this method, do the following: If you need to resume subscribing to the audio stream of a specified user, call muteRemoteAudioStream (false), and specify the user ID.
   ///  If you need to resume subscribing to the audio streams of multiple remote users, call muteRemoteAudioStream (false) multiple times.
   ///
   /// Param [muted] Whether to stop subscribing to the audio streams of all remote users by default.
@@ -261,7 +261,7 @@ abstract class RtcChannel {
   /// Stops or resumes subscribing to the video streams of all remote users by default.
   /// Call this method after joining a channel. After successfully calling this method, the local user stops or resumes subscribing to the audio streams of all subsequent users. Deprecated:
   ///  This method is deprecated.
-  ///  If you need to resume subscribing to the video streams of remote users in the channel, do the following:If you need to resume subscribing to a single user, call muteRemoteVideoStream (false) and specify the ID of the remote user you want to subscribe to.
+  ///  If you need to resume subscribing to the video streams of remote users in the channel, do the following: If you need to resume subscribing to a single user, call muteRemoteVideoStream (false) and specify the ID of the remote user you want to subscribe to.
   ///  If you want to resume subscribing to multiple users, call muteRemoteVideoStream(false) multiple times.
   ///
   /// Param [muted] Whether to stop subscribing to the audio streams of all remote users by default.
@@ -291,7 +291,7 @@ abstract class RtcChannel {
   ///  OnePlus: A6000
   ///  Xiaomi: Mi 8, Mi 9, Mi 10, Mi 11, MIX3, Redmi K20 Pro
   ///  SAMSUNG: SM-G9600, SM-G9650, SM-N9600, SM-G9708, SM-G960U, SM-G9750, S20, S21
-  ///  HUAWEI: SEA-AL00, ELE-AL00, VOG-AL00, YAL-AL10, HMA-AL00, EVR-AN00, nova 4, nova 5 Pro, nova 6 5G, nova 7 5G, Mate 30, Mate 30 Pro, Mate 40, Mate 40 Pro, P40, P40 Pro, Huawei M6, MatePad 10.8iOS:
+  ///  HUAWEI: SEA-AL00, ELE-AL00, VOG-AL00, YAL-AL10, HMA-AL00, EVR-AN00, nova 4, nova 5 Pro, nova 6 5G, nova 7 5G, Mate 30, Mate 30 Pro, Mate 40, Mate 40 Pro, P40, P40 Pro, Huawei M6, MatePad 10.8 iOS:
   ///  iPhone XR
   ///  iPhone XS
   ///  iPhone XS Max
@@ -338,10 +338,10 @@ abstract class RtcChannel {
   ///
   ///  Sets the transcoding configurations for CDN live streaming.
   /// This method takes effect only when you are a host in live interactive streaming.
-  ///  Ensure that you enable the RTMP Converter service before using this function. See Prerequisites in the advanced guide Push Streams to CDN.If you call this method to set the transcoding configuration for the first time, the SDK does not trigger the
+  ///  Ensure that you enable the RTMP Converter service before using this function. See Prerequisites in the advanced guide Push Streams to CDN. If you call this method to set the transcoding configuration for the first time, the SDK does not trigger the
   ///  transcodingUpdated
-  ///  callback.Call this method after joining a channel.
-  ///  Agora supports pushing media streams in RTMPS protocol to the CDN only when you enable transcoding.Deprecated:This method is deprecated. See Release Notes for an alternative solution.This method sets the video layout and audio settings for CDN live streaming. The SDK triggers the
+  ///  callback. Call this method after joining a channel.
+  ///  Agora supports pushing media streams in RTMPS protocol to the CDN only when you enable transcoding. Deprecated: This method is deprecated. See Release Notes for an alternative solution. This method sets the video layout and audio settings for CDN live streaming. The SDK triggers the
   ///  transcodingUpdated
   ///  callback when you call this method to update the transcoding setting.
   ///
@@ -351,11 +351,11 @@ abstract class RtcChannel {
 
   ///
   ///  Publishes the local stream to a specified CDN live streaming URL.
-  /// Call this method after joining a channel.Ensure that you enable the RTMP Converter service before using this function.See the advanced guide
+  /// Call this method after joining a channel. Ensure that you enable the RTMP Converter service before using this function. See the advanced guide
   ///  Push Streams to CDN
   ///  in Prerequisites. This method takes effect only when you are a host in live interactive streaming.
   ///  This method adds only one stream CDN streaming URL each time it is called. To push multiple URLs, call this method multiple times.
-  ///  Agora supports pushing media streams in RTMPS protocol to the CDN only when you enable transcoding.Deprecated:This method is deprecated. See Release Notes for an alternative solution.After calling this method, you can push media streams in RTMP or RTMPS protocol to the CDN. The SDK triggers the
+  ///  Agora supports pushing media streams in RTMPS protocol to the CDN only when you enable transcoding. Deprecated: This method is deprecated. See Release Notes for an alternative solution. After calling this method, you can push media streams in RTMP or RTMPS protocol to the CDN. The SDK triggers the
   ///  rtmpStreamingStateChanged
   ///  callback on the local client to report the state of adding a local stream to the CDN.
   ///
@@ -364,8 +364,8 @@ abstract class RtcChannel {
   /// Param [transcodingEnabled] Whether to enable transcoding.
   ///  Transcoding
   ///  in a CDN live streaming converts the audio and video streams before pushing them to the CDN server. It applies to scenarios where a channel has multiple broadcasters and composite layout is needed
-  ///  true: Enable transcoding.
-  ///  false: Disable transcoding.If you set this parameter astrue, ensure that you call the
+  ///  true : Enable transcoding.
+  ///  false : Disable transcoding. If you set this parameter as true , ensure that you call the
   ///  setLiveTranscoding
   ///  method before this method.
   ///
@@ -373,9 +373,9 @@ abstract class RtcChannel {
 
   ///
   ///  Removes an RTMP or RTMPS stream from the CDN.
-  /// Ensure that you enable the RTMP Converter service before using this function.This method takes effect only when you are a host in live interactive streaming.
+  /// Ensure that you enable the RTMP Converter service before using this function. This method takes effect only when you are a host in live interactive streaming.
   ///  Call this method after joining a channel.
-  ///  This method removes only one CDN streaming URL each time it is called. To remove multiple URLs, call this method multiple times.Deprecated:This method is deprecated. See Release Notes for an alternative solution.After a successful method call, the SDK triggers
+  ///  This method removes only one CDN streaming URL each time it is called. To remove multiple URLs, call this method multiple times. Deprecated: This method is deprecated. See Release Notes for an alternative solution. After a successful method call, the SDK triggers
   ///  rtmpStreamingStateChanged
   ///  on the local client to report the result of deleting the address.
   ///
@@ -387,7 +387,7 @@ abstract class RtcChannel {
   /// Starts relaying media streams across channels. This method can be used to implement scenarios such as co-host across channels.
   /// After a successful method call, the SDK triggers the channelMediaRelayStateChanged and channelMediaRelayEvent callbacks, and these callbacks return the state and events of the media stream relay.
   ///  If the channelMediaRelayStateChanged callback returns Running(2) and None(0), and the channelMediaRelayEvent callback returns SentToDestinationChannel(4), it means that the SDK starts relaying media streams between the source channel and the destination channel.
-  ///  If the channelMediaRelayStateChanged callback returns Failure(3), an exception occurs during the media stream relay.Call this method after joining the channel.
+  ///  If the channelMediaRelayStateChanged callback returns Failure(3), an exception occurs during the media stream relay. Call this method after joining the channel.
   ///  This method takes effect only when you are a host in a live streaming channel.
   ///  After a successful method call, if you want to call this method again, ensure that you call the stopChannelMediaRelay method to quit the current relay.
   ///  Contact support@agora.io (https://agora-ticket.agora.io/) before implementing this function.
@@ -435,7 +435,7 @@ abstract class RtcChannel {
   ///
   ///  Sets the stream type of the remote video.
   /// The method result returns in the apiCallExecuted callback.
-  ///  By default, users receive the high-quality video stream. Call this method if you want to switch to the low-quality video stream. This method allows the app to adjust the corresponding video stream type based on the size of the video window to reduce the bandwidth and resources. The aspect ratio of the low-quality video stream is the same as the high-quality video stream. Once the resolution of the high-quality video stream is set, the system automatically sets the resolution, frame rate, and bitrate of the low-quality video stream.Under limited network conditions, if the publisher has not disabled the dual-stream mode using enableDualStreamMode (false), the receiver can choose to receive either the high-quality video stream (the high resolution, and high bitrate video stream) or the low-quality video stream (the low resolution, and low bitrate video stream). The high-quality video stream has a higher resolution and bitrate, and the low-quality video stream has a lower resolution and bitrate.
+  ///  By default, users receive the high-quality video stream. Call this method if you want to switch to the low-quality video stream. This method allows the app to adjust the corresponding video stream type based on the size of the video window to reduce the bandwidth and resources. The aspect ratio of the low-quality video stream is the same as the high-quality video stream. Once the resolution of the high-quality video stream is set, the system automatically sets the resolution, frame rate, and bitrate of the low-quality video stream. Under limited network conditions, if the publisher has not disabled the dual-stream mode using enableDualStreamMode (false), the receiver can choose to receive either the high-quality video stream (the high resolution, and high bitrate video stream) or the low-quality video stream (the low resolution, and low bitrate video stream). The high-quality video stream has a higher resolution and bitrate, and the low-quality video stream has a lower resolution and bitrate.
   ///  Call this method after joining a channel. If you call both setRemoteVideoStreamType and setRemoteDefaultVideoStreamType , the setting of setRemoteVideoStreamType takes effect.
   ///
   /// Param [uid] User ID.
@@ -615,7 +615,7 @@ abstract class RtcChannel {
   ///
   /// Sends data stream messages.
   /// Sends data stream messages to all users in a channel. The SDK has the following restrictions on this method:Up to 30 packets can be sent per second in a channel with each packet having a maximum size of 1 KB.Each client can send up to 6 KB of data per second.Each user can have up to five data streams simultaneously.
-  ///  A successful method call triggers the streamMessage callback on the remote client, from which the remote user gets the stream message. A failed method call triggers the streamMessageError callback on the remote client.Ensure that you call createDataStreamWithConfig to create a data channel before calling this method.
+  ///  A successful method call triggers the streamMessage callback on the remote client, from which the remote user gets the stream message. A failed method call triggers the streamMessageError callback on the remote client. Ensure that you call createDataStreamWithConfig to create a data channel before calling this method.
   ///  In live streaming scenarios, this method only applies to hosts.
   ///
   /// Param [streamId] The data stream ID. You can get the data stream ID by calling createDataStreamWithConfig.
@@ -632,7 +632,7 @@ abstract class RtcChannel {
   /// Ensure that you enable the RTMP Converter service before using this function. See Prerequisites in Push Streams to CDN.
   ///  Call this method after joining a channel.
   ///  Only hosts in the LIVE_BROADCASTING profile can call this method.
-  ///  If you want to retry pushing streams after a failed push, make sure to call stopRtmpStream first, then call this method to retry pushing streams; otherwise, the SDK returns the same error code as the last failed push.This method can push media streams to only one CDN address at a time, so if you need to push streams to multiple addresses, call this method multiple times. This method can push media streams to only one CDN address at a time, so if you need to push streams to multiple addresses, call this method multiple times.
+  ///  If you want to retry pushing streams after a failed push, make sure to call stopRtmpStream first, then call this method to retry pushing streams; otherwise, the SDK returns the same error code as the last failed push. This method can push media streams to only one CDN address at a time, so if you need to push streams to multiple addresses, call this method multiple times. This method can push media streams to only one CDN address at a time, so if you need to push streams to multiple addresses, call this method multiple times.
   ///  After you call this method, the SDK triggers the rtmpStreamingStateChanged callback on the local client to report the state of the streaming.
   ///
   /// Param [url] The address of the CDN live streaming. The format is RTMP or RTMPS. The character length cannot exceed 1024 bytes. Special characters such as Chinese characters are not supported.

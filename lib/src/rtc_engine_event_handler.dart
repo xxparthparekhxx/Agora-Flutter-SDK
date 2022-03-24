@@ -101,7 +101,7 @@ class RtcEngineEventHandler {
   ///
   /// Occurs when a remote user (COMMUNICATION)/ host (LIVE_BROADCASTING) joins the channel.
   /// In a communication channel, this callback indicates that a remote user joins the channel. The SDK also triggers this callback to report the existing users in the channel when a user joins the channel.
-  ///  In a live-broadcast channel, this callback indicates that a host joins the channel. The SDK also triggers this callback to report the existing hosts in the channel when a host joins the channel. Agora recommends limiting the number of hosts to 17.The SDK triggers this callback under one of the following circumstances:
+  ///  In a live-broadcast channel, this callback indicates that a host joins the channel. The SDK also triggers this callback to report the existing hosts in the channel when a host joins the channel. Agora recommends limiting the number of hosts to 17. The SDK triggers this callback under one of the following circumstances:
   ///  A remote user/host joins the channel by calling the joinChannel method.
   ///  A remote user switches the user role to the host after joining the channel.
   ///  A remote user/host rejoins the channel after a network interruption.
@@ -275,7 +275,7 @@ class RtcEngineEventHandler {
   /// When the state of the local video stream changes (including the state of the video capture and encoding), the SDK triggers this callback to report the current state. This callback indicates the state of the local video stream, including camera capturing and video encoding, and allows you to troubleshoot issues when exceptions occur.
   ///  The SDK triggers the localVideoStateChanged callback with the state code Failed and error code CaptureFailure in the following situations:
   ///  The app switches to the background, and the system gets the camera resource.
-  ///  The camera starts normally, but does not output video for four consecutive seconds.When the camera outputs the captured video frames, if the video frames are the same for 15 consecutive frames, the SDK triggers the localVideoStateChanged callback with the state code Capturing and error code CaptureFailure. Note that the video frame duplication detection is only available for video frames with a resolution greater than 200 × 200, a frame rate greater than or equal to 10 fps, and a bitrate less than 20 Kbps.
+  ///  The camera starts normally, but does not output video for four consecutive seconds. When the camera outputs the captured video frames, if the video frames are the same for 15 consecutive frames, the SDK triggers the localVideoStateChanged callback with the state code Capturing and error code CaptureFailure. Note that the video frame duplication detection is only available for video frames with a resolution greater than 200 × 200, a frame rate greater than or equal to 10 fps, and a bitrate less than 20 Kbps.
   ///  For some device models, the SDK does not trigger this callback when the state of the local video changes while the local video capturing device is in use, so you have to make your own timeout judgment.
   ///
   /// Param [localVideoState] The state of the local video, see LocalVideoStreamState .
@@ -312,6 +312,10 @@ class RtcEngineEventHandler {
   ///
   LocalAudioStateCallback? localAudioStateChanged;
 
+  /// @nodoc
+  @Deprecated('Use requestAudioFileInfo instead')
+  RequestAudioFileInfoCallback? requestAudioFileInfoCallback;
+
   ///
   /// Reports the information of an audio file.
   /// After successfully calling getAudioFileInfo , the SDK triggers this callback to report the information of the audio file, such as the file path and duration.
@@ -320,10 +324,6 @@ class RtcEngineEventHandler {
   ///
   /// Param [error] The information acquisition state. See AudioFileInfoError .
   ///
-  @Deprecated('Use requestAudioFileInfo instead')
-  RequestAudioFileInfoCallback? requestAudioFileInfoCallback;
-
-/* TODO(doc): callback-engine-requestAudioFileInfo */
   RequestAudioFileInfoCallback? requestAudioFileInfo;
 
   ///
@@ -803,7 +803,7 @@ class RtcEngineEventHandler {
   /// Deprecated:
   ///  Please use the remoteVideoStateChanged callback with the following parameters:
   ///  Starting (1).
-  ///  Decoding (2).The SDK triggers this callback under one of the following circumstances:
+  ///  Decoding (2). The SDK triggers this callback under one of the following circumstances:
   ///  The remote user joins the channel and sends the video stream.
   ///  The remote user stops sending the video stream and re-sends it after 15 seconds. Reasons for such an interruption include:
   ///  The remote user leaves the channel.
@@ -824,9 +824,9 @@ class RtcEngineEventHandler {
 
   ///
   /// Occurs when the microphone is enabled/disabled.
-  /// Deprecated:Please use the localAudioStateChanged callback:
+  /// Deprecated: Please use the localAudioStateChanged callback:
   ///  Stopped(0).
-  ///  Recording(1).The SDK triggers this callback when the local user enableLocalAudio resumes or stops capturing the local audio stream by calling the method.
+  ///  Recording(1). The SDK triggers this callback when the local user enableLocalAudio resumes or stops capturing the local audio stream by calling the method.
   ///
   /// Param [enabled] Whether the microphone is enabled/disabled:
   ///  true: The microphone is enabled.
@@ -884,7 +884,7 @@ class RtcEngineEventHandler {
 
   ///
   /// Occurs when the camera turns on and is ready to capture the video.
-  /// Deprecated:Please use Capturing(1) in localVideoStateChanged instead.
+  /// Deprecated: Please use Capturing(1) in localVideoStateChanged instead.
   ///  This callback indicates that the camera has been successfully turned on and
   ///  you can start to capture video.
   ///
@@ -969,6 +969,8 @@ class RtcEngineEventHandler {
   ///
   /// Param [channel] The name of the channel.
   ///
+  /// Param [uid] The ID of the remote user.
+  ///
   /// Param [oldState] The previous subscribing status, see StreamSubscribeState
   ///  for details.
   ///
@@ -1034,7 +1036,7 @@ class RtcEngineEventHandler {
   ///
   UploadLogResultCallback? uploadLogResult;
 
-/* TODO(doc): callback-engine-airPlayIsConnected */
+  /// @nodoc
   @Deprecated('Use airPlayConnected instead')
   EmptyCallback? airPlayIsConnected;
 
@@ -1095,7 +1097,7 @@ class RtcEngineEventHandler {
   /// Param [deviceState] The device state.
   ///  on macOS:
   ///  0: The device is ready for use.
-  ///  8: The device is not connected.On Windows: MediaDeviceStateType .
+  ///  8: The device is not connected. On Windows: MediaDeviceStateType .
   ///
   ///
   AudioDeviceStateChanged? audioDeviceStateChanged;
@@ -1143,7 +1145,7 @@ class RtcEngineEventHandler {
   ///
   OnScreenCaptureInfoUpdated? screenCaptureInfoUpdated;
 
-/* TODO(doc): callback-engine-clientRoleChangeFailed */
+  /// @nodoc
   OnClientRoleChangeFailed? clientRoleChangeFailed;
 
   /// @nodoc

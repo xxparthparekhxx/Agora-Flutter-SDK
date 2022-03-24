@@ -10,7 +10,7 @@ import 'impl/rtc_ender_view_impl.dart';
 /// RtcSurfaceView class for rendering local and remote video.
 /// This class has the following corresponding classes:
 ///  Android: SurfaceView (https://developer.android.com/reference/android/view/SurfaceView).
-///  iOS: UIView (https://developer.apple.com/documentation/uikit/uiview)Applies to the macOS and Windows platforms only.
+///  iOS: UIView (https://developer.apple.com/documentation/uikit/uiview) Applies to the macOS and Windows platforms only.
 ///
 class RtcSurfaceView extends StatefulWidget {
   ///
