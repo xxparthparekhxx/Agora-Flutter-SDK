@@ -41,27 +41,7 @@ void main() {
       try {
         await rtcEngine.getCameraMaxZoomFactor();
       } catch (e) {
-        final exception = e as PlatformException;
-        // -4 = ErrorCode.NotSupported
-        // It's allow this function return -4
-        if ('-4' != exception.code) {
-          rethrow;
-        }
-      }
-
-      await rtcEngine.destroy();
-    },
-    skip: !(Platform.isAndroid || Platform.isIOS),
-  );
-
-  testWidgets(
-    'getCameraMaxZoomFactor',
-    (WidgetTester tester) async {
-      RtcEngine rtcEngine = await RtcEngine.create(config.appId);
-      await rtcEngine.startPreview();
-      try {
-        await rtcEngine.getCameraMaxZoomFactor();
-      } catch (e) {
+        print('getCameraMaxZoomFactor error: $e');
         final exception = e as PlatformException;
         // -4 = ErrorCode.NotSupported
         // It's allow this function return -4

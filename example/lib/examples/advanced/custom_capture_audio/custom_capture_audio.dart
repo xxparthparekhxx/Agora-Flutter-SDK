@@ -93,7 +93,7 @@ class _CustomCaptureAudioState extends State<CustomCaptureAudio> {
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
     await _engine.setClientRole(ClientRole.Broadcaster);
 
-    await _engine.setDefaultAudioRoutetoSpeakerphone(true);
+    await _engine.setDefaultAudioRouteToSpeakerphone(true);
 
     // Sets the external audio source.
     // PS: Ensure that you call this method before the joinChannel method
@@ -101,7 +101,7 @@ class _CustomCaptureAudioState extends State<CustomCaptureAudio> {
         true, _defaultSampleRate, _defaultChannelCount);
 
     // Set audio route to speaker
-    await _engine.setDefaultAudioRoutetoSpeakerphone(true);
+    await _engine.setDefaultAudioRouteToSpeakerphone(true);
 
     final option = ChannelMediaOptions();
     option.autoSubscribeAudio = true;

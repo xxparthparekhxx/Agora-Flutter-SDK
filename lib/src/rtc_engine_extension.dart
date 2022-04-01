@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'dart:io';
 
 import 'classes.dart';
+import 'impl/rtc_engine_impl.dart';
 import 'rtc_engine.dart';
 
 // ignore_for_file: non_constant_identifier_names
@@ -143,7 +144,7 @@ extension RtcEngineExtension on RtcEngine {
   /// **return** The actual path of the asset.
   ///
   Future<String?> getAssetAbsolutePath(String assetPath) {
-    return RtcEngine.methodChannel
+    return RtcEngineImpl.methodChannel
         .invokeMethod('getAssetAbsolutePath', assetPath);
   }
 

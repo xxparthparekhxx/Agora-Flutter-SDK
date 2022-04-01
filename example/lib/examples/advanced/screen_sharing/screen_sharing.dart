@@ -115,7 +115,7 @@ class _State extends State<ScreenSharing> {
           (LocalVideoStreamState localVideoState, LocalVideoStreamError error) {
         logSink.log(
             'ScreenSharing localVideoStateChanged $localVideoState $error');
-        if (localVideoState == LocalVideoStreamState.Failed) {
+        if (error == LocalVideoStreamError.ScreenCaptureWindowClosed) {
           _stopScreenShare();
         }
       },

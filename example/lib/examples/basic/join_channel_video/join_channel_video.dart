@@ -86,7 +86,14 @@ class _State extends State<JoinChannelVideo> {
     if (defaultTargetPlatform == TargetPlatform.android) {
       await [Permission.microphone, Permission.camera].request();
     }
+    
     await _engine.joinChannel(config.token, _controller.text, null, config.uid);
+    await _engine.enableVirtualBackground(
+        true,
+        VirtualBackgroundSource(
+            backgroundSourceType: VirtualBackgroundSourceType.Img,
+            color: 16777215,
+            source: '/sdcard/Android/data/io.agora.agora_rtc_engine_example/files/lll.jpg'));
   }
 
   _leaveChannel() async {
