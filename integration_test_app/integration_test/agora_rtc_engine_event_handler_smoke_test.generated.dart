@@ -16,13 +16,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool warningCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         warning: (warn) {
@@ -46,13 +41,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool errorCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         error: (err) {
@@ -76,13 +66,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool apiCallExecutedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         apiCallExecuted: (error, api, result) {
@@ -106,13 +91,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool joinChannelSuccessCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         joinChannelSuccess: (channel, uid, elapsed) {
@@ -136,13 +116,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool rejoinChannelSuccessCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         rejoinChannelSuccess: (channel, uid, elapsed) {
@@ -166,13 +141,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool leaveChannelCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         leaveChannel: (stats) {
@@ -196,13 +166,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool localUserRegisteredCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         localUserRegistered: (uid, userAccount) {
@@ -226,13 +191,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool userInfoUpdatedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         userInfoUpdated: (uid, userInfo) {
@@ -256,13 +216,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool clientRoleChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         clientRoleChanged: (oldRole, newRole) {
@@ -286,13 +241,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool userJoinedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         userJoined: (uid, elapsed) {
@@ -316,13 +266,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool userOfflineCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         userOffline: (uid, reason) {
@@ -346,13 +291,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool connectionStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         connectionStateChanged: (state, reason) {
@@ -376,13 +316,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool networkTypeChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         networkTypeChanged: (type) {
@@ -406,13 +341,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool connectionLostCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         connectionLost: () {
@@ -436,13 +366,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool tokenPrivilegeWillExpireCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         tokenPrivilegeWillExpire: (token) {
@@ -466,13 +391,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool requestTokenCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         requestToken: () {
@@ -496,13 +416,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioVolumeIndicationCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioVolumeIndication: (speakers, totalVolume) {
@@ -526,13 +441,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool activeSpeakerCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         activeSpeaker: (uid) {
@@ -556,13 +466,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool firstLocalAudioFrameCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         firstLocalAudioFrame: (elapsed) {
@@ -586,13 +491,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool firstLocalVideoFrameCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         firstLocalVideoFrame: (width, height, elapsed) {
@@ -616,13 +516,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool userMuteVideoCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         userMuteVideo: (uid, muted) {
@@ -646,13 +541,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool videoSizeChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         videoSizeChanged: (uid, width, height, rotation) {
@@ -676,13 +566,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool remoteVideoStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         remoteVideoStateChanged: (uid, state, reason, elapsed) {
@@ -706,13 +591,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool localVideoStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         localVideoStateChanged: (localVideoState, error) {
@@ -736,13 +616,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool remoteAudioStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         remoteAudioStateChanged: (uid, state, reason, elapsed) {
@@ -766,13 +641,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool localAudioStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         localAudioStateChanged: (state, error) {
@@ -796,13 +666,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool requestAudioFileInfoCallbackCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         requestAudioFileInfoCallback: (info, error) {
@@ -826,13 +691,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool requestAudioFileInfoCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         requestAudioFileInfo: (info, error) {
@@ -856,13 +716,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool localPublishFallbackToAudioOnlyCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         localPublishFallbackToAudioOnly: (isFallbackOrRecover) {
@@ -886,13 +741,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool remoteSubscribeFallbackToAudioOnlyCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         remoteSubscribeFallbackToAudioOnly: (uid, isFallbackOrRecover) {
@@ -916,13 +766,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioRouteChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioRouteChanged: (routing) {
@@ -946,13 +791,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool cameraFocusAreaChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         cameraFocusAreaChanged: (rect) {
@@ -976,13 +816,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool cameraExposureAreaChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         cameraExposureAreaChanged: (rect) {
@@ -1006,13 +841,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool facePositionChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         facePositionChanged: (imageWidth, imageHeight, faces) {
@@ -1037,13 +867,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool rtcStatsCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         rtcStats: (stats) {
@@ -1067,13 +892,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool lastmileQualityCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         lastmileQuality: (quality) {
@@ -1097,13 +917,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool networkQualityCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         networkQuality: (uid, txQuality, rxQuality) {
@@ -1127,13 +942,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool lastmileProbeResultCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         lastmileProbeResult: (result) {
@@ -1157,13 +967,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool localVideoStatsCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         localVideoStats: (stats) {
@@ -1187,13 +992,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool localAudioStatsCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         localAudioStats: (stats) {
@@ -1217,13 +1017,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool remoteVideoStatsCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         remoteVideoStats: (stats) {
@@ -1247,13 +1042,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool remoteAudioStatsCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         remoteAudioStats: (stats) {
@@ -1277,13 +1067,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioMixingFinishedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioMixingFinished: () {
@@ -1307,13 +1092,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioMixingStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioMixingStateChanged: (state, reason) {
@@ -1337,13 +1117,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioEffectFinishedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioEffectFinished: (soundId) {
@@ -1367,13 +1142,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool rtmpStreamingStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         rtmpStreamingStateChanged: (url, state, errCode) {
@@ -1397,13 +1167,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool transcodingUpdatedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         transcodingUpdated: () {
@@ -1427,13 +1192,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool streamInjectedStatusCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         streamInjectedStatus: (url, uid, status) {
@@ -1457,13 +1217,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool streamMessageCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         streamMessage: (uid, streamId, data) {
@@ -1487,13 +1242,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool streamMessageErrorCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         streamMessageError: (uid, streamId, error, missed, cached) {
@@ -1517,13 +1267,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool mediaEngineLoadSuccessCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         mediaEngineLoadSuccess: () {
@@ -1547,13 +1292,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool mediaEngineStartCallSuccessCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         mediaEngineStartCallSuccess: () {
@@ -1577,13 +1317,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool channelMediaRelayStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         channelMediaRelayStateChanged: (state, code) {
@@ -1607,13 +1342,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool channelMediaRelayEventCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         channelMediaRelayEvent: (code) {
@@ -1637,13 +1367,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool firstRemoteVideoFrameCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         firstRemoteVideoFrame: (uid, width, height, elapsed) {
@@ -1667,13 +1392,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool firstRemoteAudioFrameCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         firstRemoteAudioFrame: (uid, elapsed) {
@@ -1697,13 +1417,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool firstRemoteAudioDecodedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         firstRemoteAudioDecoded: (uid, elapsed) {
@@ -1727,13 +1442,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool userMuteAudioCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         userMuteAudio: (uid, muted) {
@@ -1757,13 +1467,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool streamPublishedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         streamPublished: (url, error) {
@@ -1787,13 +1492,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool streamUnpublishedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         streamUnpublished: (url) {
@@ -1817,13 +1517,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool remoteAudioTransportStatsCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         remoteAudioTransportStats: (uid, delay, lost, rxKBitRate) {
@@ -1847,13 +1542,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool remoteVideoTransportStatsCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         remoteVideoTransportStats: (uid, delay, lost, rxKBitRate) {
@@ -1877,13 +1567,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool userEnableVideoCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         userEnableVideo: (uid, enabled) {
@@ -1907,13 +1592,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool userEnableLocalVideoCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         userEnableLocalVideo: (uid, enabled) {
@@ -1937,13 +1617,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool firstRemoteVideoDecodedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         firstRemoteVideoDecoded: (uid, width, height, elapsed) {
@@ -1967,13 +1642,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool microphoneEnabledCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         microphoneEnabled: (enabled) {
@@ -1997,13 +1667,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool connectionInterruptedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         connectionInterrupted: () {
@@ -2027,13 +1692,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool connectionBannedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         connectionBanned: () {
@@ -2057,13 +1717,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioQualityCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioQuality: (uid, quality, delay, lost) {
@@ -2087,13 +1742,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool cameraReadyCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         cameraReady: () {
@@ -2117,13 +1767,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool videoStoppedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         videoStopped: () {
@@ -2147,13 +1792,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool firstLocalAudioFramePublishedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         firstLocalAudioFramePublished: (elapsed) {
@@ -2177,13 +1817,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool firstLocalVideoFramePublishedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         firstLocalVideoFramePublished: (elapsed) {
@@ -2207,13 +1842,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioPublishStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioPublishStateChanged:
@@ -2238,13 +1868,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool videoPublishStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         videoPublishStateChanged:
@@ -2269,13 +1894,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioSubscribeStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioSubscribeStateChanged:
@@ -2300,13 +1920,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool videoSubscribeStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         videoSubscribeStateChanged:
@@ -2331,13 +1946,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool rtmpStreamingEventCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         rtmpStreamingEvent: (url, eventCode) {
@@ -2361,13 +1971,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool userSuperResolutionEnabledCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         userSuperResolutionEnabled: (uid, enabled, reason) {
@@ -2391,13 +1996,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool uploadLogResultCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         uploadLogResult: (requestId, success, reason) {
@@ -2421,13 +2021,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool airPlayIsConnectedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         airPlayIsConnected: () {
@@ -2451,13 +2046,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool airPlayConnectedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         airPlayConnected: () {
@@ -2481,13 +2071,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool virtualBackgroundSourceEnabledCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         virtualBackgroundSourceEnabled: (enabled, reason) {
@@ -2511,13 +2096,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool videoDeviceStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         videoDeviceStateChanged: (deviceId, deviceType, deviceState) {
@@ -2541,13 +2121,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioDeviceVolumeChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioDeviceVolumeChanged: (deviceType, volume, muted) {
@@ -2571,13 +2146,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioDeviceStateChangedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioDeviceStateChanged: (deviceId, deviceType, deviceState) {
@@ -2601,13 +2171,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool remoteAudioMixingBeginCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         remoteAudioMixingBegin: () {
@@ -2631,13 +2196,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool remoteAudioMixingEndCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         remoteAudioMixingEnd: () {
@@ -2661,13 +2221,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool snapshotTakenCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         snapshotTaken: (channel, uid, filePath, width, height, errCode) {
@@ -2691,13 +2246,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool screenCaptureInfoUpdatedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         screenCaptureInfoUpdated: (info) {
@@ -2722,13 +2272,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool clientRoleChangeFailedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         clientRoleChangeFailed: (reason, currentRole) {
@@ -2752,13 +2297,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool wlAccMessageCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         wlAccMessage: (reason, action, wlAccMsg) {
@@ -2782,13 +2322,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool wlAccStatsCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         wlAccStats: (currentStats, averageStats) {
@@ -2812,13 +2347,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool proxyConnectedCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         proxyConnected: (channel, uid, proxyType, localProxyIp, elapsed) {
@@ -2842,13 +2372,8 @@ void rtcEngineEventHandlerSomkeTestCases() {
       await tester.pumpAndSettle();
 
       FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-      await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-      String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-          defaultValue: '<YOUR_APP_ID>');
-      RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-        engineAppId,
-        areaCode: [AreaCode.NA, AreaCode.GLOB],
-      ));
+      await fakeIrisEngine.initialize();
+      final rtcEngine = await RtcEngine.create('123');
       bool audioDeviceTestVolumeIndicationCalled = false;
       rtcEngine.setEventHandler(RtcEngineEventHandler(
         audioDeviceTestVolumeIndication: (volumeType, volume) {

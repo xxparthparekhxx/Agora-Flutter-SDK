@@ -16,13 +16,13 @@ import 'package:agora_rtc_engine/src/rtc_engine_event_handler.dart';
 import 'rtc_engine_event_handler_impl.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'media_recorder_observer_impl.dart';
 
 /// Implementation of [RtcEngine]
 class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   static const MethodChannel _methodChannel = MethodChannel('agora_rtc_engine');
   static const EventChannel _eventChannel =
       EventChannel('agora_rtc_engine/events');
-  static final Stream _stream = _eventChannel.receiveBroadcastStream();
   static StreamSubscription? _subscription;
 
   /// Exposing methodChannel to other files
@@ -90,7 +90,22 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
 
   RtcEngineEventHandler? _handler;
 
-  RtcEngineImpl._(this._subProcess, {String? appGroup}) : _appGroup = appGroup;
+  RtcEngineImpl._(this._subProcess, {String? appGroup}) : _appGroup = appGroup {
+    _subscription ??= _eventChannel.receiveBroadcastStream().listen((event) {
+      final eventMap = Map<dynamic, dynamic>.from(event);
+      final methodName = eventMap['methodName'] as String;
+      final data = eventMap['data'];
+      final buffer = eventMap['buffer'];
+      final subProcess = (eventMap['subProcess'] as bool?) ?? false;
+      if (subProcess) {
+        _instance?._screenShareHelper?._handler
+            ?.process(methodName, data, buffer);
+      } else {
+        _instance?._handler?.process(methodName, data, buffer);
+        _instance?.getMediaRecorderObserver()?.process(methodName, data);
+      }
+    });
+  }
 
   Future<T?> _invokeMethod<T>(String method,
       [Map<String, dynamic>? arguments]) {
@@ -137,13 +152,16 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
 
   // TODO(littlegnal): Fill test
   @override
-  Future<void> destroy() {
+  Future<void> destroy() async {
     _rtcEngineContext = null;
+
     if (_subProcess) {
       _handler = null;
       instance?._screenShareHelper = null;
     } else {
-      _screenShareHelper?.destroy();
+      await _screenShareHelper?.destroy();
+      _screenShareHelper = null;
+      await releaseRecorder();
       RtcChannel.destroyAll();
       _instance?._handler = null;
       _instance = null;
@@ -156,23 +174,9 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
     });
   }
 
-  // TODO(littlegnal): Fill test
   @override
   void setEventHandler(RtcEngineEventHandler handler) {
     _handler = handler;
-    _subscription ??= _stream.listen((event) {
-      final eventMap = Map<dynamic, dynamic>.from(event);
-      final methodName = eventMap['methodName'] as String;
-      final data = eventMap['data'];
-      final buffer = eventMap['buffer'];
-      final subProcess = (eventMap['subProcess'] as bool?) ?? false;
-      if (subProcess) {
-        _instance?._screenShareHelper?._handler
-            ?.process(this, methodName, data, buffer);
-      } else {
-        _instance?._handler?.process(this, methodName, data, buffer);
-      }
-    });
   }
 
   @override

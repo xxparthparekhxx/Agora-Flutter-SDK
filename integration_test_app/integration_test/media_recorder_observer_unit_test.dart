@@ -19,16 +19,18 @@ void main() {
 
     bool onRecorderStateChangedCalled = false;
 
-    MediaRecorder.getMediaRecorder(rtcEngine, callback: MediaRecorderObserver(
+    final mediaRecorder = MediaRecorder.getMediaRecorder(rtcEngine,
+        callback: MediaRecorderObserver(
       onRecorderStateChanged: (state, error) {
         onRecorderStateChangedCalled = true;
       },
     ));
 
     await fakeIrisEngine.fireAndWaitEvent(
-        tester, 'onRecorderStateChanged', '{"state":2,"error":"2"}');
+        tester, 'onRecorderStateChanged', '{"state":2,"error":2}');
     expect(onRecorderStateChangedCalled, isTrue);
 
+    await mediaRecorder.releaseRecorder();
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });
@@ -42,7 +44,8 @@ void main() {
 
     bool onRecorderInfoUpdatedCalled = false;
 
-    MediaRecorder.getMediaRecorder(rtcEngine, callback: MediaRecorderObserver(
+    final mediaRecorder = MediaRecorder.getMediaRecorder(rtcEngine,
+        callback: MediaRecorderObserver(
       onRecorderInfoUpdated: (info) {
         onRecorderInfoUpdatedCalled = true;
       },
@@ -53,6 +56,7 @@ void main() {
         '{"info":${jsonEncode(info.toJson())}}');
     expect(onRecorderInfoUpdatedCalled, isTrue);
 
+    await mediaRecorder.releaseRecorder();
     await rtcEngine.destroy();
     fakeIrisEngine.dispose();
   });

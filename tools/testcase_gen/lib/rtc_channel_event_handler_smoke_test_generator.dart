@@ -37,13 +37,8 @@ testWidgets('{{TEST_CASE_NAME}}', (WidgetTester tester) async {
   await tester.pumpAndSettle();
 
   FakeIrisRtcEngine fakeIrisEngine = FakeIrisRtcEngine();
-  await fakeIrisEngine.initialize(getIrisRtcEngineIntPtrOnly: true);
-  String engineAppId = const String.fromEnvironment('TEST_APP_ID',
-    defaultValue: '<YOUR_APP_ID>');
-  RtcEngine rtcEngine = await RtcEngine.createWithContext(RtcEngineContext(
-    engineAppId,
-    areaCode: [AreaCode.NA, AreaCode.GLOB],
-  ));
+  await fakeIrisEngine.initialize();
+  final rtcEngine = await RtcEngine.create('123');
   final rtcChannel = await RtcChannel.create('testapi');
   {{TEST_CASE_BODY}}
 

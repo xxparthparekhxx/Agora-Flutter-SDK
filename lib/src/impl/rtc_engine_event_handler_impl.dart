@@ -2,19 +2,15 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:agora_rtc_engine/src/classes.dart';
-import 'package:agora_rtc_engine/src/impl/media_recorder_impl.dart';
-import 'package:agora_rtc_engine/src/impl/rtc_engine_impl.dart';
-import 'package:agora_rtc_engine/src/media_recorder.dart';
-import 'enum_converter.dart';
 import 'package:agora_rtc_engine/src/rtc_engine_event_handler.dart';
 
+import 'enum_converter.dart';
 import 'event_handler_json.dart';
 
 // ignore_for_file: public_member_api_docs
 
 extension RtcEngineEventHandlerExt on RtcEngineEventHandler {
-  void process(RtcEngineImpl rtcEngineImpl, String methodName, dynamic data,
-      [Uint8List? buffer]) {
+  void process(String methodName, dynamic data, [Uint8List? buffer]) {
     List<dynamic> newData;
 
     if (methodName.startsWith('on')) {
@@ -22,7 +18,6 @@ extension RtcEngineEventHandlerExt on RtcEngineEventHandler {
     }
 
     final dataMap = jsonDecode(data as String);
-
     newData = List<dynamic>.from(Map<String, dynamic>.from(dataMap).values);
     switch (methodName) {
       case 'Warning':
@@ -502,27 +497,7 @@ extension RtcEngineEventHandlerExt on RtcEngineEventHandler {
           audioDeviceTestVolumeIndication!(json.volumeType, json.volume);
         }
         break;
-      case 'RecorderStateChanged':
-        final mediaRecorderImplMixin = rtcEngineImpl;
-        final mediaRecorderObserver =
-            mediaRecorderImplMixin.getMediaRecorderObserver();
-        if (mediaRecorderObserver != null &&
-            mediaRecorderObserver.onRecorderStateChanged != null) {
-          final json = OnRecorderStateChangedJson.fromJson(dataMap);
-          mediaRecorderObserver.onRecorderStateChanged!(json.state, json.error);
-        }
 
-        break;
-      case 'RecorderInfoUpdated':
-        final mediaRecorderImplMixin = rtcEngineImpl;
-        final mediaRecorderObserver =
-            mediaRecorderImplMixin.getMediaRecorderObserver();
-        if (mediaRecorderObserver != null &&
-            mediaRecorderObserver.onRecorderInfoUpdated != null) {
-          final json = OnRecorderInfoUpdatedJson.fromJson(dataMap);
-          mediaRecorderObserver.onRecorderInfoUpdated!(json.info);
-        }
-        break;
       default:
         throw ArgumentError('Not Supported Event: $methodName');
     }

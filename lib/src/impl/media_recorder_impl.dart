@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
-import 'package:agora_rtc_engine/src/classes.dart';
 import 'package:agora_rtc_engine/src/impl/rtc_engine_impl.dart';
 import 'package:agora_rtc_engine/src/media_recorder.dart';
 
@@ -49,16 +48,20 @@ mixin MediaRecorderImplMixin implements MediaRecorder {
 
 class MediaRecorderImpl implements MediaRecorder {
   MediaRecorderImpl._(this._mediaRecorderImplMixin);
+  static MediaRecorderImpl? _mediaRecorderImpl;
   final MediaRecorderImplMixin? _mediaRecorderImplMixin;
   static MediaRecorderImpl getMediaRecorder(RtcEngine engine,
       {MediaRecorderObserver? callback}) {
+    if (_mediaRecorderImpl != null) return _mediaRecorderImpl!;
     final mediaRecorderImplMixin = engine as MediaRecorderImplMixin;
     mediaRecorderImplMixin.setMediaRecorderObserver(callback);
-    return MediaRecorderImpl._(mediaRecorderImplMixin);
+    _mediaRecorderImpl = MediaRecorderImpl._(mediaRecorderImplMixin);
+    return _mediaRecorderImpl!;
   }
 
   @override
   Future<void> releaseRecorder() async {
+    _mediaRecorderImpl = null;
     await _mediaRecorderImplMixin?.releaseRecorder();
   }
 
