@@ -36,7 +36,9 @@ enum _ApiTypeVideoDeviceManager {
   kVDMEnumerateVideoDevices,
   kVDMSetDevice,
   kVDMGetDevice,
+  // ignore: unused_field
   kVDMStartDeviceTest,
+  // ignore: unused_field
   kVDMStopDeviceTest,
 }
 

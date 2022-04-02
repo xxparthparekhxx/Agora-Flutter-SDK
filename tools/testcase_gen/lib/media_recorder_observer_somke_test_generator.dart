@@ -12,8 +12,6 @@ class MediaRecorderObserverSomkeTestGenerator implements Generator {
   void generate(StringSink sink, ParseResult parseResult) {
     final clazz = parseResult.getClazz('MediaRecorderObserver')[0];
 
-    if (clazz == null) return;
-
     final fields = clazz.fields;
 
     final Map<String, List<String>> genericTypeAliasParametersMap =

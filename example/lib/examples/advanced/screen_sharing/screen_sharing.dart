@@ -14,6 +14,7 @@ const String _kDefaultAppGroup = 'io.agora';
 
 /// ScreenSharing Example
 class ScreenSharing extends StatefulWidget {
+  /// Construct the [ScreenSharing]
   const ScreenSharing({Key? key}) : super(key: key);
 
   @override

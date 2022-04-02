@@ -10,7 +10,6 @@ import 'package:analyzer/dart/ast/ast.dart' as dart_ast;
 import 'package:analyzer/dart/ast/visitor.dart' as dart_ast_visitor;
 import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/error/error.dart' show AnalysisError;
-import 'package:collection/collection.dart';
 
 class CallApiInvoke {
   late String apiType;
@@ -271,7 +270,7 @@ class DefaultVisitorImpl extends DefaultVisitor<Object?> {
   final enumMap = <String, Enumz>{};
   final extensionMap = <String, Extensionz>{};
 
-  Uri? _currentVisitUri = null;
+  Uri? _currentVisitUri;
 
   @override
   void preVisit(Uri uri) {
@@ -285,9 +284,6 @@ class DefaultVisitorImpl extends DefaultVisitor<Object?> {
 
   @override
   Object? visitFieldDeclaration(dart_ast.FieldDeclaration node) {
-    stdout.writeln(
-        'variables: ${node.fields.variables}, type: ${node.fields.type}');
-
     final clazz = _getClazz(node);
     if (clazz == null) return null;
 
@@ -330,16 +326,6 @@ class DefaultVisitorImpl extends DefaultVisitor<Object?> {
 
   @override
   Object? visitEnumDeclaration(EnumDeclaration node) {
-    for (final c in node.constants) {
-      for (final m in c.metadata) {
-        // stdout.writeln('m: ${m.arguments?.arguments}, ${m.name}');
-
-        for (final a in m.arguments?.arguments ?? []) {
-          stdout.writeln('a ${a.runtimeType}, ${a.toSource()}');
-        }
-      }
-    }
-
     final enumz = enumMap.putIfAbsent(node.name.name, () => Enumz());
     enumz.name = node.name.name;
     enumz.comment = _generateComment(node);
@@ -348,7 +334,8 @@ class DefaultVisitorImpl extends DefaultVisitor<Object?> {
     for (final constant in node.constants) {
       EnumConstant enumConstant = EnumConstant()
         ..name = '${node.name.name}.${constant.name.name}'
-        ..comment = _generateComment(constant);
+        ..comment = _generateComment(constant)
+        ..source = constant.toSource();
       enumz.enumConstants.add(enumConstant);
 
       for (final meta in constant.metadata) {

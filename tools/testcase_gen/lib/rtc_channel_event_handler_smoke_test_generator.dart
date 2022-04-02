@@ -22,8 +22,6 @@ class RtcChannelEventHandlerSomkeTestGenerator implements Generator {
   void generate(StringSink sink, ParseResult parseResult) {
     final clazz = parseResult.getClazz('RtcChannelEventHandler')[0];
 
-    if (clazz == null) return;
-
     final fields = clazz.fields;
 
     final Map<String, List<String>> genericTypeAliasParametersMap =

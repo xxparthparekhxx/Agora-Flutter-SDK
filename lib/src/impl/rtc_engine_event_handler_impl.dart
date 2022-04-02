@@ -7,7 +7,7 @@ import 'package:agora_rtc_engine/src/rtc_engine_event_handler.dart';
 import 'enum_converter.dart';
 import 'event_handler_json.dart';
 
-// ignore_for_file: public_member_api_docs
+// ignore_for_file: public_member_api_docs,deprecated_member_use_from_same_package
 
 extension RtcEngineEventHandlerExt on RtcEngineEventHandler {
   void process(String methodName, dynamic data, [Uint8List? buffer]) {
@@ -77,12 +77,7 @@ extension RtcEngineEventHandlerExt on RtcEngineEventHandler {
         break;
       case 'AudioVolumeIndication':
         final list = List<Map>.from(newData[0] ?? []);
-        var totalVolume;
-        // if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
-
-        // } else {
-        //   totalVolume = newData[2];
-        // }
+        int totalVolume;
         totalVolume = newData[2];
         audioVolumeIndication?.call(
             List.generate(
@@ -155,13 +150,9 @@ extension RtcEngineEventHandlerExt on RtcEngineEventHandler {
           rect.y = newData[1];
           rect.width = newData[2];
           rect.height = newData[3];
-          // ignore: deprecated_member_use_from_same_package
           rect.left = rect.x;
-          // ignore: deprecated_member_use_from_same_package
           rect.top = rect.y;
-          // ignore: deprecated_member_use_from_same_package
           rect.right = rect.x + rect.width;
-          // ignore: deprecated_member_use_from_same_package
           rect.bottom = rect.y + rect.height;
           cameraFocusAreaChanged!(rect);
         }
@@ -175,13 +166,9 @@ extension RtcEngineEventHandlerExt on RtcEngineEventHandler {
           rect.y = newData[1];
           rect.width = newData[2];
           rect.height = newData[3];
-          // ignore: deprecated_member_use_from_same_package
           rect.left = rect.x;
-          // ignore: deprecated_member_use_from_same_package
           rect.top = rect.y;
-          // ignore: deprecated_member_use_from_same_package
           rect.right = rect.x + rect.width;
-          // ignore: deprecated_member_use_from_same_package
           rect.bottom = rect.y + rect.height;
           cameraExposureAreaChanged!(rect);
         }

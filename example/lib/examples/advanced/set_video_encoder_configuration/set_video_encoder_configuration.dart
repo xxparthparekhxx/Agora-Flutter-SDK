@@ -9,6 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 /// SetVideoEncoderConfiguration Example
 class SetVideoEncoderConfiguration extends StatefulWidget {
+  /// Construct the [SetVideoEncoderConfiguration]
   const SetVideoEncoderConfiguration({Key? key}) : super(key: key);
 
   @override

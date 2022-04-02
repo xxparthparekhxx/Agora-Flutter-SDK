@@ -12,6 +12,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 /// DeviceManager Example
 class DeviceManager extends StatefulWidget {
+  /// Construct the [DeviceManager]
   const DeviceManager({Key? key}) : super(key: key);
 
   @override

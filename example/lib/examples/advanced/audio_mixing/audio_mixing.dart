@@ -9,6 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 /// AudioMixing Example
 class AudioMixing extends StatefulWidget {
+  /// Construct the [AudioMixing]
   const AudioMixing({Key? key}) : super(key: key);
 
   @override

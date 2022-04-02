@@ -335,6 +335,7 @@ enum AudioMixingReason {
   @JsonValue(726)
   ResumedByUser,
 
+/* TODO(doc): property-AudioMixingReason-OK */
   @JsonValue(0)
   OK,
 }
@@ -363,6 +364,7 @@ enum AudioMixingStateCode {
   @JsonValue(711)
   Paused,
 
+/* TODO(doc): property-AudioMixingStateCode-Restart */
   @JsonValue(712)
   Restart,
 
@@ -463,15 +465,19 @@ enum AudioOutputRouting {
   @JsonValue(5)
   HeadsetBluetooth,
 
+/* TODO(doc): property-AudioOutputRouting-USB */
   @JsonValue(6)
   USB,
 
+/* TODO(doc): property-AudioOutputRouting-HDMI */
   @JsonValue(7)
   HDMI,
 
+/* TODO(doc): property-AudioOutputRouting-DisplayPort */
   @JsonValue(8)
   DisplayPort,
 
+/* TODO(doc): property-AudioOutputRouting-AirPlay */
   @JsonValue(9)
   AirPlay,
 }
@@ -525,12 +531,15 @@ enum AudioProfile {
 ///
 ///
 enum AudioRecordingQuality {
+/* TODO(doc): property-AudioRecordingQuality-Low */
   @JsonValue(0)
   Low,
 
+/* TODO(doc): property-AudioRecordingQuality-Medium */
   @JsonValue(1)
   Medium,
 
+/* TODO(doc): property-AudioRecordingQuality-High */
   @JsonValue(2)
   High,
 }
@@ -540,10 +549,6 @@ enum AudioRecordingQuality {
 ///
 ///
 enum AudioRecordingPosition {
-  ///
-  /// 3: Ultra high quality. For example, the size of an AAC file with a sample rate of 32,000 Hz and a 10-minute recording is approximately 7.5 MB.
-  ///
-
   ///
   /// 0: (Default) Records the mixed audio of the local and all remote users.
   ///
@@ -682,6 +687,7 @@ enum AudioReverbPreset {
   @JsonValue(0x00000003)
   Rock,
 
+/* TODO(doc): property-AudioReverbPreset-HipHop */
   @JsonValue(0x00000004)
   HipHop,
 
@@ -757,9 +763,11 @@ enum AudioReverbPreset {
   @JsonValue(0x00200001)
   VIRTUAL_STEREO,
 
+/* TODO(doc): property-AudioReverbPreset-AUDIO_ELECTRONIC_VOICE */
   @JsonValue(0x00300001)
   AUDIO_ELECTRONIC_VOICE,
 
+/* TODO(doc): property-AudioReverbPreset-AUDIO_THREEDIM_VOICE */
   @JsonValue(0x00400001)
   AUDIO_THREEDIM_VOICE,
 }
@@ -1403,6 +1411,7 @@ enum ConnectionChangedReason {
   @JsonValue(14)
   KeepAliveTimeout,
 
+/* TODO(doc): property-ConnectionChangedReason-ProxyServerInterrupted */
   @JsonValue(15)
   ProxyServerInterrupted,
 }
@@ -1422,33 +1431,33 @@ enum ConnectionStateType {
 
   ///
   /// 2: The SDK is connecting to the Agora edge server. This state indicates that the SDK is establishing a connection with the specified channel after the app calls joinChannel.
-  ///
-  ///
-  /// 4: The SDK keeps reconnecting to the Agora edge server. The SDK keeps rejoining the channel after being disconnected from a joined channel because of network issues.
-  ///  If the SDK cannot rejoin the channel within 10 seconds, it triggers connectionLost , stays in the Reconnecting state, and keeps rejoining the channel.
-  ///
-  /// 5: The SDK fails to connect to the Agora edge server or join the channel. This state indicates that the SDK stops trying to rejoin the channel. You must call leaveChannel to leave the channel.
-  ///  You can call joinChannel to rejoin the channel.
-  ///  If the SDK is banned from joining the channel by the Agora edge server through the RESTful API, the SDK triggers the connectionStateChanged callback.
-  ///
-  ///
-  ///  If the SDK fails to rejoin the channel 20 minutes after being disconnected from the Agora edge server, the SDK triggers the connectionStateChanged callback, switches to the Failed state, and stops rejoining the channel.
-  ///
-  ///
-  /// 3: The SDK is connected to the Agora edge server. This state also indicates that the user has joined a channel and can now publish or subscribe to a media stream in the channel. If the connection to the Agora edge server is lost because, for example, the network is down or switched, the SDK automatically tries to reconnect and triggers connectionStateChanged that indicates the connection state switches to Reconnecting.
-  ///
   ///  If the SDK successfully joins the channel, it triggers the connectionStateChanged callback and the connection state switches to Connected.
   ///  After the connection is established, the SDK also initializes the media and triggers joinChannelSuccess when everything is ready.
   ///
   @JsonValue(2)
   Connecting,
 
+  ///
+  /// 3: The SDK is connected to the Agora edge server. This state also indicates that the user has joined a channel and can now publish or subscribe to a media stream in the channel. If the connection to the Agora edge server is lost because, for example, the network is down or switched, the SDK automatically tries to reconnect and triggers connectionStateChanged that indicates the connection state switches to Reconnecting.
+  ///
   @JsonValue(3)
   Connected,
 
+  ///
+  /// 4: The SDK keeps reconnecting to the Agora edge server. The SDK keeps rejoining the channel after being disconnected from a joined channel because of network issues.
+  ///  If the SDK cannot rejoin the channel within 10 seconds, it triggers connectionLost , stays in the Reconnecting state, and keeps rejoining the channel.
+  ///  If the SDK fails to rejoin the channel 20 minutes after being disconnected from the Agora edge server, the SDK triggers the connectionStateChanged callback, switches to the Failed state, and stops rejoining the channel.
+  ///
+  ///
   @JsonValue(4)
   Reconnecting,
 
+  ///
+  /// 5: The SDK fails to connect to the Agora edge server or join the channel. This state indicates that the SDK stops trying to rejoin the channel. You must call leaveChannel to leave the channel.
+  ///  You can call joinChannel to rejoin the channel.
+  ///  If the SDK is banned from joining the channel by the Agora edge server through the RESTful API, the SDK triggers the connectionStateChanged callback.
+  ///
+  ///
   @JsonValue(5)
   Failed,
 }
@@ -1485,6 +1494,7 @@ enum DegradationPreference {
 /// Agora recommends using AES128GCM2 or AES256GCM2 encrypted mode. These two modes support the use of salt for higher security.
 ///
 enum EncryptionMode {
+/* TODO(doc): property-EncryptionMode-None */
   @Deprecated('')
   @JsonValue(0)
   None,
@@ -1542,249 +1552,330 @@ enum EncryptionMode {
 /// Error codes. See https://docs.agora.io/en/Interactive%20Broadcast/error_rtc.
 ///
 enum ErrorCode {
+  /// @nodoc
   @JsonValue(0)
   NoError,
 
+  /// @nodoc
   @JsonValue(1)
   Failed,
 
+  /// @nodoc
   @JsonValue(2)
   InvalidArgument,
 
+  /// @nodoc
   @JsonValue(3)
   NotReady,
 
+  /// @nodoc
   @JsonValue(4)
   NotSupported,
 
+  /// @nodoc
   @JsonValue(5)
   Refused,
 
+  /// @nodoc
   @JsonValue(6)
   BufferTooSmall,
 
+  /// @nodoc
   @JsonValue(7)
   NotInitialized,
 
+  /// @nodoc
   @JsonValue(9)
   NoPermission,
 
+  /// @nodoc
   @JsonValue(10)
   TimedOut,
 
+  /// @nodoc
   @JsonValue(11)
   Canceled,
 
+  /// @nodoc
   @JsonValue(12)
   TooOften,
 
+  /// @nodoc
   @JsonValue(13)
   BindSocket,
 
+  /// @nodoc
   @JsonValue(14)
   NetDown,
 
+  /// @nodoc
   @JsonValue(15)
   NoBufs,
 
+  /// @nodoc
   @JsonValue(17)
   JoinChannelRejected,
 
+  /// @nodoc
   @JsonValue(18)
   LeaveChannelRejected,
 
+  /// @nodoc
   @JsonValue(19)
   AlreadyInUse,
 
+  /// @nodoc
   @JsonValue(20)
   Abort,
 
+  /// @nodoc
   @JsonValue(21)
   InitNetEngine,
 
+  /// @nodoc
   @JsonValue(22)
   ResourceLimited,
 
+  /// @nodoc
   @JsonValue(101)
   InvalidAppId,
 
+  /// @nodoc
   @JsonValue(102)
   InvalidChannelId,
 
+  /// @nodoc
   @JsonValue(103)
   NoServerResources,
 
+  /// @nodoc
   @Deprecated('')
   @JsonValue(109)
   TokenExpired,
 
+  /// @nodoc
   @Deprecated('')
   @JsonValue(110)
   InvalidToken,
 
+  /// @nodoc
   @JsonValue(111)
   ConnectionInterrupted,
 
+  /// @nodoc
   @JsonValue(112)
   ConnectionLost,
 
+  /// @nodoc
   @JsonValue(113)
   NotInChannel,
 
+  /// @nodoc
   @JsonValue(114)
   SizeTooLarge,
 
+  /// @nodoc
   @JsonValue(115)
   BitrateLimit,
 
+  /// @nodoc
   @JsonValue(116)
   TooManyDataStreams,
 
+  /// @nodoc
   @JsonValue(117)
   StreamMessageTimeout,
 
+  /// @nodoc
   @JsonValue(119)
   SetClientRoleNotAuthorized,
 
+  /// @nodoc
   @JsonValue(120)
   DecryptionFailed,
 
+  /// @nodoc
   @JsonValue(123)
   ClientIsBannedByServer,
 
+  /// @nodoc
   @JsonValue(124)
   WatermarkParam,
 
+  /// @nodoc
   @JsonValue(125)
   WatermarkPath,
 
+  /// @nodoc
   @JsonValue(126)
   WatermarkPng,
 
+  /// @nodoc
   @JsonValue(127)
   WatermarkInfo,
 
+  /// @nodoc
   @JsonValue(128)
   WatermarkAGRB,
 
+  /// @nodoc
   @JsonValue(129)
   WatermarkRead,
 
+  /// @nodoc
   @JsonValue(130)
   EncryptedStreamNotAllowedPublish,
 
+  /// @nodoc
   @JsonValue(134)
   InvalidUserAccount,
 
+  /// @nodoc
   @JsonValue(151)
   PublishStreamCDNError,
 
+  /// @nodoc
   @JsonValue(152)
   PublishStreamNumReachLimit,
 
+  /// @nodoc
   @JsonValue(153)
   PublishStreamNotAuthorized,
 
+  /// @nodoc
   @JsonValue(154)
   PublishStreamInternalServerError,
 
+  /// @nodoc
   @JsonValue(155)
   PublishStreamNotFound,
 
+  /// @nodoc
   @JsonValue(156)
   PublishStreamFormatNotSuppported,
 
+  /// @nodoc
   @JsonValue(157)
   ModuleNotFound,
 
+  /// @nodoc
   @JsonValue(160)
   AlreadyInRecording,
 
+  /// @nodoc
   @JsonValue(1001)
   LoadMediaEngine,
 
+  /// @nodoc
   @JsonValue(1002)
   StartCall,
 
+  /// @nodoc
   @Deprecated('')
   @JsonValue(1003)
   StartCamera,
 
+  /// @nodoc
   @JsonValue(1004)
   StartVideoRender,
 
+  /// @nodoc
   @JsonValue(1005)
   AdmGeneralError,
 
+  /// @nodoc
   @JsonValue(1006)
   AdmJavaResource,
 
+  /// @nodoc
   @JsonValue(1007)
   AdmSampleRate,
 
+  /// @nodoc
   @JsonValue(1008)
   AdmInitPlayout,
 
+  /// @nodoc
   @JsonValue(1009)
   AdmStartPlayout,
 
+  /// @nodoc
   @JsonValue(1010)
   AdmStopPlayout,
 
+  /// @nodoc
   @JsonValue(1011)
   AdmInitRecording,
 
+  /// @nodoc
   @JsonValue(1012)
   AdmStartRecording,
 
+  /// @nodoc
   @JsonValue(1013)
   AdmStopRecording,
 
+  /// @nodoc
   @JsonValue(1015)
   AdmRuntimePlayoutError,
 
+  /// @nodoc
   @JsonValue(1017)
   AdmRuntimeRecordingError,
 
+  /// @nodoc
   @JsonValue(1018)
   AdmRecordAudioFailed,
 
+  /// @nodoc
   @JsonValue(1020)
   AdmPlayAbnormalFrequency,
 
+  /// @nodoc
   @JsonValue(1021)
   AdmRecordAbnormalFrequency,
 
+  /// @nodoc
   @JsonValue(1022)
   AdmInitLoopback,
 
+  /// @nodoc
   @JsonValue(1023)
   AdmStartLoopback,
 
+  /// @nodoc
   @JsonValue(1027)
   AdmNoPermission,
 
+  /// @nodoc
   @JsonValue(1030)
   AudioBtScoFailed,
 
+  /// @nodoc
   @JsonValue(1359)
   AdmNoRecordingDevice,
 
+  /// @nodoc
   @JsonValue(1360)
   AdmNoPlayoutDevice,
 
+  /// @nodoc
   @JsonValue(1501)
   VdmCameraNotAuthorized,
 
+  /// @nodoc
   @JsonValue(1600)
   VcmUnknownError,
 
+  /// @nodoc
   @JsonValue(1601)
   VcmEncoderInitError,
 
+  /// @nodoc
   @JsonValue(1602)
   VcmEncoderEncodeError,
 
+  /// @nodoc
   @Deprecated('')
   @JsonValue(1603)
   VcmEncoderSetError,
@@ -2186,6 +2277,7 @@ enum NetworkType {
   @JsonValue(5)
   Mobile4G,
 
+/* TODO(doc): property-NetworkType-Mobile5G */
   @JsonValue(6)
   Mobile5G,
 }
@@ -2195,36 +2287,47 @@ enum NetworkType {
 ///
 ///
 enum RtmpStreamingErrorCode {
+/* TODO(doc): property-RtmpStreamingErrorCode-OK */
   @JsonValue(0)
   OK,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-InvalidParameters */
   @JsonValue(1)
   InvalidParameters,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-EncryptedStreamNotAllowed */
   @JsonValue(2)
   EncryptedStreamNotAllowed,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-ConnectionTimeout */
   @JsonValue(3)
   ConnectionTimeout,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-InternalServerError */
   @JsonValue(4)
   InternalServerError,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-RtmpServerError */
   @JsonValue(5)
   RtmpServerError,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-TooOften */
   @JsonValue(6)
   TooOften,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-ReachLimit */
   @JsonValue(7)
   ReachLimit,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-NotAuthorized */
   @JsonValue(8)
   NotAuthorized,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-StreamNotFound */
   @JsonValue(9)
   StreamNotFound,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-FormatNotSupported */
   @JsonValue(10)
   FormatNotSupported,
 
@@ -2246,6 +2349,7 @@ enum RtmpStreamingErrorCode {
   @JsonValue(14)
   NetDown,
 
+/* TODO(doc): property-RtmpStreamingErrorCode-InvalidAppid */
   @JsonValue(15)
   InvalidAppid,
 
@@ -2261,18 +2365,23 @@ enum RtmpStreamingErrorCode {
 ///
 ///
 enum RtmpStreamingState {
+/* TODO(doc): property-RtmpStreamingState-Idle */
   @JsonValue(0)
   Idle,
 
+/* TODO(doc): property-RtmpStreamingState-Connecting */
   @JsonValue(1)
   Connecting,
 
+/* TODO(doc): property-RtmpStreamingState-Running */
   @JsonValue(2)
   Running,
 
+/* TODO(doc): property-RtmpStreamingState-Recovering */
   @JsonValue(3)
   Recovering,
 
+/* TODO(doc): property-RtmpStreamingState-Failure */
   @JsonValue(4)
   Failure,
 }
@@ -2282,17 +2391,6 @@ enum RtmpStreamingState {
 ///
 ///
 enum StreamFallbackOptions {
-  ///
-  /// The URL format is incorrect. Check whether the URL format is correct.
-  ///
-
-  ///
-  /// The RTMP or RTMPS streaming fails. See the error code for the detailed error information. You can also call the
-  ///  addPublishStreamUrl
-  ///  method to publish the RTMP or RTMPS stream again.
-  ///
-  ///
-
   ///
   /// 0: No fallback behavior for the local/remote video stream when the uplink/downlink network conditions are poor. The quality of the stream is not guaranteed.
   ///
@@ -2384,6 +2482,7 @@ enum VideoCodecProfileType {
 ///
 ///
 enum VideoFrameRate {
+/* TODO(doc): property-VideoFrameRate-Min */
   @JsonValue(-1)
   Min,
 
@@ -2423,6 +2522,7 @@ enum VideoFrameRate {
   @JsonValue(30)
   Fps30,
 
+/* TODO(doc): property-VideoFrameRate-Fps60 */
   @JsonValue(60)
   Fps60,
 }
@@ -2668,100 +2768,132 @@ enum VideoStreamType {
 /// Warning codes. See https://docs.agora.io/en/Interactive%20Broadcast/error_rtc.
 ///
 enum WarningCode {
+  /// @nodoc
   @JsonValue(8)
   InvalidView,
 
+  /// @nodoc
   @JsonValue(16)
   InitVideo,
 
+  /// @nodoc
   @JsonValue(20)
   Pending,
 
+  /// @nodoc
   @JsonValue(103)
   NoAvailableChannel,
 
+  /// @nodoc
   @JsonValue(104)
   LookupChannelTimeout,
 
+  /// @nodoc
   @Deprecated('')
   @JsonValue(105)
   LookupChannelRejected,
 
+  /// @nodoc
   @JsonValue(106)
   OpenChannelTimeout,
 
+  /// @nodoc
   @JsonValue(107)
   OpenChannelRejected,
 
+  /// @nodoc
   @JsonValue(111)
   SwitchLiveVideoTimeout,
 
+  /// @nodoc
   @JsonValue(118)
   SetClientRoleTimeout,
 
+  /// @nodoc
   @JsonValue(119)
   SetClientRoleNotAuthorized,
 
+  /// @nodoc
   @JsonValue(121)
   OpenChannelInvalidTicket,
 
+  /// @nodoc
   @JsonValue(122)
   OpenChannelTryNextVos,
 
+  /// @nodoc
   @JsonValue(701)
   AudioMixingOpenError,
 
+  /// @nodoc
   @JsonValue(1014)
   AdmRuntimePlayoutWarning,
 
+  /// @nodoc
   @JsonValue(1016)
   AdmRuntimeRecordingWarning,
 
+  /// @nodoc
   @JsonValue(1019)
   AdmRecordAudioSilence,
 
+  /// @nodoc
   @JsonValue(1020)
   AdmPlaybackMalfunction,
 
+  /// @nodoc
   @JsonValue(1021)
   AdmRecordMalfunction,
 
+  /// @nodoc
   @JsonValue(1025)
   AdmInterruption,
 
+  /// @nodoc
   @JsonValue(1029)
   AdmCategoryNotPlayAndRecord,
 
+  /// @nodoc
   @JsonValue(1031)
   AdmRecordAudioLowlevel,
 
+  /// @nodoc
   @JsonValue(1032)
   AdmPlayoutAudioLowlevel,
 
+  /// @nodoc
   @JsonValue(1033)
   AdmRecordIsOccupied,
 
+  /// @nodoc
   @JsonValue(1040)
   AdmNoDataReadyCallback,
 
+  /// @nodoc
   @JsonValue(1042)
   AdmInconsistentDevices,
 
+  /// @nodoc
   @JsonValue(1051)
   ApmHowling,
 
+  /// @nodoc
   @JsonValue(1052)
   AdmGlitchState,
 
+  /// @nodoc
   @JsonValue(1053)
   ApmResidualEcho,
 
+  /// @nodoc
   @JsonValue(1610)
   SuperResolutionStreamOverLimitation,
 
+  /// @nodoc
   @JsonValue(1611)
   SuperResolutionUserCountOverLimitation,
 
+  /// @nodoc
   @JsonValue(1612)
   SuperResolutionDeviceNotSupported,
 }
@@ -2810,9 +2942,11 @@ enum VideoCodecType {
   @JsonValue(2)
   H264,
 
+/* TODO(doc): property-VideoCodecType-EVP */
   @JsonValue(3)
   EVP,
 
+/* TODO(doc): property-VideoCodecType-E264 */
   @JsonValue(4)
   E264,
 }
@@ -2853,9 +2987,6 @@ enum StreamPublishState {
   ///  The local user calls enableLocalAudio (false) or enableLocalVideo (false) to disable the local audio or video capture.
   ///  The role of the local user is audience.
   ///
-  ///
-  /// 3: Publishes successfully.
-  ///
   @JsonValue(1)
   NoPublished,
 
@@ -2865,6 +2996,9 @@ enum StreamPublishState {
   @JsonValue(2)
   Publishing,
 
+  ///
+  /// 3: Publishes successfully.
+  ///
   @JsonValue(3)
   Published,
 }
@@ -2890,9 +3024,6 @@ enum StreamSubscribeState {
   ///  Calls muteRemoteAudioStream (true), muteAllRemoteAudioStreams (true) or setDefaultMuteAllRemoteAudioStreams (true) to stop receiving the remote audio streams.
   ///  Calls muteRemoteVideoStream (true), muteAllRemoteVideoStreams (true) or setDefaultMuteAllRemoteVideoStreams (true) to stop receiving the remote video streams.
   ///
-  ///
-  /// 3: Subscribes to and receives the remote stream successfully.
-  ///
   @JsonValue(1)
   NoSubscribed,
 
@@ -2902,6 +3033,9 @@ enum StreamSubscribeState {
   @JsonValue(2)
   Subscribing,
 
+  ///
+  /// 3: Subscribes to and receives the remote stream successfully.
+  ///
   @JsonValue(3)
   Subscribed,
 }
@@ -2911,15 +3045,19 @@ enum StreamSubscribeState {
 ///
 ///
 enum RtmpStreamingEvent {
+/* TODO(doc): property-RtmpStreamingEvent-FailedLoadImage */
   @JsonValue(1)
   FailedLoadImage,
 
+/* TODO(doc): property-RtmpStreamingEvent-UrlAlreadyInUse */
   @JsonValue(2)
   UrlAlreadyInUse,
 
+/* TODO(doc): property-RtmpStreamingEvent-AdvancedFeatureNotSupport */
   @JsonValue(3)
   AdvancedFeatureNotSupport,
 
+/* TODO(doc): property-RtmpStreamingEvent-RequestTooOften */
   @JsonValue(4)
   RequestTooOften,
 }
@@ -2929,10 +3067,6 @@ enum RtmpStreamingEvent {
 ///
 ///
 enum AudioSessionOperationRestriction {
-  ///
-  /// 4: Reserved.
-  ///
-
   ///
   /// No restriction, the SDK has full control of the audio session operations.
   ///
@@ -3118,12 +3252,6 @@ enum AudioEffectPreset {
 /// The options for SDK preset voice beautifier effects.
 ///
 ///
-///
-/// A ultra-high quality voice, which makes the audio clearer and restores more details.
-///  To achieve better audio effect quality, Agora recommends that you call and set the profile to MusicHighQuality (4) or MusicHighQualityStereo (5) and scenario to (6) before calling setVoiceBeautifierPreset .
-///  If you have an audio capturing device that can already restore audio details to a high degree, Agora recommends that you do not enable ultra-high quality; otherwise, the SDK may over-restore audio details, and you may not hear the anticipated voice effect.
-///
-///
 enum VoiceBeautifierPreset {
   ///
   /// Turn off voice beautifier effects and use the original voice.
@@ -3271,9 +3399,6 @@ enum LogLevel {
 /// The brightness level of the video image captured by the local camera.
 ///
 ///
-///
-/// 1: The brightness level of the video image is too bright.
-///
 enum CaptureBrightnessLevelType {
   ///
   /// -1: The SDK does not detect the brightness level of the video image. Wait a few seconds to get the brightness level from captureBrightnessLevel in the next callback.
@@ -3287,6 +3412,9 @@ enum CaptureBrightnessLevelType {
   @JsonValue(0)
   Normal,
 
+  ///
+  /// 1: The brightness level of the video image is too bright.
+  ///
   @JsonValue(1)
   Bright,
 

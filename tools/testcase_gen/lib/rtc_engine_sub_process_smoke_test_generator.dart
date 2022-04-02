@@ -100,7 +100,6 @@ class RtcEngineSubProcessSmokeTestGenerator extends DefaultGenerator {
   @override
   void generate(StringSink sink, ParseResult parseResult) {
     final clazz = parseResult.getClazz('RtcEngine')[0];
-    if (clazz == null) return;
 
     const testCaseTemplate = '''
 testWidgets('{{TEST_CASE_NAME}}', (WidgetTester tester) async {

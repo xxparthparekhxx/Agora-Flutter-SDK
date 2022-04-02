@@ -221,7 +221,6 @@ class RtcChannelImpl implements RtcChannel {
   }
 
   @override
-  @deprecated
   Future<void> publish() {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeChannel.kChannelPublish.index,
@@ -232,7 +231,6 @@ class RtcChannelImpl implements RtcChannel {
   }
 
   @override
-  @deprecated
   Future<void> unpublish() {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeChannel.kChannelUnPublish.index,
@@ -288,7 +286,6 @@ class RtcChannelImpl implements RtcChannel {
   }
 
   @override
-  @deprecated
   Future<void> setDefaultMuteAllRemoteAudioStreams(bool muted) {
     return _invokeMethod('callApi', {
       'apiType':
@@ -324,7 +321,6 @@ class RtcChannelImpl implements RtcChannel {
   }
 
   @override
-  @deprecated
   Future<void> setDefaultMuteAllRemoteVideoStreams(bool muted) {
     return _invokeMethod('callApi', {
       'apiType':
@@ -361,7 +357,6 @@ class RtcChannelImpl implements RtcChannel {
   }
 
   @override
-  @deprecated
   Future<int?> createDataStream(bool reliable, bool ordered) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeChannel.kChannelCreateDataStream.index,
@@ -434,7 +429,6 @@ class RtcChannelImpl implements RtcChannel {
   }
 
   @override
-  @deprecated
   Future<void> setEncryptionMode(EncryptionMode encryptionMode) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeChannel.kChannelSetEncryptionMode.index,
@@ -446,7 +440,6 @@ class RtcChannelImpl implements RtcChannel {
   }
 
   @override
-  @deprecated
   Future<void> setEncryptionSecret(String secret) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeChannel.kChannelSetEncryptionSecret.index,

@@ -28,8 +28,6 @@ class RtcEngineEventHandlerSomkeTestGenerator implements Generator {
   @override
   void generate(StringSink sink, ParseResult parseResult) {
     final clazz = parseResult.getClazz('RtcEngineEventHandler')[0];
-    stdout.writeln('clazz: $clazz');
-    if (clazz == null) return;
 
     final fields = clazz.fields;
 

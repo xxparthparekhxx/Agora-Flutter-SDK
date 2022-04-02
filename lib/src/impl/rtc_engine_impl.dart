@@ -248,7 +248,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> enableWebSdkInteroperability(bool enabled) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineEnableWebSdkInteroperability.index,
@@ -303,7 +302,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> setLogFile(String filePath) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineSetLogFile.index,
@@ -314,7 +312,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> setLogFilter(LogFilter filter) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineSetLogFilter.index,
@@ -325,7 +322,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> setLogFileSize(int fileSizeInKBytes) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineSetLogFileSize.index,
@@ -461,7 +457,11 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
 
   @override
   Future<void> enableAudioVolumeIndication(
-      int interval, int smooth, bool report_vad) {
+    int interval,
+    int smooth,
+    // ignore: non_constant_identifier_names
+    bool report_vad,
+  ) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineEnableAudioVolumeIndication.index,
       'params': jsonEncode({
@@ -525,7 +525,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> setDefaultMuteAllRemoteAudioStreams(bool muted) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineSetDefaultMuteAllRemoteAudioStreams.index,
@@ -604,7 +603,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> setDefaultMuteAllRemoteVideoStreams(bool muted) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineSetDefaultMuteAllRemoteVideoStreams.index,
@@ -1183,7 +1181,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
     });
   }
 
-  @deprecated
   @override
   Future<void> setEncryptionMode(EncryptionMode encryptionMode) {
     var encryption = '';
@@ -1209,7 +1206,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> setEncryptionSecret(String secret) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineSetEncryptionSecret.index,
@@ -1250,7 +1246,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> setLocalVoiceChanger(AudioVoiceChanger voiceChanger) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineSetLocalVoiceChanger.index,
@@ -1295,7 +1290,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> setLocalVoiceReverbPreset(AudioReverbPreset reverbPreset) {
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineSetLocalVoiceReverbPreset.index,
@@ -1382,7 +1376,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
   }
 
   @override
-  @deprecated
   Future<void> startAudioRecording(String filePath,
       AudioSampleRateType sampleRate, AudioRecordingQuality quality) {
     return _invokeMethod('callApi', {

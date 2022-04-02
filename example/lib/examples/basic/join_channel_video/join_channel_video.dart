@@ -9,6 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 /// MultiChannel Example
 class JoinChannelVideo extends StatefulWidget {
+  /// Construct the [JoinChannelVideo]
   const JoinChannelVideo({Key? key}) : super(key: key);
 
   @override

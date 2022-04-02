@@ -26,6 +26,7 @@ ApiTypeEngine _getSetupVideoApiType(int uid) {
 
 final Map<int, MethodChannel> _channels = {};
 
+/// The implementation of [RtcSurfaceView]
 class RtcSurfaceViewState extends State<RtcSurfaceView> {
   int? _id;
   int? _renderMode;
@@ -56,7 +57,7 @@ class RtcSurfaceViewState extends State<RtcSurfaceView> {
         behavior: HitTestBehavior.opaque,
         child: AndroidView(
           viewType: 'AgoraSurfaceView',
-          onPlatformViewCreated: onPlatformViewCreated,
+          onPlatformViewCreated: _onPlatformViewCreated,
           hitTestBehavior: PlatformViewHitTestBehavior.transparent,
           creationParams: {
             ..._creationParams,
@@ -76,7 +77,7 @@ class RtcSurfaceViewState extends State<RtcSurfaceView> {
         behavior: HitTestBehavior.opaque,
         child: UiKitView(
           viewType: 'AgoraSurfaceView',
-          onPlatformViewCreated: onPlatformViewCreated,
+          onPlatformViewCreated: _onPlatformViewCreated,
           hitTestBehavior: PlatformViewHitTestBehavior.transparent,
           creationParams: _creationParams,
           creationParamsCodec: const StandardMessageCodec(),
@@ -88,7 +89,7 @@ class RtcSurfaceViewState extends State<RtcSurfaceView> {
         behavior: HitTestBehavior.opaque,
         child: PlatformViewLink(
           viewType: 'AgoraSurfaceView',
-          onCreatePlatformView: onCreatePlatformView,
+          onCreatePlatformView: _onCreatePlatformView,
           surfaceFactory:
               (BuildContext context, PlatformViewController controller) {
             return PlatformViewSurface(
@@ -117,28 +118,28 @@ class RtcSurfaceViewState extends State<RtcSurfaceView> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.uid != widget.uid ||
         oldWidget.channelId != widget.channelId) {
-      setData();
+      _setData();
     }
     if (oldWidget.renderMode != widget.renderMode) {
       if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
-        setData();
+        _setData();
       } else {
-        setRenderMode();
+        _setRenderMode();
       }
     }
     if (oldWidget.mirrorMode != widget.mirrorMode) {
       if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
-        setData();
+        _setData();
       } else {
-        setMirrorMode();
+        _setMirrorMode();
       }
     }
     if (defaultTargetPlatform == TargetPlatform.android) {
       if (oldWidget.zOrderOnTop != widget.zOrderOnTop) {
-        setZOrderOnTop();
+        _setZOrderOnTop();
       }
       if (oldWidget.zOrderMediaOverlay != widget.zOrderMediaOverlay) {
-        setZOrderMediaOverlay();
+        _setZOrderMediaOverlay();
       }
     }
   }
@@ -149,7 +150,7 @@ class RtcSurfaceViewState extends State<RtcSurfaceView> {
     _channels.remove(_id);
   }
 
-  void setData() {
+  void _setData() {
     var params = <String, dynamic>{
       'userId': widget.uid,
       'channelId': widget.channelId,
@@ -173,7 +174,7 @@ class RtcSurfaceViewState extends State<RtcSurfaceView> {
     }
   }
 
-  void setRenderMode() {
+  void _setRenderMode() {
     _renderMode = VideoRenderModeConverter(widget.renderMode).value();
 
     RtcEngineImpl.methodChannel.invokeMethod('callApi', {
@@ -186,7 +187,7 @@ class RtcSurfaceViewState extends State<RtcSurfaceView> {
     });
   }
 
-  void setMirrorMode() {
+  void _setMirrorMode() {
     _mirrorMode = VideoMirrorModeConverter(widget.mirrorMode).value();
     RtcEngineImpl.methodChannel.invokeMethod('callApi', {
       'apiType': _getSetRenderModeApiType(widget.uid).index,
@@ -198,19 +199,19 @@ class RtcSurfaceViewState extends State<RtcSurfaceView> {
     });
   }
 
-  void setZOrderOnTop() {
+  void _setZOrderOnTop() {
     _channels[_id]?.invokeMethod('setZOrderOnTop', {
       'onTop': widget.zOrderOnTop,
     });
   }
 
-  void setZOrderMediaOverlay() {
+  void _setZOrderMediaOverlay() {
     _channels[_id]?.invokeMethod('setZOrderMediaOverlay', {
       'isMediaOverlay': widget.zOrderMediaOverlay,
     });
   }
 
-  Future<void> onPlatformViewCreated(int id) async {
+  Future<void> _onPlatformViewCreated(int id) async {
     _id = id;
     if (!_channels.containsKey(id)) {
       _channels[id] = MethodChannel('agora_rtc_engine/surface_view_$id');
@@ -218,18 +219,19 @@ class RtcSurfaceViewState extends State<RtcSurfaceView> {
     widget.onPlatformViewCreated?.call(id);
   }
 
-  PlatformViewController onCreatePlatformView(
+  PlatformViewController _onCreatePlatformView(
       PlatformViewCreationParams params) {
     final controller = _HtmlElementViewController(params.id, params.viewType);
     controller._initialize().then((_) {
       params.onPlatformViewCreated(params.id);
-      onPlatformViewCreated(params.id);
-      setData();
+      _onPlatformViewCreated(params.id);
+      _setData();
     });
     return controller;
   }
 }
 
+/// The implementation of [RtcTextureView]
 class RtcTextureViewState extends State<RtcTextureView> {
   int? _id;
   int? _renderMode;
@@ -252,7 +254,7 @@ class RtcTextureViewState extends State<RtcTextureView> {
           behavior: HitTestBehavior.opaque,
           child: AndroidView(
             viewType: 'AgoraTextureView',
-            onPlatformViewCreated: onPlatformViewCreated,
+            onPlatformViewCreated: _onPlatformViewCreated,
             hitTestBehavior: PlatformViewHitTestBehavior.transparent,
             creationParams: {
               'callApi': {
@@ -292,7 +294,7 @@ class RtcTextureViewState extends State<RtcTextureView> {
         if (!_channels.containsKey(value)) {
           _channels[value] =
               MethodChannel('agora_rtc_engine/texture_render_$value');
-          setData();
+          _setData();
         }
       });
     }
@@ -303,13 +305,13 @@ class RtcTextureViewState extends State<RtcTextureView> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.uid != widget.uid ||
         oldWidget.channelId != widget.channelId) {
-      setData();
+      _setData();
     }
     if (oldWidget.renderMode != widget.renderMode) {
-      setRenderMode();
+      _setRenderMode();
     }
     if (oldWidget.mirrorMode != widget.mirrorMode) {
-      setMirrorMode();
+      _setMirrorMode();
     }
   }
 
@@ -326,7 +328,7 @@ class RtcTextureViewState extends State<RtcTextureView> {
     }
   }
 
-  void setData() {
+  void _setData() {
     if (defaultTargetPlatform == TargetPlatform.android) {
       var params = <String, dynamic>{
         'canvas': {
@@ -355,7 +357,7 @@ class RtcTextureViewState extends State<RtcTextureView> {
     _channels[_id]?.invokeMethod('setData', params);
   }
 
-  void setRenderMode() {
+  void _setRenderMode() {
     _renderMode = VideoRenderModeConverter(widget.renderMode).value();
     _mirrorMode = VideoMirrorModeConverter(widget.mirrorMode).value();
 
@@ -369,7 +371,7 @@ class RtcTextureViewState extends State<RtcTextureView> {
     });
   }
 
-  void setMirrorMode() {
+  void _setMirrorMode() {
     _renderMode = VideoRenderModeConverter(widget.renderMode).value();
     _mirrorMode = VideoMirrorModeConverter(widget.mirrorMode).value();
 
@@ -383,7 +385,7 @@ class RtcTextureViewState extends State<RtcTextureView> {
     });
   }
 
-  Future<void> onPlatformViewCreated(int id) async {
+  Future<void> _onPlatformViewCreated(int id) async {
     _id = id;
     if (!_channels.containsKey(id)) {
       _channels[id] = MethodChannel('agora_rtc_engine/texture_view_$id');

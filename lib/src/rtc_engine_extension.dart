@@ -39,15 +39,26 @@ class _Display extends Struct {
   external int rotation;
 }
 
+/// @nodoc
 class Display {
+  /// @nodoc
   int id;
+
+  /// @nodoc
   double scale;
+
+  /// @nodoc
   Rectangle bounds;
+
+  /// @nodoc
   Rectangle workArea;
+
+  /// @nodoc
   int rotation;
 
   Display._(this.id, this.scale, this.bounds, this.workArea, this.rotation);
 
+  /// @nodoc
   factory Display.from(_Display _display) => Display._(
       _display.id,
       _display.scale,
@@ -75,15 +86,26 @@ class _Window extends Struct {
   external _Rect work_area;
 }
 
+/// @nodoc
 class Window {
+  /// @nodoc
   int id;
+
+  /// @nodoc
   String name;
+
+  /// @nodoc
   String ownerName;
+
+  /// @nodoc
   Rectangle bounds;
+
+  /// @nodoc
   Rectangle workArea;
 
   Window._(this.id, this.name, this.ownerName, this.bounds, this.workArea);
 
+  /// @nodoc
   factory Window.from(_Window _window) {
     final name =
         utf8.decode(Iterable<int>.generate(_kBasicResultLength, (index) {

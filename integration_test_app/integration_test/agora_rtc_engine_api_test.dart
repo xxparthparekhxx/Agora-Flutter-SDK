@@ -9,6 +9,8 @@ import 'package:integration_test/integration_test.dart';
 import 'package:integration_test_app/main.dart' as app;
 import 'package:integration_test_app/src/fake_iris_rtc_engine.dart';
 
+// ignore_for_file: deprecated_member_use
+
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 

@@ -466,7 +466,7 @@ class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 
       for (final statement in body.block.statements) {
         if (statement is ReturnStatement) {
-          final returns = statement as ReturnStatement;
+          final returns = statement;
 
           if (returns.expression != null) {
             CallApiInvoke? callApiInvoke =
@@ -506,25 +506,25 @@ class _RootBuilder extends dart_ast_visitor.RecursiveAstVisitor<Object?> {
 }
 
 enum GeneratorConfigPlatform {
-  Android,
+  android,
   iOS,
   macOS,
-  Windows,
-  Linux,
+  windows,
+  linux,
 }
 
 extension GeneratorConfigPlatformExt on GeneratorConfigPlatform {
   String toPlatformExpression() {
     switch (this) {
-      case GeneratorConfigPlatform.Android:
+      case GeneratorConfigPlatform.android:
         return 'Platform.isAndroid';
       case GeneratorConfigPlatform.iOS:
         return 'Platform.isIOS';
       case GeneratorConfigPlatform.macOS:
         return 'Platform.isMacOS';
-      case GeneratorConfigPlatform.Windows:
+      case GeneratorConfigPlatform.windows:
         return 'Platform.isWindows';
-      case GeneratorConfigPlatform.Linux:
+      case GeneratorConfigPlatform.linux:
         return 'Platform.isLinux';
     }
   }
@@ -535,11 +535,11 @@ class GeneratorConfig {
     required this.name,
     this.donotGenerate = false,
     this.supportedPlatforms = const [
-      GeneratorConfigPlatform.Android,
+      GeneratorConfigPlatform.android,
       GeneratorConfigPlatform.iOS,
       GeneratorConfigPlatform.macOS,
-      GeneratorConfigPlatform.Windows,
-      GeneratorConfigPlatform.Linux,
+      GeneratorConfigPlatform.windows,
+      GeneratorConfigPlatform.linux,
     ],
     this.shouldMockResult = false,
     this.shouldMockReturnCode = false,
@@ -553,12 +553,12 @@ class GeneratorConfig {
 
 const List<GeneratorConfigPlatform> desktopPlatforms = [
   GeneratorConfigPlatform.macOS,
-  GeneratorConfigPlatform.Windows,
-  GeneratorConfigPlatform.Linux,
+  GeneratorConfigPlatform.windows,
+  GeneratorConfigPlatform.linux,
 ];
 
 const List<GeneratorConfigPlatform> mobilePlatforms = [
-  GeneratorConfigPlatform.Android,
+  GeneratorConfigPlatform.android,
   GeneratorConfigPlatform.iOS,
 ];
 
@@ -615,7 +615,6 @@ abstract class DefaultGenerator implements Generator {
     Parameter parameter,
     StringBuffer initializerBuilder,
   ) {
-    final bool isClass = parseResult.classMap.containsKey(parameter.type);
     final bool isEnum = parseResult.enumMap.containsKey(parameter.type);
 
     if (isEnum) {

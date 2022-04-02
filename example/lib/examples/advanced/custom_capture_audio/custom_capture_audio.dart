@@ -42,6 +42,7 @@ extension AudioExternalSourcePosExt on AudioExternalSourcePos {
 
 /// CustomCaptureAudio Example
 class CustomCaptureAudio extends StatefulWidget {
+  /// Construct the [CustomCaptureAudio]
   const CustomCaptureAudio({Key? key}) : super(key: key);
 
   @override

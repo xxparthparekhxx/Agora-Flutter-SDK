@@ -12,6 +12,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 /// StreamMessage Example
 class StreamMessage extends StatefulWidget {
+  /// Construct the [StreamMessage]
   const StreamMessage({Key? key}) : super(key: key);
 
   @override

@@ -9,6 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 /// ChannelMediaRelay Example
 class ChannelMediaRelay extends StatefulWidget {
+  /// Construct the [ChannelMediaRelay]
   const ChannelMediaRelay({Key? key}) : super(key: key);
 
   @override
