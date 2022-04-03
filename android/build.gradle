@@ -23,7 +23,6 @@ rootProject.allprojects {
   repositories {
     mavenCentral()
     google()
-    maven { url 'https://www.jitpack.io' }
   }
 }
 

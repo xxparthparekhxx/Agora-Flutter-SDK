@@ -334,10 +334,6 @@ enum AudioMixingReason {
   ///
   @JsonValue(726)
   ResumedByUser,
-
-/* TODO(doc): property-AudioMixingReason-OK */
-  @JsonValue(0)
-  OK,
 }
 
 ///
@@ -363,10 +359,6 @@ enum AudioMixingStateCode {
   ///
   @JsonValue(711)
   Paused,
-
-/* TODO(doc): property-AudioMixingStateCode-Restart */
-  @JsonValue(712)
-  Restart,
 
   ///
   /// 713: The music file stops playing.
@@ -465,19 +457,27 @@ enum AudioOutputRouting {
   @JsonValue(5)
   HeadsetBluetooth,
 
-/* TODO(doc): property-AudioOutputRouting-USB */
+  ///
+  /// 6: The USB peripheral (macOS only).
+  ///
   @JsonValue(6)
   USB,
 
-/* TODO(doc): property-AudioOutputRouting-HDMI */
+  ///
+  /// 7: The HDMI peripheral (macOS only).
+  ///
   @JsonValue(7)
   HDMI,
 
-/* TODO(doc): property-AudioOutputRouting-DisplayPort */
+  ///
+  /// 8: The DisplayPort peripheral (macOS only).
+  ///
   @JsonValue(8)
   DisplayPort,
 
-/* TODO(doc): property-AudioOutputRouting-AirPlay */
+  ///
+  /// 9: Apple AirPlay (macOS only).
+  ///
   @JsonValue(9)
   AirPlay,
 }
@@ -531,15 +531,24 @@ enum AudioProfile {
 ///
 ///
 enum AudioRecordingQuality {
-/* TODO(doc): property-AudioRecordingQuality-Low */
+  ///
+  /// 0: Low quality. The sample rate is 32 kHz, and the file size is around 1.2 MB for 10 minutes
+  ///  of recording.
+  ///
   @JsonValue(0)
   Low,
 
-/* TODO(doc): property-AudioRecordingQuality-Medium */
+  ///
+  /// 1: Medium quality. The sample rate is 32 kHz, and the file size is around 2 MB for 10 minutes
+  ///  of recording.
+  ///
   @JsonValue(1)
   Medium,
 
-/* TODO(doc): property-AudioRecordingQuality-High */
+  ///
+  /// 2: High quality. The sample rate is 32 kHz, and the file size is around 3.75 MB for 10 minutes
+  ///  of recording.
+  ///
   @JsonValue(2)
   High,
 }
@@ -687,7 +696,9 @@ enum AudioReverbPreset {
   @JsonValue(0x00000003)
   Rock,
 
-/* TODO(doc): property-AudioReverbPreset-HipHop */
+  ///
+  /// The reverb style typical of hip-hop music.
+  ///
   @JsonValue(0x00000004)
   HipHop,
 
@@ -763,11 +774,15 @@ enum AudioReverbPreset {
   @JsonValue(0x00200001)
   VIRTUAL_STEREO,
 
-/* TODO(doc): property-AudioReverbPreset-AUDIO_ELECTRONIC_VOICE */
+  ///
+  /// A pitch correction effect that corrects the user's pitch based on the pitch of the natural C major scale.
+  ///
   @JsonValue(0x00300001)
   AUDIO_ELECTRONIC_VOICE,
 
-/* TODO(doc): property-AudioReverbPreset-AUDIO_THREEDIM_VOICE */
+  ///
+  /// A 3D voice effect that makes the voice appear to be moving around the user.
+  ///
   @JsonValue(0x00400001)
   AUDIO_THREEDIM_VOICE,
 }
@@ -1352,9 +1367,7 @@ enum ConnectionChangedReason {
   @JsonValue(5)
   LeaveChannel,
 
-  ///
-  /// 6: The connection failed because the App ID is not valid. Please rejoin the channel with a valid App ID.
-  ///
+/* TODO(doc): property-ConnectionChangedReason-InvalidAppId */
   @JsonValue(6)
   InvalidAppId,
 
@@ -1410,10 +1423,6 @@ enum ConnectionChangedReason {
   ///
   @JsonValue(14)
   KeepAliveTimeout,
-
-/* TODO(doc): property-ConnectionChangedReason-ProxyServerInterrupted */
-  @JsonValue(15)
-  ProxyServerInterrupted,
 }
 
 ///
@@ -1494,11 +1503,6 @@ enum DegradationPreference {
 /// Agora recommends using AES128GCM2 or AES256GCM2 encrypted mode. These two modes support the use of salt for higher security.
 ///
 enum EncryptionMode {
-/* TODO(doc): property-EncryptionMode-None */
-  @Deprecated('')
-  @JsonValue(0)
-  None,
-
   ///
   /// 1: 128-bit AES encryption, XTS mode.
   ///
@@ -2277,7 +2281,9 @@ enum NetworkType {
   @JsonValue(5)
   Mobile4G,
 
-/* TODO(doc): property-NetworkType-Mobile5G */
+  ///
+  /// 6: The network type is mobile 5G.
+  ///
   @JsonValue(6)
   Mobile5G,
 }
@@ -2287,47 +2293,69 @@ enum NetworkType {
 ///
 ///
 enum RtmpStreamingErrorCode {
-/* TODO(doc): property-RtmpStreamingErrorCode-OK */
+  ///
+  /// The RTMP or RTMPS streaming publishes successfully.
+  ///
   @JsonValue(0)
   OK,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-InvalidParameters */
+  ///
+  /// Invalid argument used. Please check the parameter setting. For example, if you do not call setLiveTranscoding to set the transcoding parameters before calling addPublishStreamUrl , the SDK returns this error.
+  ///
   @JsonValue(1)
   InvalidParameters,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-EncryptedStreamNotAllowed */
+  ///
+  /// Check whether you set the parameters in the setLiveTranscoding method properly.
+  ///
   @JsonValue(2)
   EncryptedStreamNotAllowed,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-ConnectionTimeout */
+  ///
+  /// The RTMP or RTMPS streaming is encrypted and cannot be published. Call addPublishStreamUrl to re-publish the stream.
+  ///
   @JsonValue(3)
   ConnectionTimeout,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-InternalServerError */
+  ///
+  /// An error occurs in Agora's streaming server. Call the addPublishStreamUrl method to publish the streaming again.
+  ///
   @JsonValue(4)
   InternalServerError,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-RtmpServerError */
+  ///
+  /// An error occurs in the CDN server.
+  ///
   @JsonValue(5)
   RtmpServerError,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-TooOften */
+  ///
+  /// The RTMP or RTMPS streaming publishes too frequently.
+  ///
   @JsonValue(6)
   TooOften,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-ReachLimit */
+  ///
+  /// The host has published more than 10 URLs. Delete the unnecessary URLs before adding new ones.
+  ///
   @JsonValue(7)
   ReachLimit,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-NotAuthorized */
+  ///
+  /// The host manipulates other hosts' streams. For example, the host updates or stops other hosts' streams. Check your app logic.
+  ///
   @JsonValue(8)
   NotAuthorized,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-StreamNotFound */
+  ///
+  /// Agora's server fails to find the RTMP or RTMPS streaming.
+  ///
   @JsonValue(9)
   StreamNotFound,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-FormatNotSupported */
+  ///
+  /// The URL format is incorrect. Check whether the URL format is correct.
+  ///
   @JsonValue(10)
   FormatNotSupported,
 
@@ -2365,23 +2393,35 @@ enum RtmpStreamingErrorCode {
 ///
 ///
 enum RtmpStreamingState {
-/* TODO(doc): property-RtmpStreamingState-Idle */
+  ///
+  /// The RTMP or RTMPS streaming has not started or has ended. This state is also triggered after you remove an RTMP or RTMPS stream from the CDN by calling removePublishStreamUrl .
+  ///
   @JsonValue(0)
   Idle,
 
-/* TODO(doc): property-RtmpStreamingState-Connecting */
+  ///
+  /// The SDK is connecting to Agora's streaming server and the CDN server. This state is triggered after you call the addPublishStreamUrl method.
+  ///
   @JsonValue(1)
   Connecting,
 
-/* TODO(doc): property-RtmpStreamingState-Running */
+  ///
+  /// The RTMP or RTMPS streaming publishes. The SDK successfully publishes the RTMP or RTMPS streaming and returns this state.
+  ///
   @JsonValue(2)
   Running,
 
-/* TODO(doc): property-RtmpStreamingState-Recovering */
+  ///
+  /// The RTMP or RTMPS streaming is recovering. When exceptions occur to the CDN, or the streaming is interrupted, the SDK tries to resume RTMP or RTMPS streaming and returns this state. If the SDK successfully resumes the streaming, Running(2) returns.
+  ///  If the streaming does not resume within 60 seconds or server errors occur, Failure (4) returns. You can also reconnect to the server by calling the removePublishStreamUrl and addPublishStreamUrl methods.
+  ///
+  ///
   @JsonValue(3)
   Recovering,
 
-/* TODO(doc): property-RtmpStreamingState-Failure */
+  ///
+  /// The RTMP or RTMPS streaming fails. See the error code for the detailed error information. You can also call the addPublishStreamUrl method to publish the RTMP or RTMPS stream again.
+  ///
   @JsonValue(4)
   Failure,
 }
@@ -2482,10 +2522,6 @@ enum VideoCodecProfileType {
 ///
 ///
 enum VideoFrameRate {
-/* TODO(doc): property-VideoFrameRate-Min */
-  @JsonValue(-1)
-  Min,
-
   ///
   /// 1: 1 fps
   ///
@@ -2522,7 +2558,10 @@ enum VideoFrameRate {
   @JsonValue(30)
   Fps30,
 
-/* TODO(doc): property-VideoFrameRate-Fps60 */
+  ///
+  /// 60: 60 fps
+  ///  (For Windows and macOS only)
+  ///
   @JsonValue(60)
   Fps60,
 }
@@ -2937,16 +2976,20 @@ enum VideoCodecType {
   VP8,
 
   ///
-  ///
+  /// Standard H.264.
   ///
   @JsonValue(2)
   H264,
 
-/* TODO(doc): property-VideoCodecType-EVP */
+  ///
+  /// Enhanced VP8.
+  ///
   @JsonValue(3)
   EVP,
 
-/* TODO(doc): property-VideoCodecType-E264 */
+  ///
+  ///
+  ///
   @JsonValue(4)
   E264,
 }
@@ -3045,19 +3088,27 @@ enum StreamSubscribeState {
 ///
 ///
 enum RtmpStreamingEvent {
-/* TODO(doc): property-RtmpStreamingEvent-FailedLoadImage */
+  ///
+  /// An error occurs when you add a background image or a watermark image in the media push.
+  ///
   @JsonValue(1)
   FailedLoadImage,
 
-/* TODO(doc): property-RtmpStreamingEvent-UrlAlreadyInUse */
+  ///
+  /// 2: The streaming URL is already being used for CDN live streaming. If you want to start new streaming, use a new streaming URL.
+  ///
   @JsonValue(2)
   UrlAlreadyInUse,
 
-/* TODO(doc): property-RtmpStreamingEvent-AdvancedFeatureNotSupport */
+  ///
+  /// 3: The feature is not supported.
+  ///
   @JsonValue(3)
   AdvancedFeatureNotSupport,
 
-/* TODO(doc): property-RtmpStreamingEvent-RequestTooOften */
+  ///
+  /// 4: Reserved.
+  ///
   @JsonValue(4)
   RequestTooOften,
 }

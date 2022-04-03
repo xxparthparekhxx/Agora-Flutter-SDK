@@ -35,19 +35,19 @@ class MediaRecorderObserver {
 
 ///
 /// Used for recording audio and video on the client.
-/// MediaRecoder can record the following: The audio captured by the local microphone and encoded in AAC format.
+/// MediaRecorder can record the following: The audio captured by the local microphone and encoded in AAC format.
 ///  The video captured by the local camera and encoded by the SDK.
 ///
 abstract class MediaRecorder {
   ///
-  /// Gets the MediaRecoder object.
+  /// Gets the MediaRecorder object.
   /// Call this method after initializing the RtcEngine object.
   ///
   /// Param [engine] The RtcEngine object.
   ///
   /// Param [callback] The MediaRecorderObserver object.
   ///
-  /// **return** The MediaRecoder object.
+  /// **return** The MediaRecorder object.
   ///
   static MediaRecorder getMediaRecorder(RtcEngine engine,
       {MediaRecorderObserver? callback}) {
@@ -84,8 +84,8 @@ abstract class MediaRecorder {
   Future<void> stopRecording();
 
   ///
-  /// Releases the MediaRecoder object.
-  /// This method releases the RtcEngine object and all the other resources used by MediaRecoder . After calling this method, if you want to enable the recording again, you must call getMediaRecorder to get the MediaRecoder first.
+  /// Releases the MediaRecorder object.
+  /// This method releases the RtcEngine object and all the other resources used by MediaRecorder . After calling this method, if you want to enable the recording again, you must call getMediaRecorder to get the MediaRecorder first.
   ///
   Future<void> releaseRecorder();
 }

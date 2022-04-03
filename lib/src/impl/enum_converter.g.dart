@@ -170,7 +170,6 @@ Map<String, dynamic> _$AudioMixingStateCodeConverterToJson(
 const _$AudioMixingStateCodeEnumMap = {
   AudioMixingStateCode.Playing: 710,
   AudioMixingStateCode.Paused: 711,
-  AudioMixingStateCode.Restart: 712,
   AudioMixingStateCode.Stopped: 713,
   AudioMixingStateCode.Failed: 714,
 };
