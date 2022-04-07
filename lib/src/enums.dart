@@ -1367,7 +1367,9 @@ enum ConnectionChangedReason {
   @JsonValue(5)
   LeaveChannel,
 
-/* TODO(doc): property-ConnectionChangedReason-InvalidAppId */
+  ///
+  /// 6: The connection failed because the App ID is not valid. Please rejoin the channel with a valid App ID.
+  ///
   @JsonValue(6)
   InvalidAppId,
 
@@ -2377,7 +2379,9 @@ enum RtmpStreamingErrorCode {
   @JsonValue(14)
   NetDown,
 
-/* TODO(doc): property-RtmpStreamingErrorCode-InvalidAppid */
+  ///
+  /// 15: Your App ID does not have permission to use the CDN live streaming function. Refer to Prerequisites in Media Push to enable the CDN live streaming permission.
+  ///
   @JsonValue(15)
   InvalidAppid,
 

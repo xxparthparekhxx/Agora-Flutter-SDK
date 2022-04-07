@@ -121,7 +121,8 @@ class _State extends State<MediaRecorder> {
     _mediaRecorder = media_recorder.MediaRecorder.getMediaRecorder(_engine,
         callback: observer);
 
-    Directory appDocDir = await getApplicationDocumentsDirectory();
+    Directory appDocDir = (await getExternalStorageDirectory()) ??
+        (await getApplicationDocumentsDirectory());
     String p = path.join(appDocDir.path, 'example.mp4');
     await _mediaRecorder
         ?.startRecording(MediaRecorderConfiguration(storagePath: p));

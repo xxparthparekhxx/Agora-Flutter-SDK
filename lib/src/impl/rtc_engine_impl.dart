@@ -614,10 +614,6 @@ class RtcEngineImpl with MediaRecorderImplMixin implements RtcEngine {
 
   @override
   Future<void> setVideoEncoderConfiguration(VideoEncoderConfiguration config) {
-    assert(
-      config.frameRate != VideoFrameRate.Min,
-      'frameRate must be not be VideoFrameRate.Min',
-    );
     return _invokeMethod('callApi', {
       'apiType': ApiTypeEngine.kEngineSetVideoEncoderConfiguration.index,
       'params': jsonEncode({

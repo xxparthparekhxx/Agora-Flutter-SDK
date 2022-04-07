@@ -486,7 +486,8 @@ extension RtcEngineEventHandlerExt on RtcEngineEventHandler {
         break;
 
       default:
-        throw ArgumentError('Not Supported Event: $methodName');
+        // do nothing
+        break;
     }
   }
 }

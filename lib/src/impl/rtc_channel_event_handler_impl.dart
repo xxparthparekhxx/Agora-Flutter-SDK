@@ -12,11 +12,6 @@ extension RtcChannelEventHandlerExt on RtcChannelEventHandler {
   void process(String channelId, String methodName, dynamic data,
       [Uint8List? buffer]) {
     List<dynamic> newData;
-    // if (kIsWeb || (Platform.isWindows || Platform.isMacOS)) {
-
-    // } else {
-    //   newData = List<dynamic>.from(data);
-    // }
     if (methodName.startsWith('on')) {
       methodName = methodName.substring(2);
     }
@@ -208,7 +203,8 @@ extension RtcChannelEventHandlerExt on RtcChannelEventHandler {
         }
         break;
       default:
-        throw ArgumentError('Not Supported Event: $methodName');
+        // do nothing
+        break;
     }
   }
 }

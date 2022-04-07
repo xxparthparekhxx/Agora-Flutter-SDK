@@ -27,7 +27,8 @@ extension MediaRecorderObserverExt on MediaRecorderObserver {
         }
         break;
       default:
-        throw ArgumentError('Not Supported Event: $methodName');
+        // do nothing
+        break;
     }
   }
 }

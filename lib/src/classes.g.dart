@@ -83,7 +83,6 @@ Map<String, dynamic> _$VideoEncoderConfigurationToJson(
 }
 
 const _$VideoFrameRateEnumMap = {
-  VideoFrameRate.Min: -1,
   VideoFrameRate.Fps1: 1,
   VideoFrameRate.Fps7: 7,
   VideoFrameRate.Fps10: 10,
@@ -545,7 +544,6 @@ Map<String, dynamic> _$EncryptionConfigToJson(EncryptionConfig instance) {
 }
 
 const _$EncryptionModeEnumMap = {
-  EncryptionMode.None: 0,
   EncryptionMode.AES128XTS: 1,
   EncryptionMode.AES128ECB: 2,
   EncryptionMode.AES256XTS: 3,

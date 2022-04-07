@@ -120,7 +120,7 @@ class _SetVideoEncoderConfigurationState
     VideoEncoderConfiguration config = VideoEncoderConfiguration(
       dimensions: dimensions[dim],
       frameRate: VideoFrameRate.Fps15,
-      minFrameRate: VideoFrameRate.Min,
+      minFrameRate: VideoFrameRate.Fps1,
       bitrate: 0,
       minBitrate: 1,
       orientationMode: VideoOutputOrientationMode.Adaptative,

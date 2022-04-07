@@ -152,7 +152,6 @@ const _$AudioMixingReasonEnumMap = {
   AudioMixingReason.StoppedByUser: 724,
   AudioMixingReason.PausedByUser: 725,
   AudioMixingReason.ResumedByUser: 726,
-  AudioMixingReason.OK: 0,
 };
 
 AudioMixingStateCodeConverter _$AudioMixingStateCodeConverterFromJson(
@@ -624,7 +623,6 @@ const _$ConnectionChangedReasonEnumMap = {
   ConnectionChangedReason.RenewToken: 12,
   ConnectionChangedReason.ClientIpAddressChanged: 13,
   ConnectionChangedReason.KeepAliveTimeout: 14,
-  ConnectionChangedReason.ProxyServerInterrupted: 15,
 };
 
 ConnectionStateTypeConverter _$ConnectionStateTypeConverterFromJson(
@@ -678,7 +676,6 @@ Map<String, dynamic> _$EncryptionModeConverterToJson(
     };
 
 const _$EncryptionModeEnumMap = {
-  EncryptionMode.None: 0,
   EncryptionMode.AES128XTS: 1,
   EncryptionMode.AES128ECB: 2,
   EncryptionMode.AES256XTS: 3,
@@ -1095,7 +1092,6 @@ Map<String, dynamic> _$VideoFrameRateConverterToJson(
     };
 
 const _$VideoFrameRateEnumMap = {
-  VideoFrameRate.Min: -1,
   VideoFrameRate.Fps1: 1,
   VideoFrameRate.Fps7: 7,
   VideoFrameRate.Fps10: 10,
